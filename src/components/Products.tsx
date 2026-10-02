@@ -15,7 +15,7 @@ function Disclosure({ title, children }: { title: string; children: React.ReactN
       <button
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        className="label flex w-full items-center justify-between py-5 text-left transition-colors hover:text-blush"
+        className="label flex w-full items-center justify-between py-5 text-left transition-colors hover:text-white"
       >
         {title}
         <span
@@ -50,22 +50,22 @@ function ProductCard({ p, i }: { p: Product; i: number }) {
   return (
     <Reveal delay={i * 0.15} className="flex flex-col">
       <article id={p.id} className="flex scroll-mt-28 flex-col">
-        <div className="relative">
-          <div aria-hidden className="glow absolute -inset-10" />
-          <div className="arch group relative aspect-[4/5] overflow-hidden border border-hair bg-ember">
-            <Image
-              src={p.image}
-              alt={`${p.name}, ${p.format}`}
-              fill
-              sizes="(max-width: 768px) 100vw, 45vw"
-              className="object-cover transition-transform duration-[2.5s] ease-out group-hover:scale-[1.03]"
-            />
-          </div>
+        <div className="group relative aspect-[4/5] overflow-hidden bg-ember">
+          <Image
+            src={p.image}
+            alt={`${p.name}, ${p.format}`}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover transition-transform duration-[2.5s] ease-out group-hover:scale-[1.03]"
+          />
+          <span className="label absolute top-5 left-5 text-cream/90">
+            {i === 0 ? "the original" : "ready-poured"}
+          </span>
         </div>
 
         <p className="label mt-10 text-center text-mist">{p.format}</p>
-        <h3 className="mt-4 text-center font-serif text-4xl md:text-5xl">{p.name}</h3>
-        <p className="mt-3 text-center font-serif text-xl text-blush italic">{p.tagline}</p>
+        <h3 className="display mt-4 text-center text-5xl md:text-6xl">{p.name}</h3>
+        <p className="mt-3 text-center font-serif text-2xl text-cream/80 italic">{p.tagline}</p>
         <p className="mx-auto mt-6 max-w-md text-center text-[15px] leading-[1.75] text-mist">
           {p.notes} {p.blurb}
         </p>
@@ -76,7 +76,7 @@ function ProductCard({ p, i }: { p: Product; i: number }) {
               <Qty value={qty} onChange={(n) => setQty(Math.max(1, n))} />
               <button
                 onClick={() => add(p.id, qty)}
-                className="label h-12 bg-blush px-8 text-night transition-colors duration-500 hover:bg-cream"
+                className="label h-12 bg-cream px-8 text-night transition-colors duration-500 hover:bg-white"
               >
                 add to basket — {formatPrice(p.price! * qty)}
               </button>
@@ -86,7 +86,7 @@ function ProductCard({ p, i }: { p: Product; i: number }) {
               href={INSTAGRAM}
               target="_blank"
               rel="noreferrer"
-              className="label flex h-12 items-center border border-cream/25 px-8 transition-colors duration-500 hover:border-blush hover:text-blush"
+              className="label flex h-12 items-center border border-cream/25 px-8 transition-colors duration-500 hover:border-cream"
             >
               coming soon — follow for launch
             </a>
@@ -104,19 +104,19 @@ function ProductCard({ p, i }: { p: Product; i: number }) {
 
 export default function Products() {
   return (
-    <section id="shop" className="overflow-hidden bg-night px-5 py-28 md:px-10 md:py-40">
+    <section id="shop" className="overflow-hidden bg-night px-5 pb-28 md:px-10 md:pb-40">
       <div className="mx-auto max-w-[1440px]">
-        <Reveal className="mx-auto mb-20 max-w-2xl text-center md:mb-28">
+        <Reveal className="mx-auto mb-16 max-w-2xl text-center md:mb-20">
           <p className="label text-mist">one flavour. two ways.</p>
-          <h2 className="mt-6 font-serif text-5xl leading-[1] tracking-[-0.01em] md:text-7xl">
-            Choose your <em className="text-blush">ritual.</em>
+          <h2 className="display mt-6 text-6xl md:text-8xl">
+            Choose your <em>ritual.</em>
           </h2>
           <p className="mx-auto mt-6 max-w-md text-[15px] leading-[1.75] text-mist">
             The Elixir for the drops you measure yourself. E&T when the tonic is
             already poured.
           </p>
         </Reveal>
-        <div className="grid gap-24 md:grid-cols-2 md:gap-16 lg:gap-28">
+        <div className="grid gap-24 md:grid-cols-2 md:gap-6">
           {products.map((p, i) => (
             <ProductCard key={p.id} p={p} i={i} />
           ))}

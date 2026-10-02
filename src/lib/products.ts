@@ -50,7 +50,7 @@ export const products: Product[] = [
     price: process.env.NEXT_PUBLIC_CAN_PRICE
       ? Number(process.env.NEXT_PUBLIC_CAN_PRICE)
       : null,
-    image: "/img/can-night.jpg",
+    image: "/img/can-ember.jpg",
     notes: "Gentian root, with bitter orange and cardamom.",
     blurb:
       "Elixir & Tonic, ready-poured in a 200ml can. Chill, pour over ice, and the ritual is already done.",

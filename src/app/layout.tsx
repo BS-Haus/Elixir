@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Archivo, Bodoni_Moda } from "next/font/google";
+import { Archivo, Cormorant_Garamond } from "next/font/google";
 import { CartProvider } from "@/lib/cart";
 import "./globals.css";
 
-const serif = Bodoni_Moda({
-  variable: "--font-bodoni",
+const serif = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
 });
 

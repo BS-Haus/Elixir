@@ -34,10 +34,10 @@ export default function Serves() {
         <Reveal className="mb-16 flex flex-col justify-between gap-6 md:mb-24 md:flex-row md:items-end">
           <div>
             <p className="label text-mist">serves</p>
-            <h2 className="mt-6 font-serif text-5xl leading-[1] md:text-7xl">
+            <h2 className="display mt-6 text-6xl md:text-8xl">
               For the moments
               <br />
-              <em className="text-blush">that matter.</em>
+              <em>that matter.</em>
             </h2>
           </div>
           <p className="max-w-sm text-[15px] leading-[1.75] text-mist">
@@ -55,13 +55,13 @@ export default function Serves() {
               } ${i === 2 ? "lg:border-l" : ""} ${i === 0 ? "sm:pl-0" : ""}`}
             >
               <p className="label text-mist">{s.when}</p>
-              <p className="mt-5 font-serif text-3xl italic">{s.name}</p>
+              <p className="mt-5 font-serif text-[2rem] leading-tight italic">{s.name}</p>
               <ul className="mt-6 space-y-2 text-[15px] text-cream/80">
                 {s.steps.map((x) => (
                   <li key={x}>{x}</li>
                 ))}
               </ul>
-              <p className="label mt-8 text-blush">made with {s.with}</p>
+              <p className="label mt-8 text-cream">made with {s.with}</p>
             </Reveal>
           ))}
         </div>

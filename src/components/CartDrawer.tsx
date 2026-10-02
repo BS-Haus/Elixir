@@ -47,7 +47,7 @@ export default function CartDrawer() {
               <p className="label">your basket ({count})</p>
               <button
                 onClick={() => setOpen(false)}
-                className="label transition-opacity hover:text-blush"
+                className="label transition-opacity hover:text-white"
               >
                 close
               </button>
@@ -61,7 +61,7 @@ export default function CartDrawer() {
               </p>
               <div className="mt-3 h-px bg-hair">
                 <div
-                  className="h-px bg-blush transition-all duration-700"
+                  className="h-px bg-potion transition-all duration-700"
                   style={{ width: `${Math.min(100, (subtotal / FREE_SHIPPING) * 100)}%` }}
                 />
               </div>
@@ -101,7 +101,7 @@ export default function CartDrawer() {
               <button
                 disabled={!count}
                 onClick={checkout}
-                className="label mt-6 w-full bg-blush py-4 text-night transition-colors duration-500 hover:bg-cream disabled:opacity-30"
+                className="label mt-6 w-full bg-cream py-4 text-night transition-colors duration-500 hover:bg-white disabled:opacity-30"
               >
                 checkout
               </button>
@@ -120,7 +120,7 @@ export function Qty({
   value: number;
   onChange: (n: number) => void;
 }) {
-  const b = "flex w-9 items-center justify-center transition-opacity hover:text-blush";
+  const b = "flex w-9 items-center justify-center transition-opacity hover:text-white";
   return (
     <div className="flex h-12 items-stretch border border-cream/20">
       <button aria-label="decrease quantity" className={b} onClick={() => onChange(value - 1)}>

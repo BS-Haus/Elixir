@@ -34,9 +34,9 @@ export default function Footer() {
     <footer className="border-t border-hair bg-night px-5 pt-24 pb-10 md:px-10">
       <div className="mx-auto max-w-[1440px]">
         <div className="grid gap-12 md:grid-cols-12">
-          <p className="max-w-sm font-serif text-2xl leading-snug md:col-span-5">
+          <p className="max-w-sm font-serif text-[1.7rem] leading-[1.2] md:col-span-5">
             Handmade 0% bitters from London, with gentian root at the backbone.{" "}
-            <em className="text-blush">For women with a taste for more.</em>
+            <em className="text-cream/75">For women with a taste for more.</em>
           </p>
           {columns.map((c) => (
             <div key={c.title} className="md:col-span-2">
@@ -47,7 +47,7 @@ export default function Footer() {
                     <a
                       href={href}
                       {...(href.startsWith("http") && { target: "_blank", rel: "noreferrer" })}
-                      className="transition-colors hover:text-blush"
+                      className="transition-colors hover:text-white"
                     >
                       {label}
                     </a>

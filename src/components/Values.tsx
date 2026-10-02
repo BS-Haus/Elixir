@@ -21,7 +21,7 @@ export default function Values() {
               i === 2 ? "md:border-l" : ""
             }`}
           >
-            <p className="font-serif text-3xl md:text-4xl">{big}</p>
+            <p className="display text-4xl md:text-5xl">{big}</p>
             <p className="label mt-3 text-mist">{small}</p>
           </Reveal>
         ))}

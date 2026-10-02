@@ -37,8 +37,8 @@ export default function Story() {
       <div ref={ref} className="relative h-[90svh] overflow-hidden">
         <motion.div style={{ y }} className="absolute inset-[-8%_0]">
           <Image
-            src="/img/shop-pour.jpg"
-            alt="elixir dropped from a pipette into a row of glasses"
+            src="/img/dusk.jpg"
+            alt="dusk over a quiet harbour"
             fill
             sizes="100vw"
             className="object-cover"
@@ -48,10 +48,10 @@ export default function Story() {
         <div className="absolute inset-0 flex flex-col items-center justify-center px-5 text-center">
           <Reveal>
             <p className="label text-mist">our story</p>
-            <p className="mx-auto mt-8 max-w-4xl font-serif text-5xl leading-[1.05] md:text-8xl">
+            <p className="display mx-auto mt-8 max-w-5xl text-6xl md:text-[8.5rem]">
               The original elixirs
               <br />
-              <em className="text-blush">were bitter.</em>
+              <em>were bitter.</em>
             </p>
           </Reveal>
         </div>
@@ -65,7 +65,7 @@ export default function Story() {
               <p className="label text-mist md:col-span-3">
                 {c.n} · {c.k}
               </p>
-              <p className="font-serif text-4xl leading-[1.1] md:col-span-5 md:text-5xl">
+              <p className="display text-5xl md:col-span-5 md:text-6xl">
                 {c.t}
               </p>
               <p className="text-[16px] leading-[1.8] text-mist md:col-span-4">{c.d}</p>

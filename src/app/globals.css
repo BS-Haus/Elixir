@@ -1,18 +1,20 @@
 @import "tailwindcss";
 
-/* elixir — night: candlelit dark, Didone serif, blush as the single accent */
+/* elixir — night: soft dark brown, warm white, the can's potion gradient as the one accent */
 @theme {
-  --color-night: #120c09;
-  --color-umber: #1c140f;
-  --color-ember: #2a1e17;
-  --color-cream: #f2e9e4;
-  --color-mist: #b9a79f;
-  --color-blush: #dfc4c2;
-  --color-amber: #633f27;
-  --color-rust: #8b3f24;
-  --color-hair: #3a2d24;
+  --color-night: #241912;
+  --color-umber: #2c2018;
+  --color-ember: #35271d;
+  --color-cream: #f3ece4;
+  --color-mist: #b9aa9e;
+  --color-hair: #4a3a2e;
 
-  --font-serif: var(--font-bodoni);
+  /* the can's liquid: gold → orange → rose → orchid → violet */
+  --color-gold: #ee974f;
+  --color-rose: #c16878;
+  --color-violet: #5d60ce;
+
+  --font-serif: var(--font-cormorant);
   --font-sans: var(--font-archivo);
 }
 
@@ -29,7 +31,7 @@ body {
 }
 
 ::selection {
-  background: var(--color-blush);
+  background: var(--color-cream);
   color: var(--color-night);
 }
 
@@ -40,17 +42,53 @@ body {
   line-height: 1.4;
 }
 
-/* arched frame, as in the apothecary windows of the brand's earlier iterations */
-@utility arch {
-  border-radius: 999px 999px 0 0;
+/* display serif, set tight */
+@utility display {
+  font-family: var(--font-cormorant);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 0.9;
 }
 
-/* faint candle-glow behind imagery */
+@utility bg-potion {
+  background-image: linear-gradient(
+    100deg,
+    #ee974f 0%,
+    #e97c3e 22%,
+    #c16878 50%,
+    #9d679d 72%,
+    #5d60ce 100%
+  );
+}
+
+/* gradient type, used sparingly on a single italic phrase */
+@utility text-potion {
+  background-image: linear-gradient(100deg, #ee974f 0%, #e97c3e 25%, #c16878 55%, #9d679d 78%, #7a72d6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-right: 0.06em; /* keep italic overhang inside the clip */
+}
+
+/* image frame: a fine inset rule, like a printed label */
+@utility frame {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgb(243 236 228 / 0.35);
+    pointer-events: none;
+  }
+}
+
+/* the potion, glowing faintly behind imagery */
 @utility glow {
   background: radial-gradient(
-    55% 45% at 50% 60%,
-    rgb(238 151 79 / 0.16),
-    rgb(193 104 120 / 0.06) 45%,
-    transparent 75%
+    50% 42% at 50% 62%,
+    rgb(233 124 62 / 0.18),
+    rgb(193 104 120 / 0.1) 40%,
+    rgb(93 96 206 / 0.06) 60%,
+    transparent 78%
   );
 }
