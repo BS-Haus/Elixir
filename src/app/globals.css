@@ -4,14 +4,15 @@
 @theme {
   --color-espresso: #22130d;
   --color-cocoa: #3a2219;
-  --color-ivory: #f5ecdf;
-  --color-parchment: #ebe0cf;
+  --color-ivory: #ece8e1;
+  --color-cream: #dfddd7; /* logo */
+  --color-parchment: #dfddd7;
   --color-orange: #ee7a2e;
   --color-ember: #d9542b;
   --color-cobalt: #5357d8;
   --color-butter: #f5ef94;
   --color-sky: #a9cdeb;
-  --color-rust: #8a3f24;
+  --color-rust: #8b3f24; /* brand primary */
 
   --font-display: var(--font-fraunces);
   --font-sans: var(--font-instrument);

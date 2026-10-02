@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import type { Product } from "@/lib/products";
 
@@ -100,12 +101,49 @@ export default function ProductStage({
   product: Product;
   hovered: boolean;
 }) {
-  if (product.splineScene) {
-    return <Spline scene={product.splineScene} className="h-full w-full" />;
+  const builtIn =
+    product.id === "can" ? (
+      <CanScene hovered={hovered} />
+    ) : (
+      <BottleTilt hovered={hovered} />
+    );
+
+  // Spline needs the exported scene URL (…/scene.splinecode), not the editor link.
+  const scene = product.splineScene;
+  if (!scene?.endsWith(".splinecode")) {
+    if (scene && process.env.NODE_ENV !== "production")
+      console.warn(
+        `[elixir] ${product.id}: "${scene}" is not a .splinecode export URL — using the built-in stage.`,
+      );
+    return builtIn;
   }
-  return product.id === "can" ? (
-    <CanScene hovered={hovered} />
-  ) : (
-    <BottleTilt hovered={hovered} />
+  return <SplineStage scene={scene} fallback={builtIn} />;
+}
+
+/** Shows the built-in stage while the Spline scene downloads, then crossfades. */
+function SplineStage({
+  scene,
+  fallback,
+}: {
+  scene: string;
+  fallback: React.ReactNode;
+}) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div className="relative h-full w-full">
+      {!loaded && <div className="absolute inset-0">{fallback}</div>}
+      <motion.div
+        className="absolute inset-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: loaded ? 1 : 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <Spline
+          scene={scene}
+          onLoad={() => setLoaded(true)}
+          className="h-full w-full"
+        />
+      </motion.div>
+    </div>
   );
 }

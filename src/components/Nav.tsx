@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useCart } from "@/lib/cart";
+import { Logo } from "./Logo";
 
 export default function Nav() {
   const { count, setOpen } = useCart();
@@ -23,11 +24,8 @@ export default function Nav() {
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 md:px-8">
-        <a
-          href="#top"
-          className="font-display text-3xl font-black tracking-tight [font-variation-settings:'SOFT'_100,'WONK'_0]"
-        >
-          elixir
+        <a href="#top" aria-label="elixir, back to top" className="text-cream">
+          <Logo className="h-8 w-auto md:h-9" />
         </a>
         <div className="flex items-center gap-6 text-sm md:gap-9">
           <a href="#shop" className="hidden hover:text-orange sm:inline">

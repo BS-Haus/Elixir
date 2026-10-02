@@ -1,4 +1,5 @@
 import { SHOP_DOMAIN } from "@/lib/products";
+import { Logo } from "./Logo";
 import { INSTAGRAM } from "./Products";
 
 const policies = [
@@ -57,12 +58,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <p
-          aria-hidden
-          className="mt-20 select-none text-center font-display text-[clamp(6rem,26vw,22rem)] leading-[0.8] font-black tracking-tighter text-transparent [-webkit-text-stroke:1px_rgba(245,236,223,0.25)] [font-variation-settings:'SOFT'_100]"
-        >
-          elixir
-        </p>
+        <Logo className="mt-20 h-auto w-full text-rust" />
 
         <div className="mt-10 flex flex-col justify-between gap-2 border-t border-ivory/10 pt-6 text-xs text-ivory/40 md:flex-row">
           <p>© {new Date().getFullYear()} elixir drinks ltd · 124 city road, london ec1v 2nx</p>

@@ -12,7 +12,7 @@ const steps = [
 
 export default function Ritual() {
   return (
-    <section id="ritual" className="grain relative overflow-hidden bg-espresso px-5 py-24 md:px-8 md:py-32">
+    <section id="ritual" className="grain relative overflow-hidden bg-rust px-5 py-24 md:px-8 md:py-32">
       <div className="mx-auto grid max-w-7xl items-center gap-14 md:grid-cols-2 md:gap-20">
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
@@ -31,15 +31,15 @@ export default function Ritual() {
         </motion.div>
 
         <div>
-          <p className="font-type text-xs uppercase tracking-[0.3em] text-orange">
+          <p className="font-type text-xs uppercase tracking-[0.3em] text-butter">
             the ritual
           </p>
           <h2 className="mt-4 font-display text-5xl leading-[0.95] tracking-tight md:text-7xl">
             the drink that
             <br />
-            <em className="text-orange">savours</em> the moment
+            <em className="text-butter">savours</em> the moment
           </h2>
-          <ol className="mt-12 divide-y divide-ivory/10 border-y border-ivory/10">
+          <ol className="mt-12 divide-y divide-cream/20 border-y border-cream/20">
             {steps.map((s, i) => (
               <motion.li
                 key={s.n}
@@ -49,12 +49,12 @@ export default function Ritual() {
                 transition={{ delay: i * 0.1 }}
                 className="group flex items-baseline gap-6 py-5"
               >
-                <span className="font-type text-sm text-ivory/40">{s.n}</span>
+                <span className="font-type text-sm text-cream/50">{s.n}</span>
                 <div>
-                  <p className="font-display text-2xl transition group-hover:text-orange md:text-3xl">
+                  <p className="font-display text-2xl transition group-hover:text-butter md:text-3xl">
                     {s.t}
                   </p>
-                  <p className="mt-1 text-sm text-ivory/60">{s.d}</p>
+                  <p className="mt-1 text-sm text-cream/70">{s.d}</p>
                 </div>
               </motion.li>
             ))}
