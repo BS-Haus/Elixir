@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# elixir — drink-elixir.co
 
-## Getting Started
+A one-page site for elixir: split hero (3D can ↔ bottle), the two products, the ritual, the story.
+Built in the brand's "route two · the potion" direction: espresso / ivory, orange→cobalt potion gradient,
+Fraunces + Instrument Sans + typewriter sticker type, all lowercase.
 
-First, run the development server:
+## Run
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How it's wired
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Products** — `src/lib/products.ts` is the single source of truth (copy, price, Shopify variant IDs).
+- **Commerce** — no Shopify API keys. The bag lives in the browser and checkout redirects to a
+  Shopify cart permalink (`https://{shop}/cart/{variantId}:{qty}`) which lands on Shopify checkout.
+  Shipping, tax, discounts and payments stay in Shopify.
+- **The can** — `src/components/CanScene.tsx`: three.js cylinder wrapped with the V5 label
+  (`public/img/can-label.jpg`). Drag to spin. Shows "coming soon" until `NEXT_PUBLIC_CAN_VARIANT_ID` is set.
+- **The bottle** — illustrated bottle with pointer tilt + glass highlight (`ProductStage.tsx`).
+- **Spline** — set `NEXT_PUBLIC_SPLINE_CAN` / `NEXT_PUBLIC_SPLINE_BOTTLE` to a `.splinecode` URL and the hero
+  uses your Spline scene instead. Keep the background transparent and the object centred.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Going live (Vercel)
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Import the repo in Vercel, add the env vars from `.env.example`.
+2. In Shopify → Settings → Domains, add `shop.drink-elixir.co` and make it primary, so checkout keeps working.
+3. Point `drink-elixir.co` at Vercel and set `NEXT_PUBLIC_SHOP_DOMAIN=shop.drink-elixir.co`.
