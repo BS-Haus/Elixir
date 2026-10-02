@@ -22,8 +22,8 @@ export default function Ritual() {
           className="relative aspect-[4/5] overflow-hidden rounded-[28px]"
         >
           <Image
-            src="/img/shop-pour.jpg"
-            alt="elixir being dropped from a pipette into glasses of tonic with grapefruit"
+            src="/img/shop-dropper.jpg"
+            alt="a pipette of elixir over a glass of tonic with ice and a slice of orange"
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover"

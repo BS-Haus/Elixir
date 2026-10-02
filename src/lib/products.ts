@@ -18,7 +18,6 @@ export type Product = {
   facts: string[];
   blurb: string;
   ingredients: string;
-  splineScene?: string; // set NEXT_PUBLIC_SPLINE_CAN / _BOTTLE to swap in your Spline scene
 };
 
 export const products: Product[] = [
@@ -44,9 +43,6 @@ export const products: Product[] = [
       "the ritual, ready-poured. elixir bitters meets a light, bright tonic — crisp, gently bitter and made to be opened in good company.",
     ingredients:
       "filtered water, fructose, glycerin, natural flavourings (gentian, cardamom, coriander, bitter orange), malic acid, citric acid, sodium citrate, vitamin c (antioxidant), magnesium sulphate, pink himalayan rock salt",
-    splineScene:
-      process.env.NEXT_PUBLIC_SPLINE_CAN ??
-      "https://prod.spline.design/hljPgD0hN2DjOHz7/scene.splinecode",
   },
   {
     id: "bottle",
@@ -68,9 +64,6 @@ export const products: Product[] = [
       "our non-alcoholic bitters, hand-crafted from foraged herbs and gentian root. three pipettes into tonic, a cocktail, or wherever the evening takes you.",
     ingredients:
       "gentian root, organic flavourings, water, vegetable glycerine & malic acid. stabilisers: sunflower lecithin, acacia gum",
-    splineScene:
-      process.env.NEXT_PUBLIC_SPLINE_BOTTLE ??
-      "https://prod.spline.design/s2TJzUYpppquhRJX/scene.splinecode",
   },
 ];
 

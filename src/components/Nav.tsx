@@ -17,7 +17,7 @@ export default function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-40 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-[45] transition-all duration-500 ${
         scrolled
           ? "bg-espresso/80 py-3 backdrop-blur-md"
           : "bg-transparent py-5"

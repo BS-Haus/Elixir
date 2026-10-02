@@ -11,7 +11,7 @@ const words = [
 export default function Marquee() {
   const row = [...words, ...words];
   return (
-    <div className="overflow-hidden bg-rust py-4 text-cream">
+    <div className="overflow-hidden bg-espresso py-4 text-cream">
       <div className="flex w-max animate-marquee gap-10 whitespace-nowrap font-type text-sm font-bold uppercase tracking-[0.2em]">
         {row.map((w, i) => (
           <span key={i} className="flex items-center gap-10">
