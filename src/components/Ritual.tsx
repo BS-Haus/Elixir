@@ -1,52 +1,46 @@
-"use client";
-
-import Image from "next/image";
+import { Moon } from "./Moon";
 import { Reveal } from "./Reveal";
 
-const steps = [
-  { n: "i", t: "ice", d: "a heavy glass, filled generously." },
-  { n: "ii", t: "three pipettes of elixir", d: "watch it bloom, amber into clear." },
-  { n: "iii", t: "a light tonic", d: "poured slowly, to keep the bubbles fine." },
-  { n: "iv", t: "a slice of orange", d: "and a moment that is entirely yours." },
+const drops = [
+  { n: "I", phase: 0.25, t: "Gratitude.", d: "One drop for what you're grateful for." },
+  { n: "II", phase: 0.55, t: "Intention.", d: "One for what you're calling in." },
+  { n: "III", phase: 1, t: "The work.", d: "One for the work it will take." },
 ];
 
+/** The heart of the brand: three drops, each with a meaning. */
 export default function Ritual() {
   return (
-    <section id="ritual" className="bg-espresso px-5 py-28 text-cream md:px-10 md:py-40">
-      <div className="mx-auto grid max-w-[1440px] gap-16 md:grid-cols-12 md:items-center md:gap-10">
-        <Reveal className="md:col-span-5">
-          <div className="relative aspect-[3/4] overflow-hidden">
-            <Image
-              src="/img/shop-pour.jpg"
-              alt="elixir dropped from a pipette into glasses of tonic with grapefruit"
-              fill
-              sizes="(max-width: 768px) 100vw, 40vw"
-              className="object-cover"
-            />
-          </div>
+    <section id="ritual" className="relative overflow-hidden bg-umber px-5 py-28 md:px-10 md:py-40">
+      <div className="mx-auto max-w-[1440px]">
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <p className="label text-mist">the ritual</p>
+          <h2 className="mt-6 font-serif text-5xl leading-[1] tracking-[-0.01em] md:text-8xl">
+            Three drops.
+            <br />
+            <em className="text-blush">Then everything.</em>
+          </h2>
         </Reveal>
 
-        <div className="md:col-span-6 md:col-start-7">
-          <Reveal>
-            <p className="label text-cream/50">the ritual</p>
-            <h2 className="mt-6 font-serif text-5xl leading-[1] tracking-[-0.01em] md:text-7xl">
-              the drink that savours <em>the moment</em>
-            </h2>
-          </Reveal>
-          <ol className="mt-16 border-t border-cream/15">
-            {steps.map((s, i) => (
-              <Reveal key={s.n} delay={i * 0.08}>
-                <li className="grid grid-cols-[3rem_1fr] items-baseline border-b border-cream/15 py-6 md:grid-cols-[4rem_1fr_1fr]">
-                  <span className="font-serif text-lg text-cream/40 italic">{s.n}</span>
-                  <span className="font-serif text-2xl md:text-3xl">{s.t}</span>
-                  <span className="col-start-2 mt-2 text-[15px] text-cream/60 md:col-start-3 md:mt-0">
-                    {s.d}
-                  </span>
-                </li>
-              </Reveal>
-            ))}
-          </ol>
-        </div>
+        <ol className="mt-20 grid border-t border-hair md:mt-28 md:grid-cols-3 md:border-t-0">
+          {drops.map((d, i) => (
+            <Reveal
+              key={d.n}
+              delay={i * 0.15}
+              className={`border-b border-hair py-12 text-center md:border-b-0 md:px-10 md:py-4 ${
+                i ? "md:border-l" : ""
+              }`}
+            >
+              <li>
+                <Moon phase={d.phase} className="mx-auto h-10 w-10 text-blush" />
+                <p className="label mt-8 text-mist">{d.n}</p>
+                <p className="mt-4 font-serif text-4xl md:text-5xl">{d.t}</p>
+                <p className="mx-auto mt-4 max-w-[16rem] text-[15px] leading-[1.7] text-mist">
+                  {d.d}
+                </p>
+              </li>
+            </Reveal>
+          ))}
+        </ol>
       </div>
     </section>
   );

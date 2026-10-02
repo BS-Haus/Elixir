@@ -1,27 +1,26 @@
 import type { Metadata } from "next";
-import { Instrument_Sans, Instrument_Serif } from "next/font/google";
+import { Archivo, Bodoni_Moda } from "next/font/google";
 import { CartProvider } from "@/lib/cart";
 import "./globals.css";
 
-const serif = Instrument_Serif({
-  variable: "--font-instrument-serif",
+const serif = Bodoni_Moda({
+  variable: "--font-bodoni",
   subsets: ["latin"],
-  weight: "400",
   style: ["normal", "italic"],
 });
 
-const sans = Instrument_Sans({
-  variable: "--font-instrument-sans",
+const sans = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Elixir — Non-Alcoholic Botanical Bitters",
+  title: "Elixir · Handmade 0% bitters",
   description:
-    "Hand-crafted non-alcoholic bitters from gentian root, red mandarin and cardamom. All the ritual, none of the alcohol.",
+    "Handmade 0% bitters from London, with gentian root at the backbone. Three drops. Then everything.",
   openGraph: {
-    title: "Elixir — Non-Alcoholic Botanical Bitters",
-    description: "All the ritual, none of the alcohol.",
+    title: "Elixir · Handmade 0% bitters",
+    description: "Three drops. Then everything.",
     images: ["/img/shop-dropper.jpg"],
   },
 };

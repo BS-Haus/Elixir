@@ -16,39 +16,46 @@ export default function Nav() {
   }, []);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-[45] border-b transition-colors duration-700 ${
-        scrolled
-          ? "border-ink/10 bg-paper/90 backdrop-blur-md"
-          : "border-transparent bg-transparent"
-      }`}
-    >
-      <nav className="mx-auto grid h-16 max-w-[1440px] grid-cols-3 items-center px-5 md:h-20 md:px-10">
-        <div className="label hidden gap-8 md:flex">
-          <a href="#shop" className="transition-opacity hover:opacity-50">
-            shop
+    <header className="fixed inset-x-0 top-0 z-[45]">
+      <p
+        className={`label overflow-hidden bg-umber text-center text-mist transition-all duration-700 ${
+          scrolled ? "max-h-0 py-0" : "max-h-10 py-2.5"
+        }`}
+      >
+        free uk delivery over £40<span className="hidden sm:inline"> · handmade in london</span>
+      </p>
+      <div
+        className={`border-b transition-colors duration-700 ${
+          scrolled ? "border-hair bg-night/85 backdrop-blur-md" : "border-transparent"
+        }`}
+      >
+        <nav className="mx-auto grid h-16 max-w-[1440px] grid-cols-3 items-center px-5 md:h-20 md:px-10">
+          <div className="label hidden gap-8 md:flex">
+            <a href="#shop" className="transition-colors hover:text-blush">
+              shop
+            </a>
+            <a href="#ritual" className="transition-colors hover:text-blush">
+              rituals
+            </a>
+            <a href="#story" className="transition-colors hover:text-blush">
+              story
+            </a>
+          </div>
+          <a
+            href="#top"
+            aria-label="elixir, back to top"
+            className="col-start-1 justify-self-start text-blush md:col-start-2 md:justify-self-center"
+          >
+            <Logo className="h-6 w-auto md:h-7" />
           </a>
-          <a href="#ritual" className="transition-opacity hover:opacity-50">
-            the ritual
-          </a>
-          <a href="#story" className="transition-opacity hover:opacity-50">
-            gentian
-          </a>
-        </div>
-        <a
-          href="#top"
-          aria-label="elixir, back to top"
-          className="col-start-1 justify-self-start text-rust md:col-start-2 md:justify-self-center"
-        >
-          <Logo className="h-6 w-auto md:h-7" />
-        </a>
-        <button
-          onClick={() => setOpen(true)}
-          className="label col-start-3 justify-self-end transition-opacity hover:opacity-50"
-        >
-          bag ({count})
-        </button>
-      </nav>
+          <button
+            onClick={() => setOpen(true)}
+            className="label col-start-3 justify-self-end transition-colors hover:text-blush"
+          >
+            basket ({count})
+          </button>
+        </nav>
+      </div>
     </header>
   );
 }

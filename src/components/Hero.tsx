@@ -4,12 +4,8 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import { formatPrice, products } from "@/lib/products";
+import { Moon } from "./Moon";
 import { ease } from "./Reveal";
-
-const lines = [
-  { text: "all the ritual.", em: false },
-  { text: "none of the alcohol.", em: true },
-];
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -21,54 +17,64 @@ export default function Hero() {
   const bottle = products.find((p) => p.id === "bottle")!;
 
   return (
-    <section id="top" ref={ref} className="bg-paper">
-      <div className="mx-auto grid min-h-[100svh] max-w-[1440px] gap-12 px-5 pt-28 pb-16 md:grid-cols-12 md:items-end md:gap-10 md:px-10 md:pt-32 md:pb-20">
-        {/* copy */}
-        <div className="md:col-span-6 md:pb-6">
+    <section id="top" ref={ref} className="relative overflow-hidden bg-night">
+      <div className="mx-auto grid min-h-[100svh] max-w-[1440px] gap-14 px-5 pt-36 pb-16 md:grid-cols-12 md:items-center md:gap-10 md:px-10 md:pt-32">
+        <div className="md:col-span-6">
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, ease }}
-            className="label text-muted"
+            transition={{ duration: 1.4, ease }}
+            className="label flex items-center gap-3 text-mist"
           >
-            non-alcoholic botanical bitters
+            <Moon phase={0.3} className="h-4 w-4 text-blush" />
+            handmade 0% bitters · london
           </motion.p>
 
-          <h1 className="mt-8 font-serif text-[clamp(3.25rem,7.2vw,7.5rem)] leading-[0.95] tracking-[-0.02em]">
-            {lines.map((l, i) => (
-              <span key={l.text} className="block overflow-hidden pb-[0.06em]">
-                <motion.span
-                  initial={{ y: "100%" }}
-                  animate={{ y: 0 }}
-                  transition={{ delay: 0.2 + i * 0.15, duration: 1.4, ease }}
-                  className={`block ${l.em ? "text-rust italic" : ""}`}
-                >
-                  {l.text}
-                </motion.span>
-              </span>
-            ))}
+          <h1 className="mt-8 font-serif text-[clamp(3.4rem,8vw,8.5rem)] leading-[0.92] font-normal tracking-[-0.02em]">
+            <span className="block overflow-hidden pb-[0.08em]">
+              <motion.span
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{ delay: 0.2, duration: 1.6, ease }}
+                className="block"
+              >
+                a taste
+              </motion.span>
+            </span>
+            <span className="block overflow-hidden pb-[0.08em]">
+              <motion.span
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{ delay: 0.38, duration: 1.6, ease }}
+                className="block text-blush italic"
+              >
+                for more.
+              </motion.span>
+            </span>
           </h1>
 
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 1.2, ease }}
+            transition={{ delay: 0.9, duration: 1.4, ease }}
           >
-            <p className="mt-10 max-w-md text-[17px] leading-[1.7] text-muted">
-              hand-crafted from gentian root, red mandarin and cardamom. three
-              pipettes into tonic make a considered, grown-up drink — and leave
-              a clear head for whatever comes next.
+            <p className="mt-10 max-w-md font-serif text-2xl leading-snug text-cream/90 italic">
+              An acquired taste. Like everything worth having.
+            </p>
+            <p className="mt-5 max-w-md text-[16px] leading-[1.75] text-mist">
+              Gentian root at the backbone, made by hand in London. Three drops
+              into tonic, a cocktail, or whatever the night asks for.
             </p>
             <div className="mt-12 flex flex-wrap gap-3">
               <a
                 href="#bottle"
-                className="label bg-ink px-8 py-4 text-paper transition-colors duration-500 hover:bg-rust"
+                className="label bg-blush px-8 py-4 text-night transition-colors duration-500 hover:bg-cream"
               >
-                shop elixir — {formatPrice(bottle.price!)}
+                shop the elixir — {formatPrice(bottle.price!)}
               </a>
               <a
                 href="#ritual"
-                className="label border border-ink/25 px-8 py-4 transition-colors duration-500 hover:border-ink"
+                className="label border border-cream/25 px-8 py-4 transition-colors duration-500 hover:border-blush hover:text-blush"
               >
                 the ritual
               </a>
@@ -76,18 +82,18 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* image */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 1.8, ease }}
+          transition={{ delay: 0.3, duration: 2, ease }}
           className="relative md:col-span-5 md:col-start-8"
         >
-          <div className="relative aspect-[4/5] overflow-hidden bg-stone">
+          <div aria-hidden className="glow absolute -inset-16" />
+          <div className="arch relative mx-auto aspect-[3/4] max-w-[520px] overflow-hidden border border-hair">
             <motion.div style={{ y: photoY }} className="absolute inset-[-5%_0]">
               <Image
-                src="/img/shop-dropper.jpg"
-                alt="a pipette of elixir over a glass of tonic with ice and a slice of orange"
+                src="/img/shop-product.jpg"
+                alt="the elixir amber dropper bottle held up in a shaft of afternoon light"
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 40vw"
@@ -95,9 +101,9 @@ export default function Hero() {
               />
             </motion.div>
           </div>
-          <p className="label mt-4 flex justify-between text-muted">
-            <span>0.0% abv</span>
-            <span>30 serves per bottle</span>
+          <p className="label mx-auto mt-5 flex max-w-[520px] justify-between text-mist">
+            <span>three drops.</span>
+            <span className="text-blush">then everything.</span>
           </p>
         </motion.div>
       </div>

@@ -5,52 +5,49 @@ const columns: { title: string; links: [string, string][] }[] = [
   {
     title: "shop",
     links: [
-      ["elixir bitters", "#bottle"],
-      ["herbal bitters & tonic", "#can"],
+      ["The Elixir", "#bottle"],
+      ["E&T · Elixir & Tonic", "#can"],
     ],
   },
   {
-    title: "follow",
+    title: "elixir",
     links: [
-      ["instagram", INSTAGRAM],
-      ["tiktok", "https://www.tiktok.com/@drink__elixir"],
-      ["contact", `https://${SHOP_DOMAIN}/pages/contact`],
+      ["Rituals", "#ritual"],
+      ["Story", "#story"],
+      ["Instagram", INSTAGRAM],
+      ["TikTok", "https://www.tiktok.com/@drink__elixir"],
     ],
   },
   {
-    title: "information",
+    title: "help",
     links: [
-      ["shipping", `https://${SHOP_DOMAIN}/policies/shipping-policy`],
-      ["refunds", `https://${SHOP_DOMAIN}/policies/refund-policy`],
-      ["privacy", `https://${SHOP_DOMAIN}/policies/privacy-policy`],
-      ["terms", `https://${SHOP_DOMAIN}/policies/terms-of-service`],
+      ["Contact", `https://${SHOP_DOMAIN}/pages/contact`],
+      ["Delivery", `https://${SHOP_DOMAIN}/policies/shipping-policy`],
+      ["Returns", `https://${SHOP_DOMAIN}/policies/refund-policy`],
+      ["Privacy", `https://${SHOP_DOMAIN}/policies/privacy-policy`],
     ],
   },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-stone px-5 pt-24 pb-10 md:px-10">
+    <footer className="border-t border-hair bg-night px-5 pt-24 pb-10 md:px-10">
       <div className="mx-auto max-w-[1440px]">
         <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-4">
-            <p className="font-serif text-3xl leading-tight">
-              all the ritual.
-              <br />
-              <em className="text-rust">none of the alcohol.</em>
-            </p>
-            <p className="label mt-6 text-muted">free uk shipping over £40</p>
-          </div>
+          <p className="max-w-sm font-serif text-2xl leading-snug md:col-span-5">
+            Handmade 0% bitters from London, with gentian root at the backbone.{" "}
+            <em className="text-blush">For women with a taste for more.</em>
+          </p>
           {columns.map((c) => (
-            <div key={c.title} className="md:col-span-2 md:col-start-auto">
-              <p className="label text-muted">{c.title}</p>
+            <div key={c.title} className="md:col-span-2">
+              <p className="label text-mist">{c.title}</p>
               <ul className="mt-5 space-y-3 text-[15px]">
                 {c.links.map(([label, href]) => (
                   <li key={label}>
                     <a
                       href={href}
                       {...(href.startsWith("http") && { target: "_blank", rel: "noreferrer" })}
-                      className="transition-opacity hover:opacity-50"
+                      className="transition-colors hover:text-blush"
                     >
                       {label}
                     </a>
@@ -61,11 +58,11 @@ export default function Footer() {
           ))}
         </div>
 
-        <Logo className="mt-24 h-auto w-full text-rust" />
+        <Logo className="mt-24 h-auto w-full text-ember" />
 
-        <div className="label mt-8 flex flex-col justify-between gap-2 border-t border-ink/10 pt-6 text-muted md:flex-row">
-          <p>© {new Date().getFullYear()} elixir drinks ltd</p>
-          <p>124 city road, london ec1v 2nx</p>
+        <div className="label mt-8 flex flex-col justify-between gap-2 border-t border-hair pt-6 text-mist md:flex-row">
+          <p>© {new Date().getFullYear()} Elixir. Handmade in London.</p>
+          <p>ask me about my ritual.</p>
         </div>
       </div>
     </footer>

@@ -11,11 +11,11 @@ import { Reveal, ease } from "./Reveal";
 function Disclosure({ title, children }: { title: string; children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border-b border-ink/10">
+    <div className="border-b border-hair">
       <button
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        className="label flex w-full items-center justify-between py-5 text-left"
+        className="label flex w-full items-center justify-between py-5 text-left transition-colors hover:text-blush"
       >
         {title}
         <span
@@ -34,7 +34,7 @@ function Disclosure({ title, children }: { title: string; children: React.ReactN
             transition={{ duration: 0.5, ease }}
             className="overflow-hidden"
           >
-            <div className="pb-6 text-[15px] leading-[1.7] text-muted">{children}</div>
+            <div className="pb-6 text-[15px] leading-[1.75] text-mist">{children}</div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -42,58 +42,43 @@ function Disclosure({ title, children }: { title: string; children: React.ReactN
   );
 }
 
-function ProductRow({ p, flip }: { p: Product; flip: boolean }) {
+function ProductCard({ p, i }: { p: Product; i: number }) {
   const { add } = useCart();
   const [qty, setQty] = useState(1);
   const onSale = Boolean(p.variantId && p.price);
 
   return (
-    <article
-      id={p.id}
-      className="grid scroll-mt-20 gap-10 md:grid-cols-12 md:items-center md:gap-10"
-    >
-      <Reveal className={`md:col-span-7 ${flip ? "md:order-2 md:col-start-6" : ""}`}>
-        <div className="group relative aspect-[4/5] overflow-hidden bg-stone md:aspect-[5/6]">
-          <Image
-            src={p.image}
-            alt={`${p.name}, ${p.size}`}
-            fill
-            sizes="(max-width: 768px) 100vw, 58vw"
-            className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-[1.03]"
-          />
+    <Reveal delay={i * 0.15} className="flex flex-col">
+      <article id={p.id} className="flex scroll-mt-28 flex-col">
+        <div className="relative">
+          <div aria-hidden className="glow absolute -inset-10" />
+          <div className="arch group relative aspect-[4/5] overflow-hidden border border-hair bg-ember">
+            <Image
+              src={p.image}
+              alt={`${p.name}, ${p.format}`}
+              fill
+              sizes="(max-width: 768px) 100vw, 45vw"
+              className="object-cover transition-transform duration-[2.5s] ease-out group-hover:scale-[1.03]"
+            />
+          </div>
         </div>
-      </Reveal>
 
-      <Reveal
-        delay={0.1}
-        className={`md:col-span-4 ${flip ? "md:order-1 md:col-start-1" : "md:col-start-9"}`}
-      >
-        <p className="label text-muted">
-          {p.index} — {p.format}
+        <p className="label mt-10 text-center text-mist">{p.format}</p>
+        <h3 className="mt-4 text-center font-serif text-4xl md:text-5xl">{p.name}</h3>
+        <p className="mt-3 text-center font-serif text-xl text-blush italic">{p.tagline}</p>
+        <p className="mx-auto mt-6 max-w-md text-center text-[15px] leading-[1.75] text-mist">
+          {p.notes} {p.blurb}
         </p>
-        <h3 className="mt-6 font-serif text-5xl leading-[1] tracking-[-0.01em] md:text-6xl">
-          {p.name}
-        </h3>
-        <p className="mt-4 text-[15px] text-muted">{p.notes.join(" · ")}</p>
 
-        <p className="mt-8 text-[17px] leading-[1.7]">{p.blurb}</p>
-
-        <div className="mt-8 flex items-baseline justify-between border-t border-ink/10 pt-5">
-          <span className="label text-muted">{p.size}</span>
-          <span className="font-serif text-3xl">
-            {onSale ? formatPrice(p.price!) : "coming soon"}
-          </span>
-        </div>
-
-        <div className="mt-6 flex items-stretch gap-3">
+        <div className="mt-8 flex items-center justify-center gap-3">
           {onSale ? (
             <>
               <Qty value={qty} onChange={(n) => setQty(Math.max(1, n))} />
               <button
                 onClick={() => add(p.id, qty)}
-                className="label flex-1 bg-ink py-4 text-paper transition-colors duration-500 hover:bg-rust"
+                className="label h-12 bg-blush px-8 text-night transition-colors duration-500 hover:bg-cream"
               >
-                add to bag
+                add to basket — {formatPrice(p.price! * qty)}
               </button>
             </>
           ) : (
@@ -101,40 +86,39 @@ function ProductRow({ p, flip }: { p: Product; flip: boolean }) {
               href={INSTAGRAM}
               target="_blank"
               rel="noreferrer"
-              className="label flex-1 border border-ink/25 py-4 text-center transition-colors duration-500 hover:border-ink"
+              className="label flex h-12 items-center border border-cream/25 px-8 transition-colors duration-500 hover:border-blush hover:text-blush"
             >
-              follow for launch
+              coming soon — follow for launch
             </a>
           )}
         </div>
 
-        <div className="mt-10 border-t border-ink/10">
-          <Disclosure title="details">{p.details.join(" · ")}</Disclosure>
+        <div className="mx-auto mt-10 w-full max-w-md border-t border-hair">
+          <Disclosure title="how to serve">{p.serve}</Disclosure>
           <Disclosure title="ingredients">{p.ingredients}</Disclosure>
-          <Disclosure title="how to serve">
-            {p.id === "bottle"
-              ? "over ice, three pipettes of elixir, topped with a light tonic and finished with a slice of orange. also beautiful in a spritz or a zero-proof negroni."
-              : "chilled, straight from the can, or poured over ice with a twist of orange peel."}
-          </Disclosure>
         </div>
-      </Reveal>
-    </article>
+      </article>
+    </Reveal>
   );
 }
 
 export default function Products() {
   return (
-    <section id="shop" className="bg-paper px-5 py-28 md:px-10 md:py-40">
+    <section id="shop" className="overflow-hidden bg-night px-5 py-28 md:px-10 md:py-40">
       <div className="mx-auto max-w-[1440px]">
-        <Reveal className="mb-20 max-w-2xl md:mb-28">
-          <p className="label text-muted">the collection</p>
+        <Reveal className="mx-auto mb-20 max-w-2xl text-center md:mb-28">
+          <p className="label text-mist">one flavour. two ways.</p>
           <h2 className="mt-6 font-serif text-5xl leading-[1] tracking-[-0.01em] md:text-7xl">
-            two ways to take it
+            Choose your <em className="text-blush">ritual.</em>
           </h2>
+          <p className="mx-auto mt-6 max-w-md text-[15px] leading-[1.75] text-mist">
+            The Elixir for the drops you measure yourself. E&T when the tonic is
+            already poured.
+          </p>
         </Reveal>
-        <div className="space-y-28 md:space-y-40">
+        <div className="grid gap-24 md:grid-cols-2 md:gap-16 lg:gap-28">
           {products.map((p, i) => (
-            <ProductRow key={p.id} p={p} flip={i % 2 === 1} />
+            <ProductCard key={p.id} p={p} i={i} />
           ))}
         </div>
       </div>

@@ -5,71 +5,77 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import { Reveal } from "./Reveal";
 
+const chapters = [
+  {
+    n: "01",
+    k: "The taste",
+    t: "Some tastes have to be earned.",
+    d: "Bitter is the taste most of us refuse at first. Then one day it becomes the one we look for. Once you have it, you want more.",
+  },
+  {
+    n: "02",
+    k: "The keepers",
+    t: "Kept by wise women.",
+    d: "Long before the bar, bitters were kept by wise women, alchemists and apothecaries. A few drops were taken before the moments that mattered: the journey, the vow, the long night of work.",
+  },
+  {
+    n: "03",
+    k: "The root",
+    t: "Gentian is the backbone.",
+    d: "One of the most bitter roots there is, and the heart of everything we make. The Elixir lifts it with red mandarin, cardamom and juniper. E&T pours it with bitter orange and cardamom.",
+  },
+];
+
 export default function Story() {
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   return (
-    <section id="story" className="bg-paper">
-      {/* gentian */}
-      <div className="mx-auto grid max-w-[1440px] gap-12 px-5 py-28 md:grid-cols-12 md:px-10 md:py-40">
-        <Reveal className="md:col-span-5">
-          <p className="label text-muted">the hero ingredient</p>
-          <h2 className="mt-6 font-serif text-6xl leading-[0.95] tracking-[-0.01em] md:text-8xl">
-            gentian <em className="text-rust">root</em>
-          </h2>
-        </Reveal>
-        <Reveal
-          delay={0.1}
-          className="space-y-6 text-[17px] leading-[1.8] text-muted md:col-span-5 md:col-start-8 md:pt-4"
-        >
-          <p>
-            a european alpine botanical, prized since the ancient greeks for its
-            complex bitterness and subtle, earthy notes.
-          </p>
-          <p>
-            bitterness has always opened a good meal — the old aperitif
-            instinct, the pause that tells the body to slow down. elixir keeps
-            that instinct and leaves out the alcohol.
-          </p>
-          <p>
-            a considered blend of botanicals: something you take that gives you
-            more.
-          </p>
-        </Reveal>
-      </div>
-
-      {/* full-bleed moment */}
-      <div ref={ref} className="relative h-[85svh] overflow-hidden">
+    <section id="story" className="bg-night">
+      {/* opening */}
+      <div ref={ref} className="relative h-[90svh] overflow-hidden">
         <motion.div style={{ y }} className="absolute inset-[-8%_0]">
           <Image
-            src="/img/dusk.jpg"
-            alt="dusk over a quiet harbour"
+            src="/img/shop-pour.jpg"
+            alt="elixir dropped from a pipette into a row of glasses"
             fill
             sizes="100vw"
             className="object-cover"
           />
         </motion.div>
-        <div className="absolute inset-0 bg-espresso/35" />
-        <div className="absolute inset-0 flex items-center justify-center px-5">
+        <div className="absolute inset-0 bg-gradient-to-b from-night via-night/55 to-night" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-5 text-center">
           <Reveal>
-            <p className="max-w-4xl text-center font-serif text-4xl leading-[1.15] text-cream md:text-6xl">
-              made for presence <em>and play.</em>
+            <p className="label text-mist">our story</p>
+            <p className="mx-auto mt-8 max-w-4xl font-serif text-5xl leading-[1.05] md:text-8xl">
+              The original elixirs
+              <br />
+              <em className="text-blush">were bitter.</em>
             </p>
           </Reveal>
         </div>
       </div>
 
-      {/* founder line */}
-      <div className="mx-auto max-w-[1440px] px-5 py-28 text-center md:px-10 md:py-36">
+      {/* chapters */}
+      <div className="mx-auto max-w-[1440px] px-5 py-24 md:px-10 md:py-36">
+        {chapters.map((c, i) => (
+          <Reveal key={c.n} delay={i * 0.05}>
+            <div className="grid gap-6 border-t border-hair py-14 md:grid-cols-12 md:gap-10 md:py-20">
+              <p className="label text-mist md:col-span-3">
+                {c.n} · {c.k}
+              </p>
+              <p className="font-serif text-4xl leading-[1.1] md:col-span-5 md:text-5xl">
+                {c.t}
+              </p>
+              <p className="text-[16px] leading-[1.8] text-mist md:col-span-4">{c.d}</p>
+            </div>
+          </Reveal>
+        ))}
         <Reveal>
-          <p className="label text-muted">independent · women-founded · london</p>
-          <p className="mx-auto mt-8 max-w-3xl font-serif text-3xl leading-[1.3] md:text-5xl">
-            for the good evenings — and the clear mornings that follow them.
+          <p className="mx-auto max-w-3xl border-t border-hair pt-20 text-center font-serif text-3xl leading-[1.35] italic md:text-4xl">
+            We make Elixir by hand in London, for women with a taste for more —
+            from their work, their nights and their lives.
           </p>
         </Reveal>
       </div>

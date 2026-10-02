@@ -1,39 +1,56 @@
 @import "tailwindcss";
 
-/* elixir — quiet, warm neutrals with rust as the single accent */
+/* elixir — night: candlelit dark, Didone serif, blush as the single accent */
 @theme {
-  --color-paper: #f3f0ea;
-  --color-stone: #e7e2da;
-  --color-cream: #dfddd7; /* logo */
-  --color-ink: #1f1a17;
-  --color-muted: #6f665e;
-  --color-espresso: #1d1613;
-  --color-rust: #8b3f24; /* brand primary */
+  --color-night: #120c09;
+  --color-umber: #1c140f;
+  --color-ember: #2a1e17;
+  --color-cream: #f2e9e4;
+  --color-mist: #b9a79f;
+  --color-blush: #dfc4c2;
+  --color-amber: #633f27;
+  --color-rust: #8b3f24;
+  --color-hair: #3a2d24;
 
-  --font-serif: var(--font-instrument-serif);
-  --font-sans: var(--font-instrument-sans);
+  --font-serif: var(--font-bodoni);
+  --font-sans: var(--font-archivo);
 }
 
 html {
   scroll-behavior: smooth;
+  background: var(--color-night);
 }
 
 body {
-  background: var(--color-paper);
-  color: var(--color-ink);
+  background: var(--color-night);
+  color: var(--color-cream);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: var(--color-rust);
-  color: var(--color-paper);
+  background: var(--color-blush);
+  color: var(--color-night);
 }
 
-/* small spaced capitals used for labels, nav and buttons */
 @utility label {
   font-size: 11px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   line-height: 1.4;
+}
+
+/* arched frame, as in the apothecary windows of the brand's earlier iterations */
+@utility arch {
+  border-radius: 999px 999px 0 0;
+}
+
+/* faint candle-glow behind imagery */
+@utility glow {
+  background: radial-gradient(
+    55% 45% at 50% 60%,
+    rgb(238 151 79 / 0.16),
+    rgb(193 104 120 / 0.06) 45%,
+    transparent 75%
+  );
 }

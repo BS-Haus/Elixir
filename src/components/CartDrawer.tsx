@@ -26,7 +26,7 @@ export default function CartDrawer() {
         <>
           <motion.div
             key="scrim"
-            className="fixed inset-0 z-50 bg-ink/30"
+            className="fixed inset-0 z-50 bg-night/70"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -36,32 +36,32 @@ export default function CartDrawer() {
           <motion.aside
             key="drawer"
             role="dialog"
-            aria-label="your bag"
-            className="fixed top-0 right-0 bottom-0 z-50 flex w-full max-w-md flex-col bg-paper text-ink"
+            aria-label="your basket"
+            className="fixed top-0 right-0 bottom-0 z-50 flex w-full max-w-md flex-col bg-umber text-cream"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.7, ease }}
           >
-            <div className="flex h-16 items-center justify-between border-b border-ink/10 px-6 md:h-20">
-              <p className="label">your bag ({count})</p>
+            <div className="flex h-16 items-center justify-between border-b border-hair px-6 md:h-20">
+              <p className="label">your basket ({count})</p>
               <button
                 onClick={() => setOpen(false)}
-                className="label transition-opacity hover:opacity-50"
+                className="label transition-opacity hover:text-blush"
               >
                 close
               </button>
             </div>
 
-            <div className="border-b border-ink/10 px-6 py-5">
-              <p className="label text-muted">
+            <div className="border-b border-hair px-6 py-5">
+              <p className="label text-mist">
                 {toFree > 0
-                  ? `${formatPrice(toFree)} away from complimentary shipping`
-                  : "complimentary shipping unlocked"}
+                  ? `${formatPrice(toFree)} away from free delivery`
+                  : "free delivery unlocked"}
               </p>
-              <div className="mt-3 h-px bg-ink/10">
+              <div className="mt-3 h-px bg-hair">
                 <div
-                  className="h-px bg-rust transition-all duration-700"
+                  className="h-px bg-blush transition-all duration-700"
                   style={{ width: `${Math.min(100, (subtotal / FREE_SHIPPING) * 100)}%` }}
                 />
               </div>
@@ -69,17 +69,17 @@ export default function CartDrawer() {
 
             <div className="flex-1 overflow-y-auto px-6 py-8">
               {items.length === 0 && (
-                <p className="font-serif text-2xl text-muted">your bag is empty.</p>
+                <p className="font-serif text-2xl text-mist">your basket is empty.</p>
               )}
               <ul className="space-y-8">
                 {items.map((p) => (
                   <li key={p.id} className="flex gap-5">
-                    <div className="relative h-28 w-22 shrink-0 overflow-hidden bg-stone">
+                    <div className="relative h-28 w-22 shrink-0 overflow-hidden bg-ember">
                       <Image src={p.image} alt="" fill sizes="88px" className="object-cover" />
                     </div>
                     <div className="flex flex-1 flex-col">
                       <p className="font-serif text-2xl leading-tight">{p.name}</p>
-                      <p className="label mt-1 text-muted">{p.size}</p>
+                      <p className="label mt-1 text-mist">{p.format}</p>
                       <div className="mt-auto flex items-center justify-between">
                         <Qty value={lines[p.id] ?? 0} onChange={(n) => set(p.id, n)} />
                         <p className="text-[15px]">
@@ -92,16 +92,16 @@ export default function CartDrawer() {
               </ul>
             </div>
 
-            <div className="border-t border-ink/10 px-6 py-6">
+            <div className="border-t border-hair px-6 py-6">
               <div className="flex justify-between text-[15px]">
                 <span>subtotal</span>
                 <span>{formatPrice(subtotal)}</span>
               </div>
-              <p className="label mt-2 text-muted">shipping & taxes at checkout</p>
+              <p className="label mt-2 text-mist">shipping & taxes at checkout</p>
               <button
                 disabled={!count}
                 onClick={checkout}
-                className="label mt-6 w-full bg-ink py-4 text-paper transition-colors duration-500 hover:bg-rust disabled:opacity-30"
+                className="label mt-6 w-full bg-blush py-4 text-night transition-colors duration-500 hover:bg-cream disabled:opacity-30"
               >
                 checkout
               </button>
@@ -120,9 +120,9 @@ export function Qty({
   value: number;
   onChange: (n: number) => void;
 }) {
-  const b = "flex w-9 items-center justify-center transition-opacity hover:opacity-50";
+  const b = "flex w-9 items-center justify-center transition-opacity hover:text-blush";
   return (
-    <div className="flex h-12 items-stretch border border-ink/20">
+    <div className="flex h-12 items-stretch border border-cream/20">
       <button aria-label="decrease quantity" className={b} onClick={() => onChange(value - 1)}>
         −
       </button>
