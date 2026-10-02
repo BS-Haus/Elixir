@@ -1,62 +1,49 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "motion/react";
+import { Reveal } from "./Reveal";
 
 const steps = [
-  { n: "01", t: "ice, and plenty of it", d: "a big glass. the cold is part of it." },
-  { n: "02", t: "three pipettes of elixir", d: "watch it bloom, amber into clear." },
-  { n: "03", t: "a light tonic", d: "pour slowly. let it fizz and settle." },
-  { n: "04", t: "a slice of orange", d: "then put your phone down." },
+  { n: "i", t: "ice", d: "a heavy glass, filled generously." },
+  { n: "ii", t: "three pipettes of elixir", d: "watch it bloom, amber into clear." },
+  { n: "iii", t: "a light tonic", d: "poured slowly, to keep the bubbles fine." },
+  { n: "iv", t: "a slice of orange", d: "and a moment that is entirely yours." },
 ];
 
 export default function Ritual() {
   return (
-    <section id="ritual" className="grain relative overflow-hidden bg-rust px-5 py-24 md:px-8 md:py-32">
-      <div className="mx-auto grid max-w-7xl items-center gap-14 md:grid-cols-2 md:gap-20">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="relative aspect-[4/5] overflow-hidden rounded-[28px]"
-        >
-          <Image
-            src="/img/shop-dropper.jpg"
-            alt="a pipette of elixir over a glass of tonic with ice and a slice of orange"
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover"
-          />
-        </motion.div>
+    <section id="ritual" className="bg-espresso px-5 py-28 text-cream md:px-10 md:py-40">
+      <div className="mx-auto grid max-w-[1440px] gap-16 md:grid-cols-12 md:items-center md:gap-10">
+        <Reveal className="md:col-span-5">
+          <div className="relative aspect-[3/4] overflow-hidden">
+            <Image
+              src="/img/shop-pour.jpg"
+              alt="elixir dropped from a pipette into glasses of tonic with grapefruit"
+              fill
+              sizes="(max-width: 768px) 100vw, 40vw"
+              className="object-cover"
+            />
+          </div>
+        </Reveal>
 
-        <div>
-          <p className="font-type text-xs uppercase tracking-[0.3em] text-butter">
-            the ritual
-          </p>
-          <h2 className="mt-4 font-display text-5xl leading-[0.95] tracking-tight md:text-7xl">
-            the drink that
-            <br />
-            <em className="text-butter">savours</em> the moment
-          </h2>
-          <ol className="mt-12 divide-y divide-cream/20 border-y border-cream/20">
+        <div className="md:col-span-6 md:col-start-7">
+          <Reveal>
+            <p className="label text-cream/50">the ritual</p>
+            <h2 className="mt-6 font-serif text-5xl leading-[1] tracking-[-0.01em] md:text-7xl">
+              the drink that savours <em>the moment</em>
+            </h2>
+          </Reveal>
+          <ol className="mt-16 border-t border-cream/15">
             {steps.map((s, i) => (
-              <motion.li
-                key={s.n}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group flex items-baseline gap-6 py-5"
-              >
-                <span className="font-type text-sm text-cream/50">{s.n}</span>
-                <div>
-                  <p className="font-display text-2xl transition group-hover:text-butter md:text-3xl">
-                    {s.t}
-                  </p>
-                  <p className="mt-1 text-sm text-cream/70">{s.d}</p>
-                </div>
-              </motion.li>
+              <Reveal key={s.n} delay={i * 0.08}>
+                <li className="grid grid-cols-[3rem_1fr] items-baseline border-b border-cream/15 py-6 md:grid-cols-[4rem_1fr_1fr]">
+                  <span className="font-serif text-lg text-cream/40 italic">{s.n}</span>
+                  <span className="font-serif text-2xl md:text-3xl">{s.t}</span>
+                  <span className="col-start-2 mt-2 text-[15px] text-cream/60 md:col-start-3 md:mt-0">
+                    {s.d}
+                  </span>
+                </li>
+              </Reveal>
             ))}
           </ol>
         </div>

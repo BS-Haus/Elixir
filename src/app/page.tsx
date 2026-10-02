@@ -1,11 +1,11 @@
 import CartDrawer from "@/components/CartDrawer";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
 import Nav from "@/components/Nav";
 import Products from "@/components/Products";
 import Ritual from "@/components/Ritual";
 import Story from "@/components/Story";
+import Values from "@/components/Values";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <Marquee />
+        <Values />
         <Products />
         <Ritual />
         <Story />

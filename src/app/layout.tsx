@@ -1,43 +1,34 @@
 import type { Metadata } from "next";
-import { Courier_Prime, Fraunces, Instrument_Sans } from "next/font/google";
+import { Instrument_Sans, Instrument_Serif } from "next/font/google";
 import { CartProvider } from "@/lib/cart";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const serif = Instrument_Serif({
+  variable: "--font-instrument-serif",
   subsets: ["latin"],
-  axes: ["SOFT", "WONK", "opsz"],
+  weight: "400",
   style: ["normal", "italic"],
 });
 
-const instrument = Instrument_Sans({
-  variable: "--font-instrument",
+const sans = Instrument_Sans({
+  variable: "--font-instrument-sans",
   subsets: ["latin"],
-});
-
-const courier = Courier_Prime({
-  variable: "--font-courier",
-  subsets: ["latin"],
-  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "elixir · made for presence and play",
+  title: "Elixir — Non-Alcoholic Botanical Bitters",
   description:
-    "non-alcoholic botanical bitters and herbal bitters & tonic. hand-crafted from gentian root, bitter orange and cardamom. the drink that savours the moment.",
+    "Hand-crafted non-alcoholic bitters from gentian root, red mandarin and cardamom. All the ritual, none of the alcohol.",
   openGraph: {
-    title: "elixir · made for presence and play",
-    description: "non-alcoholic botanical bitters & tonic.",
-    images: ["/img/can-mockup.jpg"],
+    title: "Elixir — Non-Alcoholic Botanical Bitters",
+    description: "All the ritual, none of the alcohol.",
+    images: ["/img/shop-dropper.jpg"],
   },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${fraunces.variable} ${instrument.variable} ${courier.variable} antialiased`}
-    >
+    <html lang="en" className={`${serif.variable} ${sans.variable} antialiased`}>
       <body className="min-h-full">
         <CartProvider>{children}</CartProvider>
       </body>

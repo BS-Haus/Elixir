@@ -1,136 +1,140 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { useCart } from "@/lib/cart";
-import { formatPrice, products, type Product } from "@/lib/products";
+import { INSTAGRAM, formatPrice, products, type Product } from "@/lib/products";
 import { Qty } from "./CartDrawer";
+import { Reveal, ease } from "./Reveal";
 
-export const INSTAGRAM = "https://www.instagram.com/drink__elixir/";
+function Disclosure({ title, children }: { title: string; children: React.ReactNode }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border-b border-ink/10">
+      <button
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        className="label flex w-full items-center justify-between py-5 text-left"
+      >
+        {title}
+        <span
+          aria-hidden
+          className={`text-base transition-transform duration-500 ${open ? "rotate-45" : ""}`}
+        >
+          +
+        </span>
+      </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.5, ease }}
+            className="overflow-hidden"
+          >
+            <div className="pb-6 text-[15px] leading-[1.7] text-muted">{children}</div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
-function ProductCard({ p, i }: { p: Product; i: number }) {
+function ProductRow({ p, flip }: { p: Product; flip: boolean }) {
   const { add } = useCart();
   const [qty, setQty] = useState(1);
-  const [showIngredients, setShowIngredients] = useState(false);
   const onSale = Boolean(p.variantId && p.price);
 
   return (
-    <motion.article
+    <article
       id={p.id}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.8, delay: i * 0.12, ease: [0.2, 0.8, 0.2, 1] }}
-      className="flex scroll-mt-24 flex-col"
+      className="grid scroll-mt-20 gap-10 md:grid-cols-12 md:items-center md:gap-10"
     >
-      <div className="group relative aspect-[4/5] overflow-hidden rounded-[28px] bg-parchment">
-        <Image
-          src={p.image}
-          alt={`${p.name}, ${p.size}`}
-          fill
-          sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover transition duration-[1.2s] ease-out group-hover:scale-105"
-        />
-        <span className="absolute top-5 left-5 rounded-full bg-ivory/90 px-3 py-1 font-type text-[11px] uppercase tracking-[0.2em] backdrop-blur">
-          {p.kicker}
-        </span>
-        {!onSale && (
-          <span className="absolute top-5 right-5 rounded-full bg-butter px-3 py-1 font-type text-[11px] font-bold uppercase tracking-[0.2em]">
-            coming soon
-          </span>
-        )}
-      </div>
-
-      <div className="mt-7 flex items-start justify-between gap-6">
-        <div>
-          <h3 className="font-display text-4xl leading-none tracking-tight md:text-5xl">
-            {p.name}
-          </h3>
-          <p className="mt-2 text-espresso/60">{p.descriptor}</p>
+      <Reveal className={`md:col-span-7 ${flip ? "md:order-2 md:col-start-6" : ""}`}>
+        <div className="group relative aspect-[4/5] overflow-hidden bg-stone md:aspect-[5/6]">
+          <Image
+            src={p.image}
+            alt={`${p.name}, ${p.size}`}
+            fill
+            sizes="(max-width: 768px) 100vw, 58vw"
+            className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-[1.03]"
+          />
         </div>
-        {onSale && (
-          <p className="shrink-0 font-display text-3xl">{formatPrice(p.price!)}</p>
-        )}
-      </div>
+      </Reveal>
 
-      <p className="mt-5 max-w-lg leading-relaxed text-espresso/80">{p.blurb}</p>
-
-      {/* the recipe, written as a spell */}
-      <ol className="mt-6 space-y-1 border-l-2 border-orange pl-4 font-display text-lg italic text-espresso/80">
-        {p.spell.map((s) => (
-          <li key={s}>{s}</li>
-        ))}
-      </ol>
-
-      <ul className="mt-6 flex flex-wrap gap-2">
-        {p.facts.map((f) => (
-          <li
-            key={f}
-            className="rounded-full border border-espresso/15 px-3 py-1 font-type text-xs uppercase tracking-wider"
-          >
-            {f}
-          </li>
-        ))}
-      </ul>
-
-      <button
-        onClick={() => setShowIngredients((s) => !s)}
-        className="mt-5 self-start text-sm text-espresso/60 underline-offset-4 hover:underline"
-        aria-expanded={showIngredients}
+      <Reveal
+        delay={0.1}
+        className={`md:col-span-4 ${flip ? "md:order-1 md:col-start-1" : "md:col-start-9"}`}
       >
-        {showIngredients ? "hide" : "show"} ingredients
-      </button>
-      {showIngredients && (
-        <p className="mt-2 max-w-lg text-sm leading-relaxed text-espresso/60">
-          {p.ingredients}
+        <p className="label text-muted">
+          {p.index} — {p.format}
         </p>
-      )}
+        <h3 className="mt-6 font-serif text-5xl leading-[1] tracking-[-0.01em] md:text-6xl">
+          {p.name}
+        </h3>
+        <p className="mt-4 text-[15px] text-muted">{p.notes.join(" · ")}</p>
 
-      <div className="mt-auto flex items-center gap-4 pt-8">
-        {onSale ? (
-          <>
-            <Qty value={qty} onChange={(n) => setQty(Math.max(1, n))} />
-            <button
-              onClick={() => add(p.id, qty)}
-              className="flex-1 rounded-full bg-espresso py-4 text-ivory transition hover:bg-rust"
+        <p className="mt-8 text-[17px] leading-[1.7]">{p.blurb}</p>
+
+        <div className="mt-8 flex items-baseline justify-between border-t border-ink/10 pt-5">
+          <span className="label text-muted">{p.size}</span>
+          <span className="font-serif text-3xl">
+            {onSale ? formatPrice(p.price!) : "coming soon"}
+          </span>
+        </div>
+
+        <div className="mt-6 flex items-stretch gap-3">
+          {onSale ? (
+            <>
+              <Qty value={qty} onChange={(n) => setQty(Math.max(1, n))} />
+              <button
+                onClick={() => add(p.id, qty)}
+                className="label flex-1 bg-ink py-4 text-paper transition-colors duration-500 hover:bg-rust"
+              >
+                add to bag
+              </button>
+            </>
+          ) : (
+            <a
+              href={INSTAGRAM}
+              target="_blank"
+              rel="noreferrer"
+              className="label flex-1 border border-ink/25 py-4 text-center transition-colors duration-500 hover:border-ink"
             >
-              add to bag · {formatPrice(p.price! * qty)}
-            </button>
-          </>
-        ) : (
-          <a
-            href={INSTAGRAM}
-            target="_blank"
-            rel="noreferrer"
-            className="flex-1 rounded-full border-2 border-espresso py-4 text-center transition hover:bg-espresso hover:text-ivory"
-          >
-            follow @drink__elixir for launch day
-          </a>
-        )}
-      </div>
-    </motion.article>
+              follow for launch
+            </a>
+          )}
+        </div>
+
+        <div className="mt-10 border-t border-ink/10">
+          <Disclosure title="details">{p.details.join(" · ")}</Disclosure>
+          <Disclosure title="ingredients">{p.ingredients}</Disclosure>
+          <Disclosure title="how to serve">
+            {p.id === "bottle"
+              ? "over ice, three pipettes of elixir, topped with a light tonic and finished with a slice of orange. also beautiful in a spritz or a zero-proof negroni."
+              : "chilled, straight from the can, or poured over ice with a twist of orange peel."}
+          </Disclosure>
+        </div>
+      </Reveal>
+    </article>
   );
 }
 
 export default function Products() {
   return (
-    <section id="shop" className="bg-ivory px-5 py-24 text-espresso md:px-8 md:py-32">
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <h2 className="font-display text-5xl leading-[0.95] tracking-tight md:text-7xl">
-            two ways
-            <br />
-            <em>to take it</em>
+    <section id="shop" className="bg-paper px-5 py-28 md:px-10 md:py-40">
+      <div className="mx-auto max-w-[1440px]">
+        <Reveal className="mb-20 max-w-2xl md:mb-28">
+          <p className="label text-muted">the collection</p>
+          <h2 className="mt-6 font-serif text-5xl leading-[1] tracking-[-0.01em] md:text-7xl">
+            two ways to take it
           </h2>
-          <p className="max-w-sm text-espresso/70">
-            the bottle, for the ritual at home. the can, for when the ritual
-            comes with you. same gentian heart, same intended effect: presence.
-          </p>
-        </div>
-        <div className="grid gap-16 md:grid-cols-2 md:gap-10">
+        </Reveal>
+        <div className="space-y-28 md:space-y-40">
           {products.map((p, i) => (
-            <ProductCard key={p.id} p={p} i={i} />
+            <ProductRow key={p.id} p={p} flip={i % 2 === 1} />
           ))}
         </div>
       </div>

@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect } from "react";
 import { useCart } from "@/lib/cart";
 import { formatPrice, products } from "@/lib/products";
+import { ease } from "./Reveal";
 
 const FREE_SHIPPING = 40;
 
@@ -25,77 +26,63 @@ export default function CartDrawer() {
         <>
           <motion.div
             key="scrim"
-            className="fixed inset-0 z-50 bg-espresso/60 backdrop-blur-sm"
+            className="fixed inset-0 z-50 bg-ink/30"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
             onClick={() => setOpen(false)}
           />
           <motion.aside
             key="drawer"
             role="dialog"
             aria-label="your bag"
-            className="fixed top-0 right-0 bottom-0 z-50 flex w-full max-w-md flex-col bg-ivory text-espresso"
+            className="fixed top-0 right-0 bottom-0 z-50 flex w-full max-w-md flex-col bg-paper text-ink"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ type: "spring", stiffness: 260, damping: 30 }}
+            transition={{ duration: 0.7, ease }}
           >
-            <div className="flex items-center justify-between border-b border-espresso/10 px-6 py-5">
-              <p className="font-display text-2xl italic">your bag</p>
+            <div className="flex h-16 items-center justify-between border-b border-ink/10 px-6 md:h-20">
+              <p className="label">your bag ({count})</p>
               <button
                 onClick={() => setOpen(false)}
-                className="text-sm underline-offset-4 hover:underline"
+                className="label transition-opacity hover:opacity-50"
               >
                 close
               </button>
             </div>
 
-            <div className="px-6 pt-4">
-              <p className="font-type text-xs uppercase tracking-wider">
+            <div className="border-b border-ink/10 px-6 py-5">
+              <p className="label text-muted">
                 {toFree > 0
-                  ? `${formatPrice(toFree)} away from free shipping`
-                  : "you've unlocked free shipping ✦"}
+                  ? `${formatPrice(toFree)} away from complimentary shipping`
+                  : "complimentary shipping unlocked"}
               </p>
-              <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-espresso/10">
+              <div className="mt-3 h-px bg-ink/10">
                 <div
-                  className="potion-gradient h-full transition-all duration-500"
-                  style={{
-                    width: `${Math.min(100, (subtotal / FREE_SHIPPING) * 100)}%`,
-                  }}
+                  className="h-px bg-rust transition-all duration-700"
+                  style={{ width: `${Math.min(100, (subtotal / FREE_SHIPPING) * 100)}%` }}
                 />
               </div>
             </div>
 
-            <div className="flex-1 overflow-y-auto px-6 py-6">
+            <div className="flex-1 overflow-y-auto px-6 py-8">
               {items.length === 0 && (
-                <p className="text-espresso/60">
-                  nothing here yet. the bottle is waiting.
-                </p>
+                <p className="font-serif text-2xl text-muted">your bag is empty.</p>
               )}
-              <ul className="space-y-5">
+              <ul className="space-y-8">
                 {items.map((p) => (
-                  <li key={p.id} className="flex gap-4">
-                    <div className="relative h-24 w-20 shrink-0 overflow-hidden rounded-lg bg-parchment">
-                      <Image
-                        src={p.image}
-                        alt=""
-                        fill
-                        sizes="80px"
-                        className="object-cover"
-                      />
+                  <li key={p.id} className="flex gap-5">
+                    <div className="relative h-28 w-22 shrink-0 overflow-hidden bg-stone">
+                      <Image src={p.image} alt="" fill sizes="88px" className="object-cover" />
                     </div>
                     <div className="flex flex-1 flex-col">
-                      <p className="font-display text-lg leading-tight">
-                        {p.name}
-                      </p>
-                      <p className="text-xs text-espresso/60">{p.size}</p>
+                      <p className="font-serif text-2xl leading-tight">{p.name}</p>
+                      <p className="label mt-1 text-muted">{p.size}</p>
                       <div className="mt-auto flex items-center justify-between">
-                        <Qty
-                          value={lines[p.id] ?? 0}
-                          onChange={(n) => set(p.id, n)}
-                        />
-                        <p className="text-sm">
+                        <Qty value={lines[p.id] ?? 0} onChange={(n) => set(p.id, n)} />
+                        <p className="text-[15px]">
                           {formatPrice((lines[p.id] ?? 0) * p.price!)}
                         </p>
                       </div>
@@ -105,18 +92,16 @@ export default function CartDrawer() {
               </ul>
             </div>
 
-            <div className="border-t border-espresso/10 px-6 py-6">
-              <div className="flex justify-between text-sm">
+            <div className="border-t border-ink/10 px-6 py-6">
+              <div className="flex justify-between text-[15px]">
                 <span>subtotal</span>
                 <span>{formatPrice(subtotal)}</span>
               </div>
-              <p className="mt-1 text-xs text-espresso/50">
-                shipping & taxes calculated at checkout
-              </p>
+              <p className="label mt-2 text-muted">shipping & taxes at checkout</p>
               <button
                 disabled={!count}
                 onClick={checkout}
-                className="mt-5 w-full rounded-full bg-espresso py-4 text-ivory transition hover:bg-rust disabled:opacity-30"
+                className="label mt-6 w-full bg-ink py-4 text-paper transition-colors duration-500 hover:bg-rust disabled:opacity-30"
               >
                 checkout
               </button>
@@ -131,24 +116,20 @@ export default function CartDrawer() {
 export function Qty({
   value,
   onChange,
-  dark = false,
 }: {
   value: number;
   onChange: (n: number) => void;
-  dark?: boolean;
 }) {
-  const b = `h-9 w-9 rounded-full border transition ${
-    dark
-      ? "border-ivory/30 hover:border-orange"
-      : "border-espresso/20 hover:border-espresso"
-  }`;
+  const b = "flex w-9 items-center justify-center transition-opacity hover:opacity-50";
   return (
-    <div className="flex items-center gap-3">
-      <button aria-label="less" className={b} onClick={() => onChange(value - 1)}>
-        –
+    <div className="flex h-12 items-stretch border border-ink/20">
+      <button aria-label="decrease quantity" className={b} onClick={() => onChange(value - 1)}>
+        −
       </button>
-      <span className="w-4 text-center tabular-nums">{value}</span>
-      <button aria-label="more" className={b} onClick={() => onChange(value + 1)}>
+      <span className="flex w-6 items-center justify-center text-[15px] tabular-nums">
+        {value}
+      </span>
+      <button aria-label="increase quantity" className={b} onClick={() => onChange(value + 1)}>
         +
       </button>
     </div>

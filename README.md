@@ -1,8 +1,6 @@
 # elixir — drink-elixir.co
 
-A one-page site for elixir: a single headline hero, the two products, the ritual, the story.
-Built in the brand's "route two · the potion" direction: espresso / ivory, orange→cobalt potion gradient,
-Fraunces + Instrument Sans + typewriter sticker type, all lowercase.
+A one-page site for elixir: headline hero, the two products, the ritual, gentian. Refined, editorial direction (Instrument Serif + Instrument Sans, warm neutrals, rust accent). The earlier playful version is kept on the `v1-playful` branch/tag.
 
 ## Run
 

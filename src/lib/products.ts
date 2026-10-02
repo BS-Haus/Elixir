@@ -2,68 +2,60 @@
 // Checkout uses Shopify cart permalinks: https://{shop}/cart/{variantId}:{qty},...
 // To sell the can, create it in Shopify and paste its variant ID + price below.
 
+export const INSTAGRAM = "https://www.instagram.com/drink__elixir/";
+
 export const SHOP_DOMAIN =
   process.env.NEXT_PUBLIC_SHOP_DOMAIN ?? "drink-elixir.co";
 
 export type Product = {
   id: "can" | "bottle";
+  index: string;
   name: string;
-  kicker: string;
-  descriptor: string;
+  format: string;
   variantId: string | null; // null = not on sale yet
   price: number | null; // GBP
   size: string;
   image: string;
-  spell: string[];
-  facts: string[];
+  notes: string[];
+  details: string[];
   blurb: string;
   ingredients: string;
 };
 
 export const products: Product[] = [
   {
+    id: "bottle",
+    index: "01",
+    name: "elixir bitters",
+    format: "the bottle",
+    variantId: "50378677584136",
+    price: 24.99,
+    size: "30 serves",
+    image: "/img/shop-product.jpg",
+    notes: ["gentian root", "red mandarin", "cardamom", "juniper"],
+    details: ["non-alcoholic", "30 serves", "all natural", "hand-crafted"],
+    blurb:
+      "our non-alcoholic bitters, hand-crafted from foraged herbs and gentian root. three pipettes into tonic, a cocktail, or wherever the evening takes you.",
+    ingredients:
+      "gentian root, organic flavourings, water, vegetable glycerine & malic acid. stabilisers: sunflower lecithin, acacia gum.",
+  },
+  {
     id: "can",
+    index: "02",
     name: "herbal bitters & tonic",
-    kicker: "the can",
-    descriptor: "cardamom, bitter orange & gentian root",
+    format: "the can",
     variantId: process.env.NEXT_PUBLIC_CAN_VARIANT_ID ?? null,
     price: process.env.NEXT_PUBLIC_CAN_PRICE
       ? Number(process.env.NEXT_PUBLIC_CAN_PRICE)
       : null,
-    size: "200ml slim can",
-    image: "/img/can-mockup.jpg",
-    spell: [
-      "a crack of the tab",
-      "a pinch of bitter orange",
-      "a whisper of cardamom",
-      "gentian, to ground you",
-    ],
-    facts: ["0.0% abv", "33 cal", "low sugar", "vegan & gluten free"],
+    size: "200ml",
+    image: "/img/can.jpg",
+    notes: ["cardamom", "bitter orange", "gentian root"],
+    details: ["0.0% abv", "33 kcal", "low sugar", "vegan & gluten free"],
     blurb:
-      "the ritual, ready-poured. elixir bitters meets a light, bright tonic — crisp, gently bitter and made to be opened in good company.",
+      "the ritual, ready-poured. elixir bitters with a light, bright tonic — crisp, gently bitter and made to be opened in good company.",
     ingredients:
-      "filtered water, fructose, glycerin, natural flavourings (gentian, cardamom, coriander, bitter orange), malic acid, citric acid, sodium citrate, vitamin c (antioxidant), magnesium sulphate, pink himalayan rock salt",
-  },
-  {
-    id: "bottle",
-    name: "elixir bitters",
-    kicker: "the bottle",
-    descriptor: "gentian root, red mandarin, cardamom & juniper",
-    variantId: "50378677584136",
-    price: 24.99,
-    size: "30 serves · dropper bottle",
-    image: "/img/shop-product.jpg",
-    spell: [
-      "three parts gentian",
-      "a pinch of red mandarin",
-      "a whisper of cardamom",
-      "one juniper berry, crushed",
-    ],
-    facts: ["non-alcoholic", "30 serves", "all natural", "hand-crafted"],
-    blurb:
-      "our non-alcoholic bitters, hand-crafted from foraged herbs and gentian root. three pipettes into tonic, a cocktail, or wherever the evening takes you.",
-    ingredients:
-      "gentian root, organic flavourings, water, vegetable glycerine & malic acid. stabilisers: sunflower lecithin, acacia gum",
+      "filtered water, fructose, glycerin, natural flavourings (gentian, cardamom, coriander, bitter orange), malic acid, citric acid, sodium citrate, vitamin c (antioxidant), magnesium sulphate, pink himalayan rock salt.",
   },
 ];
 

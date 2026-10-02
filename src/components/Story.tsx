@@ -3,84 +3,75 @@
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import { Sticker } from "./Sticker";
+import { Reveal } from "./Reveal";
 
 export default function Story() {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   return (
-    <section id="story" ref={ref} className="bg-parchment text-espresso">
+    <section id="story" className="bg-paper">
       {/* gentian */}
-      <div className="mx-auto grid max-w-7xl gap-14 px-5 py-24 md:grid-cols-12 md:px-8 md:py-32">
-        <div className="md:col-span-5">
-          <p className="font-type text-xs uppercase tracking-[0.3em] text-rust">
-            the hero ingredient
-          </p>
-          <h2 className="mt-4 font-display text-6xl leading-[0.9] tracking-tight md:text-8xl">
-            <em>gentian</em>
-            <br />
-            root
+      <div className="mx-auto grid max-w-[1440px] gap-12 px-5 py-28 md:grid-cols-12 md:px-10 md:py-40">
+        <Reveal className="md:col-span-5">
+          <p className="label text-muted">the hero ingredient</p>
+          <h2 className="mt-6 font-serif text-6xl leading-[0.95] tracking-[-0.01em] md:text-8xl">
+            gentian <em className="text-rust">root</em>
           </h2>
-        </div>
-        <div className="space-y-6 text-lg leading-relaxed text-espresso/80 md:col-span-6 md:col-start-7">
+        </Reveal>
+        <Reveal
+          delay={0.1}
+          className="space-y-6 text-[17px] leading-[1.8] text-muted md:col-span-5 md:col-start-8 md:pt-4"
+        >
           <p>
             a european alpine botanical, prized since the ancient greeks for its
             complex bitterness and subtle, earthy notes.
           </p>
           <p>
-            bitterness has always been the start of a good meal — the old
-            aperitif instinct, the ritual that tells the body to slow down,
-            rest and digest. elixir is that instinct, made for now.
+            bitterness has always opened a good meal — the old aperitif
+            instinct, the pause that tells the body to slow down. elixir keeps
+            that instinct and leaves out the alcohol.
           </p>
           <p>
-            a symphony of carefully selected botanicals, without the alcohol.
-            something you take that gives you more.
+            a considered blend of botanicals: something you take that gives you
+            more.
           </p>
-        </div>
+        </Reveal>
       </div>
 
       {/* full-bleed moment */}
-      <div className="relative h-[80svh] overflow-hidden">
-        <motion.div style={{ y }} className="absolute inset-[-12%_0]">
+      <div ref={ref} className="relative h-[85svh] overflow-hidden">
+        <motion.div style={{ y }} className="absolute inset-[-8%_0]">
           <Image
             src="/img/dusk.jpg"
-            alt="sunset over a quiet harbour"
+            alt="dusk over a quiet harbour"
             fill
             sizes="100vw"
             className="object-cover"
           />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-t from-espresso/80 via-espresso/10 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 mx-auto max-w-7xl px-5 pb-14 md:px-8">
-          <p className="max-w-3xl font-display text-4xl leading-tight text-ivory md:text-6xl">
-            no hangover. no fog. just <em className="text-butter">you,</em>{" "}
-            fully here for it.
-          </p>
+        <div className="absolute inset-0 bg-espresso/35" />
+        <div className="absolute inset-0 flex items-center justify-center px-5">
+          <Reveal>
+            <p className="max-w-4xl text-center font-serif text-4xl leading-[1.15] text-cream md:text-6xl">
+              made for presence <em>and play.</em>
+            </p>
+          </Reveal>
         </div>
-        <Sticker shape="cloud" className="absolute top-10 right-8 flex md:right-16">
-          vegan
-          <br />& gluten
-          <br />
-          free
-        </Sticker>
       </div>
 
-      {/* buy women built */}
-      <div className="mx-auto flex max-w-7xl flex-col items-start gap-8 px-5 py-20 md:flex-row md:items-center md:justify-between md:px-8">
-        <p className="max-w-xl font-display text-3xl leading-snug md:text-4xl">
-          independent, women-founded, and made for the good parties —{" "}
-          <em>without</em> the morning after.
-        </p>
-        <div className="flex -rotate-3 flex-col font-type text-2xl font-bold uppercase leading-none">
-          <span className="bg-ember px-3 py-1 text-butter">buy</span>
-          <span className="ml-4 bg-sky px-3 py-1 text-ember">women</span>
-          <span className="ml-8 bg-[#7c9a54] px-3 py-1 text-[#f2c9e0]">built</span>
-        </div>
+      {/* founder line */}
+      <div className="mx-auto max-w-[1440px] px-5 py-28 text-center md:px-10 md:py-36">
+        <Reveal>
+          <p className="label text-muted">independent · women-founded · london</p>
+          <p className="mx-auto mt-8 max-w-3xl font-serif text-3xl leading-[1.3] md:text-5xl">
+            for the good evenings — and the clear mornings that follow them.
+          </p>
+        </Reveal>
       </div>
     </section>
   );

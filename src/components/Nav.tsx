@@ -17,36 +17,37 @@ export default function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-[45] transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-[45] border-b transition-colors duration-700 ${
         scrolled
-          ? "bg-espresso/80 py-3 backdrop-blur-md"
-          : "bg-transparent py-5"
+          ? "border-ink/10 bg-paper/90 backdrop-blur-md"
+          : "border-transparent bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 md:px-8">
-        <a href="#top" aria-label="elixir, back to top" className="text-cream">
-          <Logo className="h-8 w-auto md:h-9" />
-        </a>
-        <div className="flex items-center gap-6 text-sm md:gap-9">
-          <a href="#shop" className="hidden hover:text-orange sm:inline">
+      <nav className="mx-auto grid h-16 max-w-[1440px] grid-cols-3 items-center px-5 md:h-20 md:px-10">
+        <div className="label hidden gap-8 md:flex">
+          <a href="#shop" className="transition-opacity hover:opacity-50">
             shop
           </a>
-          <a href="#ritual" className="hidden hover:text-orange sm:inline">
+          <a href="#ritual" className="transition-opacity hover:opacity-50">
             the ritual
           </a>
-          <a href="#story" className="hidden hover:text-orange sm:inline">
-            our story
+          <a href="#story" className="transition-opacity hover:opacity-50">
+            gentian
           </a>
-          <button
-            onClick={() => setOpen(true)}
-            className="flex items-center gap-2 rounded-full border border-ivory/30 px-4 py-2 transition hover:border-orange hover:text-orange"
-          >
-            bag
-            <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-orange px-1 text-[11px] font-semibold text-espresso">
-              {count}
-            </span>
-          </button>
         </div>
+        <a
+          href="#top"
+          aria-label="elixir, back to top"
+          className="col-start-1 justify-self-start text-rust md:col-start-2 md:justify-self-center"
+        >
+          <Logo className="h-6 w-auto md:h-7" />
+        </a>
+        <button
+          onClick={() => setOpen(true)}
+          className="label col-start-3 justify-self-end transition-opacity hover:opacity-50"
+        >
+          bag ({count})
+        </button>
       </nav>
     </header>
   );
