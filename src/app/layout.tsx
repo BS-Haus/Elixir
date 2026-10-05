@@ -16,13 +16,13 @@ const sans = Instrument_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Elixir — Non-Alcoholic Botanical Bitters",
+  title: "Elixir — Alcohol-free alchemy · Handmade 0% botanical bitters",
   description:
-    "Hand-crafted non-alcoholic bitters from gentian root, red mandarin and cardamom. All the ritual, none of the alcohol.",
+    "Handmade 0% botanical bitters from London, with gentian root at the backbone. Three pipettes into tonic. 30 serves in every bottle.",
   openGraph: {
-    title: "Elixir — Non-Alcoholic Botanical Bitters",
-    description: "All the ritual, none of the alcohol.",
-    images: ["/img/shop-dropper.jpg"],
+    title: "Elixir — Alcohol-free alchemy",
+    description: "Handmade 0% botanical bitters. 30 serves in every bottle.",
+    images: ["/img/hero-poster.jpg"],
   },
 };
 

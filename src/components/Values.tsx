@@ -1,32 +1,22 @@
-import { Reveal } from "./Reveal";
-
 const values = [
-  ["0.0%", "alcohol, always"],
-  ["30", "serves in every bottle"],
-  ["natural", "botanicals, nothing artificial"],
-  ["vegan", "& gluten free"],
+  "0% alcohol",
+  "30 serves per bottle",
+  "Organic botanicals",
+  "Vegan & gluten free",
+  "Free UK delivery over £40",
 ];
 
-/** A quiet row of facts between the hero and the shop. */
+/** Trust strip directly under the hero. */
 export default function Values() {
   return (
-    <section className="border-y border-ink/10 bg-paper">
-      <div className="mx-auto grid max-w-[1440px] grid-cols-2 md:grid-cols-4">
-        {values.map(([big, small], i) => (
-          <Reveal
-            key={big}
-            delay={i * 0.08}
-            className={`px-5 py-10 md:px-10 md:py-14 ${
-              i % 2 ? "border-l border-ink/10" : ""
-            } ${i > 1 ? "border-t border-ink/10 md:border-t-0" : ""} ${
-              i === 2 ? "md:border-l" : ""
-            }`}
-          >
-            <p className="font-serif text-4xl md:text-5xl">{big}</p>
-            <p className="label mt-3 text-muted">{small}</p>
-          </Reveal>
+    <section className="border-b border-line bg-paper">
+      <ul className="rail mx-auto flex max-w-[1440px] gap-10 overflow-x-auto px-5 py-5 md:justify-between md:px-10">
+        {values.map((v) => (
+          <li key={v} className="label shrink-0 text-muted">
+            {v}
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

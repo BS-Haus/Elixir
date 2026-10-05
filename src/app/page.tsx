@@ -1,10 +1,15 @@
+import Bitter from "@/components/Bitter";
 import CartDrawer from "@/components/CartDrawer";
+import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
+import History from "@/components/History";
+import Join from "@/components/Join";
 import Nav from "@/components/Nav";
-import Products from "@/components/Products";
+import Reviews from "@/components/Reviews";
 import Ritual from "@/components/Ritual";
-import Story from "@/components/Story";
+import Shop from "@/components/Shop";
+import StickyBuy from "@/components/StickyBuy";
 import Values from "@/components/Values";
 
 export default function Home() {
@@ -14,11 +19,16 @@ export default function Home() {
       <main>
         <Hero />
         <Values />
-        <Products />
+        <Shop />
+        <Reviews />
         <Ritual />
-        <Story />
+        <History />
+        <Bitter />
+        <Faq />
+        <Join />
       </main>
       <Footer />
+      <StickyBuy />
       <CartDrawer />
     </>
   );

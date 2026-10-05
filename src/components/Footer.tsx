@@ -1,56 +1,42 @@
 import { INSTAGRAM, SHOP_DOMAIN } from "@/lib/products";
-import { Logo } from "./Logo";
+import { Framed, Ornament } from "./Ornament";
 
 const columns: { title: string; links: [string, string][] }[] = [
+  { title: "Shop", links: [["The Elixir", "#shop"], ["E&T · coming soon", "#can"]] },
   {
-    title: "shop",
+    title: "Elixir",
+    links: [["The ritual", "#ritual"], ["Our story", "#story"], ["Reviews", "#reviews"]],
+  },
+  {
+    title: "Help",
     links: [
-      ["elixir bitters", "#bottle"],
-      ["herbal bitters & tonic", "#can"],
+      ["Contact", `https://${SHOP_DOMAIN}/pages/contact`],
+      ["Shipping", `https://${SHOP_DOMAIN}/policies/shipping-policy`],
+      ["Refunds", `https://${SHOP_DOMAIN}/policies/refund-policy`],
+      ["Privacy", `https://${SHOP_DOMAIN}/policies/privacy-policy`],
     ],
   },
   {
-    title: "follow",
-    links: [
-      ["instagram", INSTAGRAM],
-      ["tiktok", "https://www.tiktok.com/@drink__elixir"],
-      ["contact", `https://${SHOP_DOMAIN}/pages/contact`],
-    ],
-  },
-  {
-    title: "information",
-    links: [
-      ["shipping", `https://${SHOP_DOMAIN}/policies/shipping-policy`],
-      ["refunds", `https://${SHOP_DOMAIN}/policies/refund-policy`],
-      ["privacy", `https://${SHOP_DOMAIN}/policies/privacy-policy`],
-      ["terms", `https://${SHOP_DOMAIN}/policies/terms-of-service`],
-    ],
+    title: "Follow",
+    links: [["Instagram", INSTAGRAM], ["TikTok", "https://www.tiktok.com/@drink__elixir"]],
   },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-stone px-5 pt-24 pb-10 md:px-10">
+    <footer className="bg-cocoa px-5 pt-20 pb-28 text-cream md:px-10 md:pb-10">
       <div className="mx-auto max-w-[1440px]">
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-4">
-            <p className="font-serif text-3xl leading-tight">
-              all the ritual.
-              <br />
-              <em className="text-rust">none of the alcohol.</em>
-            </p>
-            <p className="label mt-6 text-muted">free uk shipping over £40</p>
-          </div>
+        <div className="grid gap-10 border-b border-cream/15 pb-16 sm:grid-cols-2 md:grid-cols-4">
           {columns.map((c) => (
-            <div key={c.title} className="md:col-span-2 md:col-start-auto">
-              <p className="label text-muted">{c.title}</p>
+            <div key={c.title}>
+              <p className="label text-cream/50">{c.title}</p>
               <ul className="mt-5 space-y-3 text-[15px]">
                 {c.links.map(([label, href]) => (
                   <li key={label}>
                     <a
                       href={href}
                       {...(href.startsWith("http") && { target: "_blank", rel: "noreferrer" })}
-                      className="transition-opacity hover:opacity-50"
+                      className="transition-opacity hover:opacity-60"
                     >
                       {label}
                     </a>
@@ -61,11 +47,13 @@ export default function Footer() {
           ))}
         </div>
 
-        <Logo className="mt-24 h-auto w-full text-rust" />
+        <Framed bracketClass="h-24 md:h-44" className="mt-16 text-cream/80">
+          <Ornament name="wordmark" label="Elixir" className="h-12 text-cream md:h-24" />
+        </Framed>
 
-        <div className="label mt-8 flex flex-col justify-between gap-2 border-t border-ink/10 pt-6 text-muted md:flex-row">
-          <p>© {new Date().getFullYear()} elixir drinks ltd</p>
-          <p>124 city road, london ec1v 2nx</p>
+        <div className="label mt-14 flex flex-col justify-between gap-2 text-cream/45 md:flex-row">
+          <p>© {new Date().getFullYear()} Elixir Drinks Ltd · Handmade in London</p>
+          <p>For the free spirited</p>
         </div>
       </div>
     </footer>

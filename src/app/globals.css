@@ -1,14 +1,15 @@
 @import "tailwindcss";
 
-/* elixir — quiet, warm neutrals with rust as the single accent */
+/* elixir — alcohol-free alchemy: Art Nouveau linework, quiet modern luxury */
 @theme {
-  --color-paper: #f3f0ea;
-  --color-stone: #e7e2da;
-  --color-cream: #dfddd7; /* logo */
-  --color-ink: #1f1a17;
-  --color-muted: #6f665e;
-  --color-espresso: #1d1613;
-  --color-rust: #8b3f24; /* brand primary */
+  --color-paper: #f3efe6; /* warm cream */
+  --color-mint: #e9efe6; /* the deck's pale botanical green */
+  --color-cocoa: #2a1e18; /* ink + dark sections */
+  --color-chocolate: #4a2f22; /* the deck's brown */
+  --color-cream: #f3ece0;
+  --color-sage: #5f8a6c;
+  --color-muted: #6f645b;
+  --color-line: #d9d1c4;
 
   --font-serif: var(--font-instrument-serif);
   --font-sans: var(--font-instrument-sans);
@@ -20,20 +21,33 @@ html {
 
 body {
   background: var(--color-paper);
-  color: var(--color-ink);
+  color: var(--color-cocoa);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: var(--color-rust);
-  color: var(--color-paper);
+  background: var(--color-cocoa);
+  color: var(--color-cream);
 }
 
-/* small spaced capitals used for labels, nav and buttons */
 @utility label {
   font-size: 11px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   line-height: 1.4;
+}
+
+@utility display {
+  font-family: var(--font-instrument-serif);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+}
+
+/* hide scrollbars on horizontal rails */
+@utility rail {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
