@@ -50,7 +50,7 @@ export const products: Product[] = [
       ? Number(process.env.NEXT_PUBLIC_CAN_PRICE)
       : null,
     size: "200ml",
-    image: "/img/can-ice.jpg",
+    image: "/img/can-bowl.jpg",
     notes: ["cardamom", "bitter orange", "gentian root"],
     details: ["0.0% abv", "33 kcal", "low sugar", "vegan & gluten free"],
     blurb:
