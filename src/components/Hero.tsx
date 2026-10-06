@@ -4,73 +4,81 @@ import { motion } from "motion/react";
 import { formatPrice, products } from "@/lib/products";
 import { ease } from "./Reveal";
 
-/** Full-screen brand film. Landscape 1080p on larger screens, a shot-by-shot portrait cut on phones. */
+/** Headline left, brand film in a portrait frame on the right (shot-by-shot framed cut). */
 export default function Hero() {
   const bottle = products.find((p) => p.id === "bottle")!;
 
   return (
-    <section id="top" className="relative h-[100svh] min-h-[620px] overflow-hidden bg-espresso text-cream">
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        poster="/img/film-poster.jpg"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-label="Elixir brand film: the bottle, golden-hour coastlines, palms and surf"
-      >
-        <source src="/video/film-portrait.mp4" type="video/mp4" media="(max-aspect-ratio: 4/5)" />
-        <source src="/video/film-1080-hevc.mp4" type='video/mp4; codecs="hvc1"' />
-        <source src="/video/film-1080-h264.mp4" type="video/mp4" />
-      </video>
-      <div className="absolute inset-0 bg-gradient-to-t from-espresso/85 via-espresso/25 to-espresso/35" />
-
-      <div className="relative mx-auto flex h-full max-w-[1440px] flex-col justify-end px-5 pb-16 md:px-10 md:pb-28">
-        <div className="grid items-end gap-10 md:grid-cols-12">
-          <div className="md:col-span-8">
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 1.2, ease }}
-              className="label text-cream/80"
-            >
-              non-alcoholic botanical bitters · made in london
-            </motion.p>
-            <motion.h1
-              initial={{ opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15, duration: 1.4, ease }}
-              className="mt-5 font-serif text-[clamp(3.6rem,9vw,10rem)] leading-[0.92]"
-            >
-              all the ritual.
-              <br />
-              <em className="text-amber">none of the alcohol.</em>
-            </motion.h1>
-          </div>
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 1.2, ease }}
-            className="md:col-span-4"
+    <section id="top" className="bg-paper">
+      <div className="mx-auto grid min-h-[100svh] max-w-[1440px] items-center gap-12 px-5 pt-28 pb-16 md:grid-cols-12 md:gap-10 md:px-10 md:pt-28 md:pb-20">
+        <div className="md:col-span-7">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 1.2, ease }}
+            className="label text-muted"
           >
-            <p className="max-w-sm text-[15px] leading-[1.5] text-cream/85">
+            non-alcoholic botanical bitters · made in london
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 1.4, ease }}
+            className="mt-6 font-serif text-[clamp(3.6rem,8.4vw,9rem)] leading-[0.92]"
+          >
+            all the ritual.
+            <br />
+            <em className="text-rust">none of the alcohol.</em>
+          </motion.h1>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 1.2, ease }}
+          >
+            <p className="mt-8 max-w-md text-[16px] leading-[1.55] text-muted">
               an ancient ritual for modern good times. a 0% bitters of gentian root, red mandarin and
               cardamom — three pipettes into tonic for the dinner, the gig, or a moment to yourself.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#bottle" className="label bg-cream px-7 py-4 text-espresso transition-colors duration-500 hover:bg-white">
+            <div className="mt-10 flex flex-wrap gap-3">
+              <a href="#bottle" className="label bg-ink px-8 py-4 text-paper transition-colors duration-500 hover:bg-rust">
                 shop elixir — {formatPrice(bottle.price!)}
               </a>
               <a
                 href="#explained"
-                className="label border border-cream/50 px-7 py-4 transition-colors duration-500 hover:border-cream"
+                className="label border border-ink/25 px-8 py-4 transition-colors duration-500 hover:border-ink"
               >
                 what is elixir?
               </a>
             </div>
           </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.25, duration: 1.6, ease }}
+          className="md:col-span-5"
+        >
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-[540px] overflow-hidden bg-stone">
+            <video
+              className="absolute inset-0 h-full w-full object-cover"
+              poster="/img/film-poster-portrait.jpg"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              aria-label="Elixir brand film: the bottle, golden-hour coastlines, palms and surf"
+            >
+              <source src="/video/film-portrait.mp4" type="video/mp4" media="(max-width: 767px)" />
+              <source src="/video/film-portrait-1080-h264.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p className="label mx-auto mt-4 flex max-w-[540px] justify-between text-muted">
+            <span>0.0% abv</span>
+            <span>30 serves per bottle</span>
+          </p>
+        </motion.div>
       </div>
     </section>
   );

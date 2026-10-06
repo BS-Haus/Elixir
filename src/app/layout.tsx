@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Elixir — Non-Alcoholic Botanical Bitters",
     description: "All the ritual, none of the alcohol.",
-    images: ["/img/film-poster.jpg"],
+    images: ["/img/film-poster-portrait.jpg"],
   },
 };
 

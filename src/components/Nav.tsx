@@ -42,7 +42,7 @@ export default function Nav() {
       frame = requestAnimationFrame(() => {
         frame = 0;
         setP(scrollProgress());
-        setOverHero(window.scrollY < window.innerHeight - 90);
+        setOverHero(window.scrollY < 40);
       });
     };
     on();
@@ -58,7 +58,7 @@ export default function Nav() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-[45] border-b transition-colors duration-500 ${
-        overHero ? "border-cream/20 bg-transparent text-cream" : "border-ink/10 bg-paper/90 text-ink backdrop-blur-md"
+        overHero ? "border-transparent bg-transparent text-ink" : "border-ink/10 bg-paper/90 text-ink backdrop-blur-md"
       }`}
     >
       <nav className="mx-auto grid h-16 max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center px-5 md:h-20 md:px-10">
@@ -76,7 +76,7 @@ export default function Nav() {
         <a
           href="#top"
           aria-label="elixir, back to top"
-          className={`col-start-1 justify-self-start md:col-start-2 md:justify-self-center ${overHero ? "text-cream" : "text-rust"}`}
+          className={`col-start-1 justify-self-start md:col-start-2 md:justify-self-center text-rust`}
         >
           <Logo className="h-6 w-auto md:h-7" />
         </a>
