@@ -1,20 +1,19 @@
 @import "tailwindcss";
 
-/* elixir — quiet, warm neutrals with rust as the single accent */
+/* elixir v6 — "tonic": stark, structural, uppercase grotesk on white, rust as the one bold block colour */
 @theme {
-  --color-paper: #f3f0ea;
-  --color-stone: #e7e2da;
-  --color-cream: #dfddd7; /* logo */
-  --color-ink: #1f1a17;
-  --color-muted: #6f665e;
-  --color-espresso: #1d1613;
+  --color-paper: #ffffff;
+  --color-shell: #f4f2ee;
+  --color-ink: #111111;
+  --color-muted: #6b6b6b;
+  --color-line: #111111;
   --color-rust: #8b3f24; /* brand primary */
-  --color-amber: #b9752f; /* strategy deck: amber */
-  --color-olive: #3d3f27; /* strategy deck: deep olive */
-  --color-sand: #e9dcc6;
+  --color-cream: #f3ece0;
+  --color-stone: #e7e2da;
+  --color-espresso: #1d1613;
 
+  --font-sans: var(--font-archivo);
   --font-serif: var(--font-instrument-serif);
-  --font-sans: var(--font-instrument-sans);
 }
 
 html {
@@ -30,18 +29,37 @@ body {
 
 ::selection {
   background: var(--color-rust);
-  color: var(--color-paper);
+  color: #fff;
 }
 
-/* small spaced capitals used for labels, nav and buttons */
+/* uppercase grotesk headings, Seoul-Tonic-style */
+@utility caps {
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+}
+
 @utility label {
   font-size: 11px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   line-height: 1.4;
 }
 
-/* hide scrollbars on horizontal rails */
+@utility pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.7rem 1.4rem;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background-color 0.3s, color 0.3s;
+}
+
 @utility rail {
   scrollbar-width: none;
   &::-webkit-scrollbar {

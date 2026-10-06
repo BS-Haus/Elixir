@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Instrument_Sans, Instrument_Serif } from "next/font/google";
+import { Archivo, Instrument_Serif } from "next/font/google";
 import { CartProvider } from "@/lib/cart";
 import "./globals.css";
 
+const sans = Archivo({ variable: "--font-archivo", subsets: ["latin"] });
 const serif = Instrument_Serif({
   variable: "--font-instrument-serif",
   subsets: ["latin"],
@@ -10,25 +11,20 @@ const serif = Instrument_Serif({
   style: ["normal", "italic"],
 });
 
-const sans = Instrument_Sans({
-  variable: "--font-instrument-sans",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Elixir — Non-Alcoholic Botanical Bitters",
+  title: "Elixir — Non-alcoholic botanical bitters · Made for presence and play",
   description:
-    "Hand-crafted non-alcoholic bitters from gentian root, red mandarin and cardamom. All the ritual, none of the alcohol.",
+    "Handmade 0% botanical bitters from London. Three pipettes into tonic. 30 serves in every bottle. Feel good without missing out.",
   openGraph: {
-    title: "Elixir — Non-Alcoholic Botanical Bitters",
-    description: "All the ritual, none of the alcohol.",
-    images: ["/img/shop-dropper.jpg"],
+    title: "Elixir — Made for presence and play",
+    description: "Handmade 0% botanical bitters. 30 serves in every bottle.",
+    images: ["/img/hero-poster.jpg"],
   },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${serif.variable} ${sans.variable} antialiased`}>
+    <html lang="en" className={`${sans.variable} ${serif.variable} antialiased`}>
       <body className="min-h-full">
         <CartProvider>{children}</CartProvider>
       </body>

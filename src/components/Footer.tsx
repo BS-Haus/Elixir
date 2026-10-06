@@ -1,72 +1,38 @@
 import { INSTAGRAM, SHOP_DOMAIN } from "@/lib/products";
 import { Logo } from "./Logo";
 
-const columns: { title: string; links: [string, string][] }[] = [
-  {
-    title: "shop",
-    links: [
-      ["elixir bitters", "#bottle"],
-      ["herbal bitters & tonic", "#can"],
-    ],
-  },
-  {
-    title: "follow",
-    links: [
-      ["instagram", INSTAGRAM],
-      ["tiktok", "https://www.tiktok.com/@drink__elixir"],
-      ["contact", `https://${SHOP_DOMAIN}/pages/contact`],
-    ],
-  },
-  {
-    title: "information",
-    links: [
-      ["shipping", `https://${SHOP_DOMAIN}/policies/shipping-policy`],
-      ["refunds", `https://${SHOP_DOMAIN}/policies/refund-policy`],
-      ["privacy", `https://${SHOP_DOMAIN}/policies/privacy-policy`],
-      ["terms", `https://${SHOP_DOMAIN}/policies/terms-of-service`],
-    ],
-  },
+const cols: [string, [string, string][]][] = [
+  ["Shop", [["The Elixir", "#bottle"], ["E&T (soon)", "#can"]]],
+  ["Elixir", [["How to drink", "#how"], ["Reviews", "#reviews"], ["About", "#about"]]],
+  ["Help", [["Contact", `https://${SHOP_DOMAIN}/pages/contact`], ["Shipping", `https://${SHOP_DOMAIN}/policies/shipping-policy`], ["Refunds", `https://${SHOP_DOMAIN}/policies/refund-policy`]]],
+  ["Follow", [["Instagram", INSTAGRAM], ["TikTok", "https://www.tiktok.com/@drink__elixir"]]],
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-stone px-5 pt-24 pb-10 md:px-10">
-      <div className="mx-auto max-w-[1440px]">
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-4">
-            <p className="font-serif text-3xl leading-tight">
-              all the ritual.
-              <br />
-              <em className="text-rust">none of the alcohol.</em>
-            </p>
-            <p className="label mt-6 text-muted">free uk shipping over £40</p>
+    <footer className="bg-ink text-white">
+      <div className="grid border-b border-white/20 sm:grid-cols-2 md:grid-cols-4">
+        {cols.map(([t, links], i) => (
+          <div key={t} className={`border-white/20 px-6 py-10 ${i < 3 ? "md:border-r" : ""}`}>
+            <p className="label text-white/50">{t}</p>
+            <ul className="mt-4 space-y-2 text-[14px]">
+              {links.map(([l, h]) => (
+                <li key={l}>
+                  <a href={h} {...(h.startsWith("http") && { target: "_blank", rel: "noreferrer" })} className="hover:opacity-60">
+                    {l}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
-          {columns.map((c) => (
-            <div key={c.title} className="md:col-span-2 md:col-start-auto">
-              <p className="label text-muted">{c.title}</p>
-              <ul className="mt-5 space-y-3 text-[15px]">
-                {c.links.map(([label, href]) => (
-                  <li key={label}>
-                    <a
-                      href={href}
-                      {...(href.startsWith("http") && { target: "_blank", rel: "noreferrer" })}
-                      className="transition-opacity hover:opacity-50"
-                    >
-                      {label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        <Logo className="mt-24 h-auto w-full text-rust" />
-
-        <div className="label mt-8 flex flex-col justify-between gap-2 border-t border-ink/10 pt-6 text-muted md:flex-row">
-          <p>© {new Date().getFullYear()} elixir drinks ltd</p>
-          <p>124 city road, london ec1v 2nx</p>
-        </div>
+        ))}
+      </div>
+      <div className="px-6 py-10">
+        <Logo className="h-auto w-full text-rust" />
+        <p className="label mt-8 flex flex-col justify-between gap-2 text-white/50 md:flex-row">
+          <span>© {new Date().getFullYear()} Elixir Drinks Ltd · Handmade in London</span>
+          <span>Made for presence and play</span>
+        </p>
       </div>
     </footer>
   );
