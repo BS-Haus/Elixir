@@ -12,7 +12,7 @@ export default function Hero() {
   return (
     <section id="top" className="bg-paper">
       <div className="mx-auto grid min-h-[100svh] max-w-[1440px] items-center gap-12 px-5 pt-28 pb-16 md:grid-cols-12 md:gap-10 md:px-10 md:pt-28 md:pb-20">
-        <div className="md:col-span-7">
+        <div className="md:col-span-6">
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -25,7 +25,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 1.4, ease }}
-            className="mt-6 font-serif text-[clamp(3.6rem,8.4vw,9rem)] leading-[0.92]"
+            className="mt-6 font-serif text-[clamp(3.6rem,7.6vw,8.5rem)] leading-[0.92]"
           >
             all the ritual.
             <br />
@@ -58,19 +58,19 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.25, duration: 1.6, ease }}
-          className="md:col-span-5"
+          className="md:col-span-6"
         >
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-[540px] overflow-hidden bg-stone">
+          <div className="relative aspect-[4/5] w-full overflow-hidden bg-stone md:aspect-auto md:h-[calc(100svh-9.5rem)] md:min-h-[560px]">
             <Image
               src="/img/shop-dropper.jpg"
               alt="a pipette of elixir over a glass of tonic with ice and a slice of orange"
               fill
               priority
-              sizes="(max-width: 768px) 100vw, 40vw"
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
           </div>
-          <p className="label mx-auto mt-4 flex max-w-[540px] justify-between text-muted">
+          <p className="label mt-4 flex justify-between text-muted">
             <span>0.0% abv</span>
             <span>30 serves per bottle</span>
           </p>
