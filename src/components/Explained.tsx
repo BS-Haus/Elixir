@@ -36,7 +36,7 @@ const formats = [
   {
     href: "#can",
     img: "/img/can-bowl.jpg",
-    pos: "object-[50%_50%]",
+    pos: "object-[50%_40%]",
     k: "the can",
     t: "take it into the moment.",
     d: "elixir & tonic, ready-poured. for picnics, festivals and the 3pm lull.",
