@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import { Reveal } from "./Reveal";
@@ -46,13 +45,20 @@ export default function Story() {
       {/* full-bleed moment */}
       <div ref={ref} className="relative h-[85svh] overflow-hidden">
         <motion.div style={{ y }} className="absolute inset-[-8%_0]">
-          <Image
-            src="/img/golden-hour.jpg"
-            alt="golden hour over the sea"
-            fill
-            sizes="100vw"
-            className="object-cover"
-          />
+          <video
+            className="absolute inset-0 h-full w-full object-cover"
+            poster="/img/film-poster.jpg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label="Elixir brand film: the bottle, golden-hour coastlines, palms and surf"
+          >
+            <source src="/video/film-portrait.mp4" type="video/mp4" media="(max-aspect-ratio: 4/5)" />
+            <source src="/video/film-hevc.mp4" type='video/mp4; codecs="hvc1"' />
+            <source src="/video/film.mp4" type="video/mp4" />
+          </video>
         </motion.div>
         <div className="absolute inset-0 bg-espresso/35" />
         <div className="absolute inset-0 flex items-center justify-center px-5">
