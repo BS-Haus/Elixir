@@ -32,7 +32,7 @@
   --color-amber: #b9752f;
   --color-olive: #3d3f27;
 
-  --font-serif: var(--font-newsreader);
+  --font-serif: var(--font-dm-serif);
   --font-sans: var(--font-hanken);
   --font-mono: var(--font-dm-mono);
 }
@@ -53,13 +53,12 @@ body {
   color: var(--bg);
 }
 
-/* headlines: editorial serif, tight, optical sizing on */
+/* headlines: high-contrast display serif, tight */
 h1,
 h2,
 h3,
 .font-serif {
-  font-optical-sizing: auto;
-  letter-spacing: -0.022em;
+  letter-spacing: -0.02em;
 }
 
 /* apothecary-label caps for labels, nav and buttons */

@@ -27,6 +27,7 @@ const formats = [
   {
     href: "#bottle",
     img: "/img/shop-product.jpg",
+    pos: "object-[50%_38%]",
     k: "the concentrate",
     t: "make your own serve.",
     d: "the dropper bottle. 30 serves for hosting, the home bar and the kitchen shelf.",
@@ -35,6 +36,7 @@ const formats = [
   {
     href: "#can",
     img: "/img/can.jpg",
+    pos: "object-center",
     k: "the can",
     t: "take it into the moment.",
     d: "elixir & tonic, ready-poured. for picnics, festivals and the 3pm lull.",
@@ -73,17 +75,17 @@ export default function Explained() {
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           {formats.map((f, i) => (
             <Reveal key={f.k} delay={i * 0.1}>
-              <a href={f.href} className="group grid grid-cols-[38%_1fr] items-stretch bg-stone">
-                <div className="relative aspect-[4/5] overflow-hidden">
+              <a href={f.href} className="group flex h-full flex-col bg-stone">
+                <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={f.img}
                     alt=""
                     fill
-                    sizes="(max-width: 768px) 40vw, 20vw"
-                    className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-[1.04]"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className={`object-cover transition-transform duration-[2s] ease-out group-hover:scale-[1.03] ${f.pos}`}
                   />
                 </div>
-                <div className="flex flex-col justify-between p-6 md:p-10">
+                <div className="flex flex-1 flex-col justify-between p-6 md:p-10">
                   <div>
                     <p className="label text-muted">{f.k}</p>
                     <p className="mt-4 font-serif text-3xl leading-[1.05] md:text-[2.6rem]">{f.t}</p>

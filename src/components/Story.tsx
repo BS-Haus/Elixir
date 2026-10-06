@@ -47,8 +47,8 @@ export default function Story() {
       <div ref={ref} className="relative h-[85svh] overflow-hidden">
         <motion.div style={{ y }} className="absolute inset-[-8%_0]">
           <Image
-            src="/img/dusk.jpg"
-            alt="dusk over a quiet harbour"
+            src="/img/golden-hour.jpg"
+            alt="golden hour over the sea"
             fill
             sizes="100vw"
             className="object-cover"

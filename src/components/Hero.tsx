@@ -4,99 +4,73 @@ import { motion } from "motion/react";
 import { formatPrice, products } from "@/lib/products";
 import { ease } from "./Reveal";
 
-const lines = [
-  { text: "all the ritual.", em: false },
-  { text: "none of the alcohol.", em: true },
-];
-
+/** Full-screen brand film. Landscape 1080p on larger screens, a shot-by-shot portrait cut on phones. */
 export default function Hero() {
   const bottle = products.find((p) => p.id === "bottle")!;
 
   return (
-    <section id="top" className="bg-paper">
-      <div className="mx-auto grid min-h-[100svh] max-w-[1440px] gap-12 px-5 pt-28 pb-16 md:grid-cols-12 md:items-end md:gap-10 md:px-10 md:pt-32 md:pb-20">
-        {/* copy */}
-        <div className="md:col-span-6 md:pb-6">
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, ease }}
-            className="label text-muted"
-          >
-            non-alcoholic botanical bitters · made in london
-          </motion.p>
+    <section id="top" className="relative h-[100svh] min-h-[620px] overflow-hidden bg-espresso text-cream">
+      <video
+        className="absolute inset-0 h-full w-full object-cover"
+        poster="/img/film-poster.jpg"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-label="Elixir brand film: the bottle, golden-hour coastlines, palms and surf"
+      >
+        <source src="/video/film-portrait.mp4" type="video/mp4" media="(max-aspect-ratio: 4/5)" />
+        <source src="/video/film-1080-hevc.mp4" type='video/mp4; codecs="hvc1"' />
+        <source src="/video/film-1080-h264.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-gradient-to-t from-espresso/85 via-espresso/25 to-espresso/35" />
 
-          <h1 className="mt-8 font-serif text-[clamp(3.25rem,7.2vw,7.5rem)] leading-[0.95] tracking-[-0.02em]">
-            {lines.map((l, i) => (
-              <span key={l.text} className="block overflow-hidden pb-[0.06em]">
-                <motion.span
-                  initial={{ y: "100%" }}
-                  animate={{ y: 0 }}
-                  transition={{ delay: 0.2 + i * 0.15, duration: 1.4, ease }}
-                  className={`block ${l.em ? "text-rust italic" : ""}`}
-                >
-                  {l.text}
-                </motion.span>
-              </span>
-            ))}
-          </h1>
-
+      <div className="relative mx-auto flex h-full max-w-[1440px] flex-col justify-end px-5 pb-12 md:px-10 md:pb-16">
+        <div className="grid items-end gap-10 md:grid-cols-12">
+          <div className="md:col-span-8">
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 1.2, ease }}
+              className="label text-cream/80"
+            >
+              non-alcoholic botanical bitters · made in london
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15, duration: 1.4, ease }}
+              className="mt-6 font-serif text-[clamp(3.4rem,8.6vw,9.5rem)] leading-[0.98]"
+            >
+              all the ritual.
+              <br />
+              <em className="text-amber">none of the alcohol.</em>
+            </motion.h1>
+          </div>
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 1.2, ease }}
+            transition={{ delay: 0.7, duration: 1.2, ease }}
+            className="md:col-span-4"
           >
-            <p className="mt-10 max-w-md text-[17px] leading-[1.7] text-muted">
-              an ancient ritual for modern good times. elixir is a 0% bitters
-              made from gentian root, red mandarin and cardamom — three pipettes
-              into tonic for the dinner, the gig, or a moment to yourself.
+            <p className="max-w-sm text-[16px] leading-[1.7] text-cream/85">
+              an ancient ritual for modern good times. a 0% bitters of gentian root, red mandarin and
+              cardamom — three pipettes into tonic for the dinner, the gig, or a moment to yourself.
             </p>
-            <div className="mt-12 flex flex-wrap gap-3">
-              <a
-                href="#bottle"
-                className="label bg-ink px-8 py-4 text-paper transition-colors duration-500 hover:bg-rust"
-              >
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a href="#bottle" className="label bg-cream px-7 py-4 text-espresso transition-colors duration-500 hover:bg-white">
                 shop elixir — {formatPrice(bottle.price!)}
               </a>
               <a
                 href="#explained"
-                className="label border border-ink/25 px-8 py-4 transition-colors duration-500 hover:border-ink"
+                className="label border border-cream/50 px-7 py-4 transition-colors duration-500 hover:border-cream"
               >
                 what is elixir?
               </a>
             </div>
           </motion.div>
         </div>
-
-        {/* image */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 1.8, ease }}
-          className="relative md:col-span-5 md:col-start-8"
-        >
-          <div className="relative aspect-[4/5] overflow-hidden bg-stone">
-            {/* portrait cut of the brand film, cropped shot-by-shot to keep the subject in frame */}
-            <video
-              className="absolute inset-0 h-full w-full object-cover"
-              poster="/img/hero-poster.jpg"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              aria-label="Elixir brand film: the bottle, golden-hour coastlines and palms"
-            >
-              <source src="/video/elixir-film-mobile.mp4" type="video/mp4" media="(max-width: 767px)" />
-              <source src="/video/elixir-film-hevc.mp4" type='video/mp4; codecs="hvc1"' />
-              <source src="/video/elixir-film-h264.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <p className="label mt-4 flex justify-between text-muted">
-            <span>0.0% abv</span>
-            <span>30 serves per bottle</span>
-          </p>
-        </motion.div>
       </div>
     </section>
   );

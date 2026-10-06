@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-import { DM_Mono, Hanken_Grotesk, Newsreader } from "next/font/google";
+import { DM_Mono, DM_Serif_Display, Hanken_Grotesk } from "next/font/google";
 import { CartProvider } from "@/lib/cart";
-import Clock from "@/components/Clock";
 import ScrollTheme from "@/components/ScrollTheme";
 import "./globals.css";
 
-const serif = Newsreader({
-  variable: "--font-newsreader",
+const serif = DM_Serif_Display({
+  variable: "--font-dm-serif",
   subsets: ["latin"],
+  weight: "400",
   style: ["normal", "italic"],
-  axes: ["opsz"],
 });
 
 const sans = Hanken_Grotesk({
@@ -30,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Elixir — Non-Alcoholic Botanical Bitters",
     description: "All the ritual, none of the alcohol.",
-    images: ["/img/shop-dropper.jpg"],
+    images: ["/img/film-poster.jpg"],
   },
 };
 
@@ -40,7 +39,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full">
         <ScrollTheme />
         <CartProvider>{children}</CartProvider>
-        <Clock />
       </body>
     </html>
   );

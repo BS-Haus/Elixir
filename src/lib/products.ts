@@ -4,8 +4,6 @@
 
 export const INSTAGRAM = "https://www.instagram.com/drink__elixir/";
 
-export const HERO_VIDEO =
-  "https://cdn.shopify.com/videos/c/o/v/9f8a0f63a0744bfcaad1fbb20f1ef0bc.mp4";
 
 export const SHOP_DOMAIN =
   process.env.NEXT_PUBLIC_SHOP_DOMAIN ?? "drink-elixir.co";
