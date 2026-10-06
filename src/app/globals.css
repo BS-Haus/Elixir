@@ -1,20 +1,40 @@
 @import "tailwindcss";
 
-/* elixir — quiet, warm neutrals with rust as the single accent */
-@theme {
-  --color-paper: #f3f0ea;
-  --color-stone: #e7e2da;
-  --color-cream: #dfddd7; /* logo */
-  --color-ink: #1f1a17;
-  --color-muted: #6f665e;
-  --color-espresso: #1d1613;
-  --color-rust: #8b3f24; /* brand primary */
-  --color-amber: #b9752f; /* strategy deck: amber */
-  --color-olive: #3d3f27; /* strategy deck: deep olive */
-  --color-sand: #e9dcc6;
+/*
+ * elixir — "presence & play"
+ * The page runs from dawn to night: ScrollTheme rewrites these variables as you scroll,
+ * so every surface, line and word shifts from morning cream to late-night espresso.
+ * Defaults below are the dawn state (first paint / no JS).
+ */
+:root {
+  --bg: #f4efe7;
+  --fg: #1f1a17;
+  --muted: #6f655c;
+  --card: #e9e1d5;
+  --card2: #e2d3bd;
+  --accent: #8b3f24;
+}
 
-  --font-serif: var(--font-instrument-serif);
-  --font-sans: var(--font-instrument-sans);
+@theme inline {
+  --color-paper: var(--bg);
+  --color-ink: var(--fg);
+  --color-muted: var(--muted);
+  --color-stone: var(--card);
+  --color-sand: var(--card2);
+  --color-rust: var(--accent);
+}
+
+@theme {
+  /* fixed colours that don't follow the time of day */
+  --color-cream: #efe8dd;
+  --color-espresso: #1d1613;
+  --color-brand: #8b3f24; /* rust, always */
+  --color-amber: #b9752f;
+  --color-olive: #3d3f27;
+
+  --font-serif: var(--font-newsreader);
+  --font-sans: var(--font-hanken);
+  --font-mono: var(--font-dm-mono);
 }
 
 html {
@@ -22,21 +42,31 @@ html {
 }
 
 body {
-  background: var(--color-paper);
-  color: var(--color-ink);
+  background: var(--bg);
+  color: var(--fg);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: var(--color-rust);
-  color: var(--color-paper);
+  background: var(--accent);
+  color: var(--bg);
 }
 
-/* small spaced capitals used for labels, nav and buttons */
+/* headlines: editorial serif, tight, optical sizing on */
+h1,
+h2,
+h3,
+.font-serif {
+  font-optical-sizing: auto;
+  letter-spacing: -0.022em;
+}
+
+/* apothecary-label caps for labels, nav and buttons */
 @utility label {
+  font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   line-height: 1.4;
 }

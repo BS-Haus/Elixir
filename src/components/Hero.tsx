@@ -1,8 +1,7 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
-import { HERO_VIDEO, formatPrice, products } from "@/lib/products";
+import { motion } from "motion/react";
+import { formatPrice, products } from "@/lib/products";
 import { ease } from "./Reveal";
 
 const lines = [
@@ -11,16 +10,10 @@ const lines = [
 ];
 
 export default function Hero() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const photoY = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
   const bottle = products.find((p) => p.id === "bottle")!;
 
   return (
-    <section id="top" ref={ref} className="bg-paper">
+    <section id="top" className="bg-paper">
       <div className="mx-auto grid min-h-[100svh] max-w-[1440px] gap-12 px-5 pt-28 pb-16 md:grid-cols-12 md:items-end md:gap-10 md:px-10 md:pt-32 md:pb-20">
         {/* copy */}
         <div className="md:col-span-6 md:pb-6">
@@ -83,18 +76,21 @@ export default function Hero() {
           className="relative md:col-span-5 md:col-start-8"
         >
           <div className="relative aspect-[4/5] overflow-hidden bg-stone">
-            <motion.div style={{ y: photoY }} className="absolute inset-[-5%_0]">
-              <video
-                className="absolute inset-0 h-full w-full object-cover"
-                src={HERO_VIDEO}
-                poster="/img/hero-poster.jpg"
-                autoPlay
-                muted
-                loop
-                playsInline
-                aria-label="Elixir brand film: the bottle, golden-hour coastlines and palms"
-              />
-            </motion.div>
+            {/* portrait cut of the brand film, cropped shot-by-shot to keep the subject in frame */}
+            <video
+              className="absolute inset-0 h-full w-full object-cover"
+              poster="/img/hero-poster.jpg"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              aria-label="Elixir brand film: the bottle, golden-hour coastlines and palms"
+            >
+              <source src="/video/elixir-film-mobile.mp4" type="video/mp4" media="(max-width: 767px)" />
+              <source src="/video/elixir-film-hevc.mp4" type='video/mp4; codecs="hvc1"' />
+              <source src="/video/elixir-film-h264.mp4" type="video/mp4" />
+            </video>
           </div>
           <p className="label mt-4 flex justify-between text-muted">
             <span>0.0% abv</span>

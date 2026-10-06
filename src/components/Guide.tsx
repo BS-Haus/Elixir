@@ -10,7 +10,7 @@ const issues = [
 
 export default function Guide() {
   return (
-    <section className="bg-rust px-5 py-28 text-cream md:px-10 md:py-36">
+    <section className="bg-brand px-5 py-28 text-cream md:px-10 md:py-36">
       <div className="mx-auto max-w-[1440px]">
         <div className="grid gap-12 md:grid-cols-12 md:gap-10">
           <Reveal className="md:col-span-6">

@@ -1,18 +1,26 @@
 import type { Metadata } from "next";
-import { Instrument_Sans, Instrument_Serif } from "next/font/google";
+import { DM_Mono, Hanken_Grotesk, Newsreader } from "next/font/google";
 import { CartProvider } from "@/lib/cart";
+import Clock from "@/components/Clock";
+import ScrollTheme from "@/components/ScrollTheme";
 import "./globals.css";
 
-const serif = Instrument_Serif({
-  variable: "--font-instrument-serif",
+const serif = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
-  weight: "400",
   style: ["normal", "italic"],
+  axes: ["opsz"],
 });
 
-const sans = Instrument_Sans({
-  variable: "--font-instrument-sans",
+const sans = Hanken_Grotesk({
+  variable: "--font-hanken",
   subsets: ["latin"],
+});
+
+const mono = DM_Mono({
+  variable: "--font-dm-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -28,9 +36,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${serif.variable} ${sans.variable} antialiased`}>
+    <html lang="en" className={`${serif.variable} ${sans.variable} ${mono.variable} antialiased`}>
       <body className="min-h-full">
+        <ScrollTheme />
         <CartProvider>{children}</CartProvider>
+        <Clock />
       </body>
     </html>
   );
