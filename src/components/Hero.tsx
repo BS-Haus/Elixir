@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import { formatPrice, products } from "@/lib/products";
+import { HERO_VIDEO, formatPrice, products } from "@/lib/products";
 import { ease } from "./Reveal";
 
 const lines = [
@@ -31,7 +30,7 @@ export default function Hero() {
             transition={{ duration: 1.2, ease }}
             className="label text-muted"
           >
-            non-alcoholic botanical bitters
+            non-alcoholic botanical bitters · made in london
           </motion.p>
 
           <h1 className="mt-8 font-serif text-[clamp(3.25rem,7.2vw,7.5rem)] leading-[0.95] tracking-[-0.02em]">
@@ -55,9 +54,9 @@ export default function Hero() {
             transition={{ delay: 0.8, duration: 1.2, ease }}
           >
             <p className="mt-10 max-w-md text-[17px] leading-[1.7] text-muted">
-              hand-crafted from gentian root, red mandarin and cardamom. three
-              pipettes into tonic make a considered, grown-up drink — and leave
-              a clear head for whatever comes next.
+              an ancient ritual for modern good times. elixir is a 0% bitters
+              made from gentian root, red mandarin and cardamom — three pipettes
+              into tonic for the dinner, the gig, or a moment to yourself.
             </p>
             <div className="mt-12 flex flex-wrap gap-3">
               <a
@@ -67,10 +66,10 @@ export default function Hero() {
                 shop elixir — {formatPrice(bottle.price!)}
               </a>
               <a
-                href="#ritual"
+                href="#explained"
                 className="label border border-ink/25 px-8 py-4 transition-colors duration-500 hover:border-ink"
               >
-                the ritual
+                what is elixir?
               </a>
             </div>
           </motion.div>
@@ -85,13 +84,15 @@ export default function Hero() {
         >
           <div className="relative aspect-[4/5] overflow-hidden bg-stone">
             <motion.div style={{ y: photoY }} className="absolute inset-[-5%_0]">
-              <Image
-                src="/img/shop-dropper.jpg"
-                alt="a pipette of elixir over a glass of tonic with ice and a slice of orange"
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 40vw"
-                className="object-cover"
+              <video
+                className="absolute inset-0 h-full w-full object-cover"
+                src={HERO_VIDEO}
+                poster="/img/hero-poster.jpg"
+                autoPlay
+                muted
+                loop
+                playsInline
+                aria-label="Elixir brand film: the bottle, golden-hour coastlines and palms"
               />
             </motion.div>
           </div>

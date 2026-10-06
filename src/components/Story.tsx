@@ -64,15 +64,6 @@ export default function Story() {
         </div>
       </div>
 
-      {/* founder line */}
-      <div className="mx-auto max-w-[1440px] px-5 py-28 text-center md:px-10 md:py-36">
-        <Reveal>
-          <p className="label text-muted">independent · women-founded · london</p>
-          <p className="mx-auto mt-8 max-w-3xl font-serif text-3xl leading-[1.3] md:text-5xl">
-            for the good evenings — and the clear mornings that follow them.
-          </p>
-        </Reveal>
-      </div>
     </section>
   );
 }

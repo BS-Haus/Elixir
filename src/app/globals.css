@@ -9,6 +9,9 @@
   --color-muted: #6f665e;
   --color-espresso: #1d1613;
   --color-rust: #8b3f24; /* brand primary */
+  --color-amber: #b9752f; /* strategy deck: amber */
+  --color-olive: #3d3f27; /* strategy deck: deep olive */
+  --color-sand: #e9dcc6;
 
   --font-serif: var(--font-instrument-serif);
   --font-sans: var(--font-instrument-sans);
@@ -36,4 +39,12 @@ body {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   line-height: 1.4;
+}
+
+/* hide scrollbars on horizontal rails */
+@utility rail {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
