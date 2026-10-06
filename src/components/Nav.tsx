@@ -5,23 +5,27 @@ import { useCart } from "@/lib/cart";
 import { scrollProgress, timeAt } from "@/lib/daylight";
 import { Logo } from "./Logo";
 
-/** The page's clock, in the nav: a sun that climbs and sets, then a moon. */
+/** The page's clock: a sun travels left → right along the day, and becomes a moon after dusk. */
 function DayClock({ p }: { p: number }) {
   const night = p > 0.55;
-  const arc = Math.sin(Math.min(1, p / 0.55) * Math.PI);
   return (
-    <span className="label flex items-center gap-2.5 tabular-nums" title="the page is a day">
-      <span aria-hidden className="relative block h-4 w-4">
+    <span className="label flex items-center gap-3 tabular-nums" title="the page is a day">
+      <span>{timeAt(p)}</span>
+      <span aria-hidden className="relative hidden h-3 w-24 items-center sm:flex md:w-36">
+        <span className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-current opacity-30" />
         <span
-          className="absolute left-1/2 block h-2 w-2 -translate-x-1/2 rounded-full"
+          className="absolute top-1/2 left-0 h-px -translate-y-1/2 bg-current opacity-80"
+          style={{ width: `${p * 100}%` }}
+        />
+        <span
+          className="absolute top-1/2 block h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full"
           style={{
-            bottom: `${night ? 55 : 5 + arc * 55}%`,
+            left: `${p * 100}%`,
             background: night ? "transparent" : "currentColor",
-            boxShadow: night ? "inset -2.5px -1px 0 0 currentColor" : "none",
+            boxShadow: night ? "inset -3px -1px 0 0 currentColor" : "none",
           }}
         />
       </span>
-      <span>{timeAt(p)}</span>
     </span>
   );
 }

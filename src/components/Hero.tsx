@@ -26,7 +26,7 @@ export default function Hero() {
       </video>
       <div className="absolute inset-0 bg-gradient-to-t from-espresso/85 via-espresso/25 to-espresso/35" />
 
-      <div className="relative mx-auto flex h-full max-w-[1440px] flex-col justify-end px-5 pb-12 md:px-10 md:pb-16">
+      <div className="relative mx-auto flex h-full max-w-[1440px] flex-col justify-end px-5 pb-16 md:px-10 md:pb-28">
         <div className="grid items-end gap-10 md:grid-cols-12">
           <div className="md:col-span-8">
             <motion.p
@@ -41,7 +41,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 1.4, ease }}
-              className="mt-6 font-serif text-[clamp(3.4rem,8.6vw,9.5rem)] leading-[0.98]"
+              className="mt-5 font-serif text-[clamp(3.6rem,9vw,10rem)] leading-[0.92]"
             >
               all the ritual.
               <br />
@@ -54,7 +54,7 @@ export default function Hero() {
             transition={{ delay: 0.7, duration: 1.2, ease }}
             className="md:col-span-4"
           >
-            <p className="max-w-sm text-[16px] leading-[1.7] text-cream/85">
+            <p className="max-w-sm text-[15px] leading-[1.5] text-cream/85">
               an ancient ritual for modern good times. a 0% bitters of gentian root, red mandarin and
               cardamom — three pipettes into tonic for the dinner, the gig, or a moment to yourself.
             </p>

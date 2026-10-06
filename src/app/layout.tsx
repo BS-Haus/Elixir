@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { DM_Mono, DM_Serif_Display, Hanken_Grotesk } from "next/font/google";
+import { DM_Mono, Hanken_Grotesk, Instrument_Serif } from "next/font/google";
 import { CartProvider } from "@/lib/cart";
 import ScrollTheme from "@/components/ScrollTheme";
 import "./globals.css";
 
-const serif = DM_Serif_Display({
-  variable: "--font-dm-serif",
+// fallback for PP Editorial New (self-hosted from /public/fonts when the files are present)
+const serif = Instrument_Serif({
+  variable: "--font-serif-fallback",
   subsets: ["latin"],
   weight: "400",
   style: ["normal", "italic"],

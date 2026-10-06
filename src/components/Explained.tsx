@@ -35,8 +35,8 @@ const formats = [
   },
   {
     href: "#can",
-    img: "/img/can.jpg",
-    pos: "object-center",
+    img: "/img/can-ice.jpg",
+    pos: "object-[50%_45%]",
     k: "the can",
     t: "take it into the moment.",
     d: "elixir & tonic, ready-poured. for picnics, festivals and the 3pm lull.",

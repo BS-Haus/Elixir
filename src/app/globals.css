@@ -1,5 +1,35 @@
 @import "tailwindcss";
 
+/* PP Editorial New (Pangram Pangram) — headlines */
+@font-face {
+  font-family: "PP Editorial New";
+  src: url("/fonts/PPEditorialNew-Ultralight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PP Editorial New";
+  src: url("/fonts/PPEditorialNew-UltralightItalic.otf") format("opentype");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PP Editorial New";
+  src: url("/fonts/PPEditorialNew-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PP Editorial New";
+  src: url("/fonts/PPEditorialNew-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 /*
  * elixir — "presence & play"
  * The page runs from dawn to night: ScrollTheme rewrites these variables as you scroll,
@@ -32,7 +62,7 @@
   --color-amber: #b9752f;
   --color-olive: #3d3f27;
 
-  --font-serif: var(--font-dm-serif);
+  --font-serif: "PP Editorial New", var(--font-serif-fallback), Georgia, serif;
   --font-sans: var(--font-hanken);
   --font-mono: var(--font-dm-mono);
 }
@@ -53,12 +83,16 @@ body {
   color: var(--bg);
 }
 
-/* headlines: high-contrast display serif, tight */
+/* headlines: PP Editorial New, fine and tight */
 h1,
 h2,
 h3,
 .font-serif {
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  font-weight: 400;
+}
+h1 {
+  font-weight: 200;
 }
 
 /* apothecary-label caps for labels, nav and buttons */

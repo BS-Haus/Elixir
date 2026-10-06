@@ -53,7 +53,7 @@ function ProductRow({ p, flip }: { p: Product; flip: boolean }) {
       className="grid scroll-mt-20 gap-10 md:grid-cols-12 md:items-center md:gap-10"
     >
       <Reveal className={`md:col-span-7 ${flip ? "md:order-2 md:col-start-6" : ""}`}>
-        <div className={`group relative overflow-hidden bg-stone ${p.id === "can" ? "aspect-square" : "aspect-[4/5]"}`}>
+        <div className={`group relative overflow-hidden bg-stone aspect-[4/5]`}>
           <Image
             src={p.image}
             alt={`${p.name}, ${p.size}`}
