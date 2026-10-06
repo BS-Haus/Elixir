@@ -1,10 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 import { formatPrice, products } from "@/lib/products";
 import { ease } from "./Reveal";
 
-/** Headline left, brand film in a portrait frame on the right (shot-by-shot framed cut). */
+/** Headline left, the serve in a portrait frame on the right. */
 export default function Hero() {
   const bottle = products.find((p) => p.id === "bottle")!;
 
@@ -60,19 +61,14 @@ export default function Hero() {
           className="md:col-span-5"
         >
           <div className="relative mx-auto aspect-[4/5] w-full max-w-[540px] overflow-hidden bg-stone">
-            <video
-              className="absolute inset-0 h-full w-full object-cover"
-              poster="/img/film-poster-portrait.jpg"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              aria-label="Elixir brand film: the bottle, golden-hour coastlines, palms and surf"
-            >
-              <source src="/video/film-portrait.mp4" type="video/mp4" media="(max-width: 767px)" />
-              <source src="/video/film-portrait-1080-h264.mp4" type="video/mp4" />
-            </video>
+            <Image
+              src="/img/shop-dropper.jpg"
+              alt="a pipette of elixir over a glass of tonic with ice and a slice of orange"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 40vw"
+              className="object-cover"
+            />
           </div>
           <p className="label mx-auto mt-4 flex max-w-[540px] justify-between text-muted">
             <span>0.0% abv</span>
