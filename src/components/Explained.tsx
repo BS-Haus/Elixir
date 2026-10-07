@@ -49,13 +49,6 @@ export default function Explained() {
     <section id="explained" className="scroll-mt-20 bg-paper px-5 py-28 md:px-10 md:py-40">
       <div className="mx-auto max-w-[1440px]">
         <Reveal className="max-w-3xl">
-          <Image
-            src="/img/botanical/gentian-buds-ink.png"
-            alt=""
-            width={406}
-            height={343}
-            className="mb-8 h-auto w-14 opacity-80 mix-blend-multiply md:w-16"
-          />
           <p className="label text-muted">the formula</p>
           <h2 className="mt-6 font-serif text-5xl leading-[1] tracking-[-0.01em] md:text-8xl">
             elixir, <em className="text-rust">explained.</em>
