@@ -17,8 +17,8 @@ export default function Ritual() {
         <Reveal className="md:col-span-5">
           <div className="relative aspect-[3/4] overflow-hidden">
             <Image
-              src="/img/shop-pour.jpg"
-              alt="elixir dropped from a pipette into glasses of tonic with grapefruit"
+              src="/img/ritual-steps.jpg"
+              alt="the ritual in four steps: ice into a glass, three pipettes of elixir, tonic poured slowly, a slice of orange"
               fill
               sizes="(max-width: 768px) 100vw, 40vw"
               className="object-cover"

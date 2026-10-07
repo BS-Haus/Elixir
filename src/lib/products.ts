@@ -32,7 +32,7 @@ export const products: Product[] = [
     variantId: "50378677584136",
     price: 24.99,
     size: "30 serves",
-    image: "/img/shop-product.jpg",
+    image: "/img/shelf.jpg",
     notes: ["gentian root", "red mandarin", "cardamom", "juniper"],
     details: ["non-alcoholic", "30 serves", "all natural", "hand-crafted"],
     blurb:

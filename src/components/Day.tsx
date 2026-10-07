@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Reveal } from "./Reveal";
 
 // "Lead with the moment": where Elixir fits in her day (strategy deck persona).
@@ -29,12 +30,26 @@ export default function Day() {
   return (
     <section className="px-5 py-28 md:px-10 md:py-40">
       <div className="mx-auto max-w-[1440px]">
-        <Reveal className="max-w-4xl">
-          <p className="label text-muted">a day with elixir</p>
-          <h2 className="mt-6 font-serif text-5xl leading-[1] md:text-8xl">
-            feel good, <em className="text-rust">without missing out.</em>
-          </h2>
-        </Reveal>
+        <div className="grid gap-12 md:grid-cols-12 md:items-end md:gap-10">
+          <Reveal className="md:col-span-7">
+            <p className="label text-muted">a day with elixir</p>
+            <h2 className="mt-6 font-serif text-5xl leading-[1] md:text-8xl">
+              feel good, <em className="text-rust">without missing out.</em>
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1} className="md:col-span-4 md:col-start-9">
+            <div className="relative aspect-[4/5] overflow-hidden bg-stone">
+              <Image
+                src="/img/dinner.jpg"
+                alt="three pipettes of elixir into a glass of tonic at a candlelit dinner with friends"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover"
+              />
+            </div>
+            <p className="label mt-4 text-muted">19.30 — good company</p>
+          </Reveal>
+        </div>
 
         <ol className="mt-16 grid border-t border-ink/15 sm:grid-cols-2 md:mt-24 lg:grid-cols-4">
           {moments.map((m, i) => (

@@ -26,8 +26,8 @@ const facts = [
 const formats = [
   {
     href: "#bottle",
-    img: "/img/shop-product.jpg",
-    pos: "object-[50%_38%]",
+    img: "/img/drop.jpg",
+    pos: "object-[50%_55%]",
     k: "the concentrate",
     t: "make your own serve.",
     d: "the dropper bottle. 30 serves for hosting, the home bar and the kitchen shelf.",
