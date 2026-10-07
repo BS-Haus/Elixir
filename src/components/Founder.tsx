@@ -1,10 +1,11 @@
 import Image from "next/image";
+import { Aura } from "./Aura";
 import { Reveal } from "./Reveal";
 
 /** "Behind the bitter": Charlotte & Seb's story, from Charlotte's launch post. */
 export default function Founder() {
   return (
-    <section id="founders" className="bg-stone px-5 py-28 md:px-10 md:py-36">
+    <section id="founders" className="overflow-x-clip bg-stone px-5 py-28 md:px-10 md:py-36">
       <div className="mx-auto grid max-w-[1440px] gap-12 md:grid-cols-12 md:gap-10">
         <Reveal className="md:col-span-5">
           <div className="relative aspect-[4/5] overflow-hidden bg-sand">
@@ -40,10 +41,12 @@ export default function Founder() {
             a year later he&apos;d left his corporate job, learned how to bring a drink to market and
             tested batch after batch, while charlotte shaped how elixir looks and speaks.
           </p>
-          <blockquote className="relative !mt-12 pl-6 font-serif text-3xl leading-[1.25] text-ink italic md:text-4xl">
-            <span aria-hidden className="band-y absolute inset-y-1 left-0 w-[2px]" />
-            from &lsquo;why aren&apos;t you drinking?&rsquo; to &lsquo;what&apos;s that you&apos;re
-            drinking?&rsquo;
+          <blockquote className="relative !mt-12 font-serif text-3xl leading-[1.25] text-ink italic md:text-4xl">
+            <Aura tone="rose" className="top-1/2 -left-[12%] w-[75%] -translate-y-1/2 opacity-35" />
+            <span className="relative">
+              from &lsquo;why aren&apos;t you drinking?&rsquo; to &lsquo;what&apos;s that you&apos;re
+              drinking?&rsquo;
+            </span>
           </blockquote>
           <a
             href="https://www.instagram.com/drink__elixir/"

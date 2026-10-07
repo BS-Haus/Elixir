@@ -76,6 +76,7 @@ body {
   color: var(--fg);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip; /* auras may bleed past the edge; never scroll sideways */
 }
 
 ::selection {
@@ -137,12 +138,19 @@ h1 {
   );
 }
 
+@utility aura-violet {
+  background: radial-gradient(
+    closest-side,
+    rgba(199, 146, 232, 0.85) 0%,
+    rgba(157, 103, 157, 0.55) 40%,
+    rgba(93, 96, 206, 0.25) 75%,
+    rgba(93, 96, 206, 0) 100%
+  );
+}
+
 /* the can's liquid as a fine line: gold → orange → rose → violet */
 @utility band {
   background: linear-gradient(90deg, #f3c160 0%, #e97c3e 30%, #c16878 65%, #5d60ce 100%);
-}
-@utility band-y {
-  background: linear-gradient(180deg, #f3c160 0%, #e97c3e 30%, #c16878 65%, #5d60ce 100%);
 }
 
 /* hide scrollbars on horizontal rails */

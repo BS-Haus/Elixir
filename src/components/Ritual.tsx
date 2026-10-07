@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Aura } from "./Aura";
 import { Reveal } from "./Reveal";
 
 const steps = [
@@ -12,9 +13,10 @@ const steps = [
 
 export default function Ritual() {
   return (
-    <section id="ritual" className="px-5 py-28 text-ink md:px-10 md:py-40">
+    <section id="ritual" className="overflow-x-clip px-5 py-28 text-ink md:px-10 md:py-40">
       <div className="mx-auto grid max-w-[1440px] gap-16 md:grid-cols-12 md:items-center md:gap-10">
-        <Reveal className="md:col-span-5">
+        <Reveal className="relative md:col-span-5">
+          <Aura tone="gold" className="-right-[22%] -bottom-[18%] w-[80%] opacity-70" />
           <div className="relative aspect-[3/4] overflow-hidden">
             <Image
               src="/img/ritual-steps.jpg"

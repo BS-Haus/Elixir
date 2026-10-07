@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Aura } from "./Aura";
 import { Reveal } from "./Reveal";
 
 // "The Formula" pillar: answer what it is, how it tastes, when to drink it, and can vs concentrate.
@@ -32,6 +33,7 @@ const formats = [
     t: "make your own serve.",
     d: "the dropper bottle. 30 serves for hosting, the home bar and the kitchen shelf.",
     cta: "shop the concentrate",
+    tone: "gold" as const,
   },
   {
     href: "#can",
@@ -41,6 +43,7 @@ const formats = [
     t: "take it into the moment.",
     d: "elixir & tonic, ready-poured. for picnics, festivals and the 3pm lull.",
     cta: "coming soon",
+    tone: "violet" as const,
   },
 ];
 
@@ -75,8 +78,7 @@ export default function Explained() {
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           {formats.map((f, i) => (
             <Reveal key={f.k} delay={i * 0.1}>
-              <a href={f.href} className="group relative flex h-full flex-col bg-stone">
-                <span aria-hidden className="band absolute inset-x-0 top-0 z-10 h-[2px]" />
+              <a href={f.href} className="group relative flex h-full flex-col overflow-hidden bg-stone">
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={f.img}
@@ -86,13 +88,17 @@ export default function Explained() {
                     className={`object-cover transition-transform duration-[2s] ease-out group-hover:scale-[1.03] ${f.pos}`}
                   />
                 </div>
-                <div className="flex flex-1 flex-col justify-between p-6 md:p-10">
-                  <div>
+                <div className="relative flex flex-1 flex-col justify-between p-6 md:p-10">
+                  <Aura
+                    tone={f.tone}
+                    className="-right-[18%] -bottom-[70%] w-[65%] opacity-45 transition-opacity duration-1000 group-hover:opacity-80"
+                  />
+                  <div className="relative">
                     <p className="label text-muted">{f.k}</p>
                     <p className="mt-4 font-serif text-3xl leading-[1.05] md:text-[2.6rem]">{f.t}</p>
                     <p className="mt-4 text-[15px] leading-[1.7] text-muted">{f.d}</p>
                   </div>
-                  <p className="label mt-6 text-ink transition-colors group-hover:text-rust">
+                  <p className="label relative mt-6 text-ink transition-colors group-hover:text-rust">
                     {f.cta} →
                   </p>
                 </div>

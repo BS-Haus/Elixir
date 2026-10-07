@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Aura } from "./Aura";
 import { Reveal } from "./Reveal";
 
 // "Lead with the moment": where Elixir fits in her day (strategy deck persona).
@@ -28,7 +29,7 @@ const moments = [
 
 export default function Day() {
   return (
-    <section className="px-5 py-28 md:px-10 md:py-40">
+    <section className="overflow-x-clip px-5 py-28 md:px-10 md:py-40">
       <div className="mx-auto max-w-[1440px]">
         <div className="grid gap-12 md:grid-cols-12 md:items-end md:gap-10">
           <Reveal className="md:col-span-7">
@@ -37,7 +38,8 @@ export default function Day() {
               feel good, <em className="text-rust">without missing out.</em>
             </h2>
           </Reveal>
-          <Reveal delay={0.1} className="md:col-span-4 md:col-start-9">
+          <Reveal delay={0.1} className="relative md:col-span-4 md:col-start-9">
+            <Aura tone="violet" className="-top-[18%] -left-[30%] w-[90%] opacity-40" />
             <div className="relative aspect-[4/5] overflow-hidden bg-stone">
               <Image
                 src="/img/dinner.jpg"

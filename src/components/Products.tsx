@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useCart } from "@/lib/cart";
 import { INSTAGRAM, formatPrice, products, type Product } from "@/lib/products";
 import { Qty } from "./CartDrawer";
+import { Aura } from "./Aura";
 import { Reveal, ease } from "./Reveal";
 
 function Disclosure({ title, children }: { title: string; children: React.ReactNode }) {
@@ -52,7 +53,11 @@ function ProductRow({ p, flip }: { p: Product; flip: boolean }) {
       id={p.id}
       className="grid scroll-mt-20 gap-10 md:grid-cols-12 md:items-center md:gap-10"
     >
-      <Reveal className={`md:col-span-7 ${flip ? "md:order-2 md:col-start-6" : ""}`}>
+      <Reveal className={`relative md:col-span-7 ${flip ? "md:order-2 md:col-start-6" : ""}`}>
+        <Aura
+          tone={flip ? "liquid" : "gold"}
+          className={`w-[75%] opacity-80 ${flip ? "-right-[16%] -bottom-[14%]" : "-top-[12%] -left-[16%]"}`}
+        />
         <div className={`group relative overflow-hidden bg-stone aspect-[4/5]`}>
           <Image
             src={p.image}
@@ -124,7 +129,7 @@ function ProductRow({ p, flip }: { p: Product; flip: boolean }) {
 
 export default function Products() {
   return (
-    <section id="shop" className="bg-paper px-5 py-28 md:px-10 md:py-40">
+    <section id="shop" className="overflow-x-clip bg-paper px-5 py-28 md:px-10 md:py-40">
       <div className="mx-auto max-w-[1440px]">
         <Reveal className="mb-20 max-w-2xl md:mb-28">
           <p className="label text-muted">the collection</p>
