@@ -13,10 +13,13 @@ function DayClock({ p }: { p: number }) {
       <span>{timeAt(p)}</span>
       <span aria-hidden className="relative hidden h-3 w-24 items-center sm:flex md:w-36">
         <span className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-current opacity-30" />
+        {/* the day fills with the can's liquid, gold at dawn to violet at night */}
         <span
-          className="absolute top-1/2 left-0 h-px -translate-y-1/2 bg-current opacity-80"
+          className="absolute top-1/2 left-0 h-px -translate-y-1/2 overflow-hidden"
           style={{ width: `${p * 100}%` }}
-        />
+        >
+          <span className="band absolute inset-y-0 left-0 w-24 md:w-36" />
+        </span>
         <span
           className="absolute top-1/2 block h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full"
           style={{

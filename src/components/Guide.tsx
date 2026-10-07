@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Reveal } from "./Reveal";
 import { Signup } from "./Signup";
 
@@ -10,8 +11,20 @@ const issues = [
 
 export default function Guide() {
   return (
-    <section className="bg-brand px-5 py-28 text-cream md:px-10 md:py-36">
-      <div className="mx-auto max-w-[1440px]">
+    <section className="relative overflow-hidden bg-brand px-5 py-28 text-cream md:px-10 md:py-36">
+      {/* candlelight glow and a cream gentian, like a watermark */}
+      <div
+        aria-hidden
+        className="aura-gold pointer-events-none absolute -top-[30%] -right-[12%] aspect-square w-[70%] opacity-30 blur-2xl md:w-[45%]"
+      />
+      <Image
+        src="/img/botanical/gentian-plant-cream.png"
+        alt=""
+        width={752}
+        height={1552}
+        className="pointer-events-none absolute -right-10 -bottom-24 hidden h-[115%] w-auto opacity-[0.14] md:block"
+      />
+      <div className="relative mx-auto max-w-[1440px]">
         <div className="grid gap-12 md:grid-cols-12 md:gap-10">
           <Reveal className="md:col-span-6">
             <p className="label text-cream/70">the good energy guide · every friday</p>

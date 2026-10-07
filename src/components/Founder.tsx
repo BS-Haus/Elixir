@@ -40,7 +40,8 @@ export default function Founder() {
             a year later he&apos;d left his corporate job, learned how to bring a drink to market and
             tested batch after batch, while charlotte shaped how elixir looks and speaks.
           </p>
-          <blockquote className="!mt-12 border-l-2 border-rust pl-6 font-serif text-3xl leading-[1.25] text-ink italic md:text-4xl">
+          <blockquote className="relative !mt-12 pl-6 font-serif text-3xl leading-[1.25] text-ink italic md:text-4xl">
+            <span aria-hidden className="band-y absolute inset-y-1 left-0 w-[2px]" />
             from &lsquo;why aren&apos;t you drinking?&rsquo; to &lsquo;what&apos;s that you&apos;re
             drinking?&rsquo;
           </blockquote>

@@ -10,7 +10,7 @@ export default function Hero() {
   const bottle = products.find((p) => p.id === "bottle")!;
 
   return (
-    <section id="top" className="bg-paper">
+    <section id="top" className="overflow-hidden bg-paper">
       <div className="mx-auto grid min-h-[100svh] max-w-[1440px] items-center gap-12 px-5 pt-28 pb-16 md:grid-cols-12 md:gap-10 md:px-10 md:pt-28 md:pb-20">
         <div className="md:col-span-6">
           <motion.p
@@ -58,8 +58,13 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.25, duration: 1.6, ease }}
-          className="md:col-span-6"
+          className="relative md:col-span-6"
         >
+          {/* the can's liquid, glowing softly out from behind the serve */}
+          <div
+            aria-hidden
+            className="aura-liquid pointer-events-none absolute -top-[8%] -left-[26%] aspect-square w-[80%] opacity-80 blur-2xl"
+          />
           <div className="relative aspect-[4/5] w-full overflow-hidden bg-stone md:aspect-auto md:h-[calc(100svh-9.5rem)] md:min-h-[560px]">
             <Image
               src="/img/shop-dropper.jpg"
@@ -70,7 +75,7 @@ export default function Hero() {
               className="object-cover"
             />
           </div>
-          <p className="label mt-4 flex justify-between text-muted">
+          <p className="label relative mt-4 flex justify-between text-muted">
             <span>0.0% abv</span>
             <span>30 serves per bottle</span>
           </p>
