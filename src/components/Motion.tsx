@@ -59,7 +59,8 @@ export function Parallax({
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [`-${amount}%`, `${amount}%`]);
   return (
-    <div ref={ref} className={`relative overflow-hidden ${className}`}>
+    // positioned by the caller when it fills a card (absolute inset-0); otherwise it holds its own aspect box
+    <div ref={ref} className={`overflow-hidden ${/\b(absolute|fixed)\b/.test(className) ? "" : "relative"} ${className}`}>
       <motion.div style={reduce ? undefined : { y }} className="absolute -inset-y-[8%] inset-x-0">
         {children}
       </motion.div>
