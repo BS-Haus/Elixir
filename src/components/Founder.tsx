@@ -1,62 +1,57 @@
 import Image from "next/image";
-import { Aura } from "./Aura";
+import { INSTAGRAM } from "@/lib/products";
 import { Reveal } from "./Reveal";
+import { Star } from "./Star";
 
-/** "Behind the bitter": Charlotte & Seb's story, from Charlotte's launch post. */
+/** Charlotte & Seb's story, from Charlotte's launch post, by candlelight. */
 export default function Founder() {
   return (
-    <section id="founders" className="overflow-x-clip bg-stone px-5 py-28 md:px-10 md:py-36">
-      <div className="mx-auto grid max-w-[1440px] gap-12 md:grid-cols-12 md:gap-10">
-        <Reveal className="md:col-span-5">
-          <div className="relative aspect-[4/5] overflow-hidden bg-sand">
-            <Image
-              src="/img/founders.jpg"
-              alt="photo-booth strips of charlotte and seb holding bottles of elixir, beside a glass of elixir and tonic"
-              fill
-              sizes="(max-width: 768px) 100vw, 40vw"
-              className="object-cover object-[62%_50%]"
-            />
-          </div>
-        </Reveal>
-        <Reveal
-          delay={0.1}
-          className="space-y-6 text-[17px] leading-[1.8] text-muted md:col-span-6 md:col-start-7 md:self-center"
-        >
-          <p className="label">behind the bitter</p>
-          <h2 className="!mt-6 font-serif text-5xl leading-[1] tracking-[-0.01em] text-ink md:text-7xl">
-            made by charlotte <em className="text-rust">&amp; seb.</em>
-          </h2>
-          <p className="label !mt-6">husband &amp; wife · london</p>
-          <p className="!mt-10">
-            elixir started at home. seb stopped drinking for his health, and charlotte — already deep
-            into wellness — soon followed him to almost zero. one of the best decisions they&apos;ve
-            ever made.
-          </p>
-          <p>
-            but years of mezcal and margaritas had set the bar. nothing on the non-alc shelf tasted
-            as good, felt like a proper drink, and was vaguely good for you. so seb had an idea: a
-            digestive bitters you could add to tonic or soda — complex flavour, with benefits.
-          </p>
-          <p>
-            a year later he&apos;d left his corporate job, learned how to bring a drink to market and
-            tested batch after batch, while charlotte shaped how elixir looks and speaks.
-          </p>
-          <blockquote className="relative !mt-12 font-serif text-3xl leading-[1.25] text-ink italic md:text-4xl">
-            <Aura tone="rose" className="top-1/2 -left-[12%] w-[75%] -translate-y-1/2 opacity-35" />
-            <span className="relative">
-              from &lsquo;why aren&apos;t you drinking?&rsquo; to &lsquo;what&apos;s that you&apos;re
-              drinking?&rsquo;
-            </span>
-          </blockquote>
-          <a
-            href="https://www.instagram.com/drink__elixir/"
-            target="_blank"
-            rel="noreferrer"
-            className="label !mt-10 inline-block border-b border-ink/40 pb-1 text-ink transition-colors hover:border-ink"
-          >
-            follow along as we build elixir
-          </a>
-        </Reveal>
+    <section id="founders" className="scroll-mt-24 px-5 py-24 md:px-10 md:py-32">
+      <div className="grain relative mx-auto max-w-[1440px] overflow-hidden rounded-[20px] bg-ember text-cream">
+        <div aria-hidden className="aura-candle pointer-events-none absolute inset-0" />
+        <div className="relative z-[2] grid items-center gap-12 p-6 md:grid-cols-12 md:gap-10 md:p-14">
+          <Reveal className="md:col-span-5">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[16px] ring-1 ring-cream/15">
+              <Image
+                src="/img/founders.jpg"
+                alt="photo-booth strips of charlotte and seb holding bottles of elixir, beside a glass of elixir and tonic"
+                fill
+                sizes="(max-width: 768px) 100vw, 40vw"
+                className="object-cover object-[62%_50%]"
+              />
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1} className="md:col-span-6 md:col-start-7">
+            <p className="note flex gap-3 text-cream/60">
+              founder-led <span aria-hidden>·</span> london
+            </p>
+            <h2 className="caps mt-6 text-[36px] leading-[1.08] md:text-[48px]">
+              made by charlotte &amp; seb. for the seekers.
+            </h2>
+            <div className="mt-8 space-y-5 text-[19px] leading-[1.6] text-cream/75">
+              <p>
+                Elixir started at home. Seb stopped drinking for his health, and Charlotte, already deep into
+                wellness, soon followed him to almost zero. One of the best decisions they’ve ever made.
+              </p>
+              <p>
+                But years of mezcal and margaritas had set the bar. Nothing on the non-alc shelf tasted as good,
+                felt like a proper drink, and was vaguely good for you. So Seb had an idea: a digestive bitters you
+                could add to tonic or soda. Complex flavour, with benefits.
+              </p>
+            </div>
+            <blockquote className="mt-10 flex gap-4 text-[26px] leading-[1.3] italic md:text-[30px]">
+              <Star className="mt-2 h-5 w-5 shrink-0 text-gold" />
+              <span>
+                From ‘why aren’t you drinking?’ to ‘what’s that you’re drinking?’
+              </span>
+            </blockquote>
+            <p className="note mt-5 text-cream/60">charlotte &amp; seb, founders</p>
+            <a href={INSTAGRAM} target="_blank" rel="noreferrer" className="btn btn-candle mt-10">
+              follow the journey
+            </a>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

@@ -1,54 +1,57 @@
-"use client";
-
 import Image from "next/image";
-import { Aura } from "./Aura";
+import { formatPrice, products } from "@/lib/products";
+import { Orb } from "./Orb";
 import { Reveal } from "./Reveal";
 
-const steps = [
-  { n: "i", t: "ice", d: "a heavy glass, filled generously." },
-  { n: "ii", t: "three pipettes of elixir", d: "watch it bloom, amber into clear." },
-  { n: "iii", t: "a light tonic", d: "poured slowly, to keep the bubbles fine." },
-  { n: "iv", t: "a slice of orange", d: "and a moment that is entirely yours." },
+const drops = [
+  { tone: "gold" as const, n: "I", t: "One for gratitude.", a: "for what you already have." },
+  { tone: "rose" as const, n: "II", t: "One for intention.", a: "for what you’re calling in." },
+  { tone: "violet" as const, n: "III", t: "One for the work.", a: "for what it will take." },
 ];
 
 export default function Ritual() {
+  const bottle = products.find((p) => p.id === "bottle")!;
   return (
-    <section id="ritual" className="overflow-x-clip px-5 py-28 text-ink md:px-10 md:py-40">
-      <div className="mx-auto grid max-w-[1440px] gap-16 md:grid-cols-12 md:items-center md:gap-10">
-        <Reveal className="relative md:col-span-5">
-          <Aura tone="gold" className="-right-[22%] -bottom-[18%] w-[80%] opacity-70" />
-          <div className="relative aspect-[3/4] overflow-hidden">
+    <section id="ritual" className="scroll-mt-24 px-5 py-24 md:px-10 md:py-32">
+      <div className="mx-auto grid max-w-[1440px] items-center gap-12 md:grid-cols-2 md:gap-16">
+        <Reveal className="relative">
+          <div aria-hidden className="aura-gold pointer-events-none absolute -right-[14%] -bottom-[12%] aspect-square w-[70%] opacity-40 blur-3xl" />
+          <div className="relative aspect-[3/4] overflow-hidden rounded-[20px]">
             <Image
               src="/img/ritual-steps.jpg"
               alt="the ritual in four steps: ice into a glass, three pipettes of elixir, tonic poured slowly, a slice of orange"
               fill
-              sizes="(max-width: 768px) 100vw, 40vw"
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
           </div>
         </Reveal>
 
-        <div className="md:col-span-6 md:col-start-7">
-          <Reveal>
-            <p className="label text-muted">the ritual</p>
-            <h2 className="mt-6 font-serif text-5xl leading-[1] tracking-[-0.01em] md:text-7xl">
-              the drink that savours <em>the moment</em>
-            </h2>
-          </Reveal>
-          <ol className="mt-16 border-t border-ink/15">
-            {steps.map((s, i) => (
-              <Reveal key={s.n} delay={i * 0.08}>
-                <li className="grid grid-cols-[3rem_1fr] items-baseline border-b border-ink/15 py-6 md:grid-cols-[4rem_1fr_1fr]">
-                  <span className="font-serif text-lg text-muted italic">{s.n}</span>
-                  <span className="font-serif text-2xl md:text-3xl">{s.t}</span>
-                  <span className="col-start-2 mt-2 text-[15px] text-muted md:col-start-3 md:mt-0">
-                    {s.d}
-                  </span>
-                </li>
-              </Reveal>
+        <Reveal delay={0.1}>
+          <p className="note text-muted">the signature serve</p>
+          <h2 className="caps mt-6 text-[44px] leading-[1.02] md:text-[64px]">
+            the ritual.
+            <br />
+            drop in.
+          </h2>
+          <p className="mt-8 max-w-md text-[26px] leading-[1.3]">
+            Three pipettes, a light tonic, ice and a slice of orange. Then experiment as you wish.
+          </p>
+          <ol className="mt-10 border-t border-ink/15">
+            {drops.map((d) => (
+              <li key={d.n} className="flex items-center gap-6 border-b border-ink/15 py-5">
+                <Orb tone={d.tone} label={d.n} size={48} />
+                <div>
+                  <p className="text-[24px] leading-tight">{d.t}</p>
+                  <p className="voice mt-1 text-muted">{d.a}</p>
+                </div>
+              </li>
             ))}
           </ol>
-        </div>
+          <a href="#bottle" className="btn mt-10">
+            drop in · {formatPrice(bottle.price!)} →
+          </a>
+        </Reveal>
       </div>
     </section>
   );

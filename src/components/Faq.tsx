@@ -2,29 +2,51 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
-import { faqs } from "@/lib/content";
 import { Reveal, ease } from "./Reveal";
 
+const faqs = [
+  {
+    q: "Is Elixir alcohol free?",
+    a: "Yes. The Elixir is 0%, and so is E&T, coming soon. Real roots, real botanicals, made the slow way in London.",
+  },
+  {
+    q: "How do I take it?",
+    a: "Our signature serve is three pipettes with a light tonic, ice and a slice of orange. Then experiment with mixers and garnishes to find your own.",
+  },
+  {
+    q: "How long does a bottle last?",
+    a: "Each bottle makes more than 30 drinks, at three pipettes a serve.",
+  },
+  {
+    q: "What’s in it?",
+    a: "Gentian root, organic flavourings, water, vegetable glycerine and malic acid. Stabilisers: sunflower lecithin, acacia gum. No sugar, no artificial additives.",
+  },
+  {
+    q: "Is it good for me?",
+    a: "Herbalists have long used bitterness to bring the body out of fight or flight and back into rest and digest. That’s traditional herbal lore: Elixir is a drink, not a treatment.",
+  },
+  { q: "How much is delivery?", a: "Free UK delivery on orders over £40." },
+];
+
 export default function Faq() {
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState(0);
   return (
-    <section className="border-t border-ink/10 bg-paper px-5 py-28 md:px-10 md:py-36">
-      <div className="mx-auto grid max-w-[1440px] gap-12 md:grid-cols-12">
-        <Reveal className="md:col-span-4">
-          <p className="label text-muted">before you pour</p>
-          <h2 className="mt-6 font-serif text-5xl leading-[1] md:text-6xl">questions.</h2>
+    <section className="px-5 py-24 md:px-10 md:py-32">
+      <div className="mx-auto max-w-3xl">
+        <Reveal className="text-center">
+          <h2 className="caps text-[40px] leading-none md:text-[56px]">good questions.</h2>
         </Reveal>
-        <div className="border-t border-ink/10 md:col-span-7 md:col-start-6">
+        <div className="mt-14 border-t border-ink/25">
           {faqs.map((f, i) => (
-            <div key={f.q} className="border-b border-ink/10">
+            <div key={f.q} className="border-b border-ink/15">
               <button
-                onClick={() => setOpen(open === i ? null : i)}
+                onClick={() => setOpen(open === i ? -1 : i)}
                 aria-expanded={open === i}
-                className="flex w-full items-center justify-between py-6 text-left font-serif text-2xl"
+                className="flex w-full items-center justify-between gap-6 py-6 text-left text-[24px] leading-tight"
               >
                 {f.q}
-                <span aria-hidden className={`ml-6 font-sans text-base transition-transform duration-500 ${open === i ? "rotate-45" : ""}`}>
-                  +
+                <span aria-hidden className="text-[26px] text-muted">
+                  {open === i ? "−" : "+"}
                 </span>
               </button>
               <AnimatePresence initial={false}>
@@ -36,7 +58,7 @@ export default function Faq() {
                     transition={{ duration: 0.5, ease }}
                     className="overflow-hidden"
                   >
-                    <p className="max-w-xl pb-6 text-[15px] leading-[1.8] text-muted">{f.a}</p>
+                    <p className="max-w-2xl pb-7 text-[19px] leading-[1.6] text-muted">{f.a}</p>
                   </motion.div>
                 )}
               </AnimatePresence>

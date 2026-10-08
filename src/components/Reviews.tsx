@@ -1,31 +1,31 @@
 import { testimonials } from "@/lib/content";
 import { Reveal } from "./Reveal";
 
-/** "In good company": real customer words from the current site, in a quiet rail. */
+/** Real customer words, from the Senja widget on drink-elixir.co. */
 export default function Reviews() {
   return (
-    <section id="reviews" className="scroll-mt-20 bg-paper py-28 md:py-36">
-      <Reveal className="mx-auto flex max-w-[1440px] flex-col justify-between gap-6 px-5 md:flex-row md:items-end md:px-10">
-        <div>
-          <p className="label text-muted">in good company</p>
-          <h2 className="mt-6 font-serif text-5xl leading-[1] tracking-[-0.01em] md:text-7xl">
-            for the <em className="text-rust">free spirited.</em>
-          </h2>
-        </div>
-        <p className="max-w-xs text-[15px] leading-[1.7] text-muted">
-          from those who&rsquo;ve given up drinking, and those who simply drink less.
+    <section className="py-24 md:py-32">
+      <Reveal className="px-5 text-center">
+        <p className="note text-muted">what our customers say</p>
+        <h2 className="caps mt-4 text-[40px] leading-none md:text-[56px]">poured. tasted. told.</h2>
+        <p className="voice mt-5 text-muted">
+          <span className="tracking-[0.2em] text-gold">★★★★★</span> from the people who drink it.
         </p>
       </Reveal>
 
-      <div className="rail mt-14 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 md:mt-20 md:px-10">
-        {testimonials.map((t) => (
-          <figure
-            key={t.name}
-            className="flex w-[82vw] shrink-0 snap-start flex-col justify-between bg-stone p-8 sm:w-[24rem] md:p-10"
-          >
-            <blockquote className="font-serif text-[1.6rem] leading-[1.28]">&ldquo;{t.quote}&rdquo;</blockquote>
-            <figcaption className="label mt-10 text-muted">{t.name}</figcaption>
-          </figure>
+      <div className="rail mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 md:px-10">
+        {testimonials.map((t, i) => (
+          <Reveal key={t.name} delay={Math.min(i, 3) * 0.08} className="shrink-0 snap-start">
+            <figure className="flex h-full w-[80vw] flex-col justify-between rounded-[20px] bg-raised p-7 sm:w-[340px] md:p-8">
+              <div>
+                <p aria-label="five stars" className="tracking-[0.2em] text-gold">
+                  ★★★★★
+                </p>
+                <blockquote className="mt-5 text-[22px] leading-[1.3]">&ldquo;{t.quote}&rdquo;</blockquote>
+              </div>
+              <figcaption className="label mt-8 text-[11px] text-muted">{t.name}.</figcaption>
+            </figure>
+          </Reveal>
         ))}
       </div>
     </section>

@@ -4,81 +4,70 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { formatPrice, products } from "@/lib/products";
 import { ease } from "./Reveal";
+import { Star } from "./Star";
 
-/** Headline left, the serve in a portrait frame on the right. */
+const facts = [
+  ["serves", "30+ a bottle"],
+  ["sugar", "none"],
+  ["made", "by hand, london"],
+];
+
+/** The lockup: the table on the left, the carved stack on the right. */
 export default function Hero() {
   const bottle = products.find((p) => p.id === "bottle")!;
 
   return (
-    <section id="top" className="overflow-hidden bg-paper">
-      <div className="mx-auto grid min-h-[100svh] max-w-[1440px] items-center gap-12 px-5 pt-28 pb-16 md:grid-cols-12 md:gap-10 md:px-10 md:pt-28 md:pb-20">
-        <div className="md:col-span-6">
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 1.2, ease }}
-            className="label text-muted"
-          >
-            non-alcoholic botanical bitters · made in london
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 1.4, ease }}
-            className="mt-6 font-serif text-[clamp(3.6rem,7.6vw,8.5rem)] leading-[0.92]"
-          >
-            all the ritual.
-            <br />
-            <em className="text-rust">none of the alcohol.</em>
-          </motion.h1>
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 1.2, ease }}
-          >
-            <p className="mt-8 max-w-md text-[16px] leading-[1.55] text-muted">
-              an ancient ritual for modern good times. a 0% bitters of gentian root, red mandarin and
-              cardamom — three pipettes into tonic for the dinner, the gig, or a moment to yourself.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <a href="#bottle" className="label bg-ink px-8 py-4 text-paper transition-colors duration-500 hover:bg-rust">
-                shop elixir — {formatPrice(bottle.price!)}
-              </a>
-              <a
-                href="#explained"
-                className="label border border-ink/25 px-8 py-4 transition-colors duration-500 hover:border-ink"
-              >
-                what is elixir?
-              </a>
-            </div>
-          </motion.div>
-        </div>
+    <section id="top" className="grid pt-[100px] md:min-h-[100svh] md:grid-cols-2 md:pt-[108px]">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.6, ease }}
+        className="relative aspect-[4/5] md:aspect-auto"
+      >
+        <Image
+          src="/img/v9/hero-table.jpg"
+          alt="the elixir bottle on a long lunch table with friends, plates and glasses of elixir and tonic"
+          fill
+          priority
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover"
+        />
+        <span className="sticker absolute bottom-6 left-6">drop in.</span>
+      </motion.div>
+
+      <div className="relative flex items-center justify-center overflow-hidden px-6 py-20 md:px-12">
+        {/* the can's liquid, glowing softly behind the lockup */}
+        <div aria-hidden className="aura-liquid drift pointer-events-none absolute top-[6%] left-1/2 aspect-square w-[70%] -translate-x-1/2 opacity-20 blur-3xl" />
 
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.25, duration: 1.6, ease }}
-          className="relative md:col-span-6"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 1.4, ease }}
+          className="relative flex max-w-xl flex-col items-center text-center"
         >
-          {/* the can's liquid, glowing softly out from behind the serve */}
-          <div
-            aria-hidden
-            className="aura-liquid pointer-events-none absolute -top-[8%] -left-[26%] aspect-square w-[80%] opacity-80 blur-2xl"
-          />
-          <div className="relative aspect-[4/5] w-full overflow-hidden bg-stone md:aspect-auto md:h-[calc(100svh-9.5rem)] md:min-h-[560px]">
-            <Image
-              src="/img/shop-dropper.jpg"
-              alt="a pipette of elixir over a glass of tonic with ice and a slice of orange"
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
-            />
-          </div>
-          <p className="label relative mt-4 flex justify-between text-muted">
-            <span>0.0% abv</span>
-            <span>30 serves per bottle</span>
+          <Star className="h-6 w-6 text-ink" />
+          <h1 className="caps mt-6 flex flex-col items-center leading-none">
+            <span className="text-[18px] tracking-[0.04em] md:text-[22px]">made for</span>
+            <span className="mt-2 text-[clamp(3.4rem,7vw,6.5rem)] leading-[0.95]">presence</span>
+            <span className="mt-3 text-[18px] tracking-[0.04em] md:text-[22px]">and play.</span>
+          </h1>
+          <p className="mt-8 text-[26px] leading-[1.25] md:text-[30px]">
+            Gentian root, with hints of red mandarin, cardamom and juniper.
           </p>
+
+          <dl className="mt-10 grid w-full grid-cols-3 border-y border-ink/15">
+            {facts.map(([k, v], i) => (
+              <div key={k} className={`py-4 ${i ? "border-l border-ink/15" : ""}`}>
+                <dt className="label text-[11px] text-muted">{k}</dt>
+                <dd className="mt-1 text-[18px] leading-tight first-letter:uppercase">{v}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <a href="#shop" className="btn mt-10">
+            shop the elixir · {formatPrice(bottle.price!)} →
+          </a>
+          <p className="voice mt-5 text-muted">three pipettes, a light tonic. £0.83 a serve.</p>
         </motion.div>
       </div>
     </section>

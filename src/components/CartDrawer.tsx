@@ -61,7 +61,7 @@ export default function CartDrawer() {
               </p>
               <div className="mt-3 h-px bg-ink/10">
                 <div
-                  className="h-px bg-rust transition-all duration-700"
+                  className="band h-px transition-all duration-700"
                   style={{ width: `${Math.min(100, (subtotal / FREE_SHIPPING) * 100)}%` }}
                 />
               </div>
@@ -101,7 +101,7 @@ export default function CartDrawer() {
               <button
                 disabled={!count}
                 onClick={checkout}
-                className="label mt-6 w-full bg-ink py-4 text-paper transition-colors duration-500 hover:bg-rust disabled:opacity-30"
+                className="btn mt-6 w-full disabled:opacity-30"
               >
                 checkout
               </button>

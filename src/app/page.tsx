@@ -1,17 +1,17 @@
 import CartDrawer from "@/components/CartDrawer";
-import Day from "@/components/Day";
-import Explained from "@/components/Explained";
 import Faq from "@/components/Faq";
+import FirstOrder from "@/components/FirstOrder";
 import Footer from "@/components/Footer";
 import Founder from "@/components/Founder";
-import Guide from "@/components/Guide";
 import Hero from "@/components/Hero";
+import Manifest from "@/components/Manifest";
 import Nav from "@/components/Nav";
-import Products from "@/components/Products";
+import Nervous from "@/components/Nervous";
 import Reviews from "@/components/Reviews";
 import Ritual from "@/components/Ritual";
-import Story from "@/components/Story";
-import Values from "@/components/Values";
+import Shop from "@/components/Shop";
+import WhyBitters from "@/components/WhyBitters";
+import Wild from "@/components/Wild";
 
 export default function Home() {
   return (
@@ -19,16 +19,16 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <Values />
-        <Explained />
-        <Products />
+        <Shop />
         <Reviews />
+        <WhyBitters />
+        <Nervous />
         <Ritual />
-        <Day />
-        <Story />
+        <Manifest />
         <Founder />
-        <Guide />
+        <Wild />
         <Faq />
+        <FirstOrder />
       </main>
       <Footer />
       <CartDrawer />

@@ -1,22 +1,21 @@
 // A day in the life of the page: scroll progress (0 → 1) maps to the time of day,
-// and each stop is a full palette. Colours come from the brand + strategy deck
-// (cream, sand, amber, rust, deep olive, espresso).
+// and each stop is a full palette. Morning ivory, golden hour, a rose dusk,
+// amber glass, then candlelit ember: the brand's two grounds, and the hours between.
 
 type Palette = { bg: string; fg: string; muted: string; card: string; card2: string; accent: string };
 type Stop = { at: number; p: Palette };
 
-const DAY = { fg: "#1f1a17", muted: "#6f655c", accent: "#8b3f24" };
-const NIGHT = { fg: "#efe8dd", muted: "#b5a899", accent: "#d39a5e" };
+const DAY = { fg: "#1d1712", muted: "#6a5f55", accent: "#1d1712" };
+const NIGHT = { fg: "#f3ebdf", muted: "#c2b3a3", accent: "#ee974f" };
 
 export const stops: Stop[] = [
-  { at: 0.0, p: { bg: "#f4efe7", card: "#e9e1d5", card2: "#e2d3bd", ...DAY } }, // dawn
-  { at: 0.22, p: { bg: "#f2e8d8", card: "#e8dbc6", card2: "#dfcbad", ...DAY } }, // morning
-  { at: 0.42, p: { bg: "#ecd9bb", card: "#e2caa6", card2: "#d6b88c", ...DAY } }, // golden hour
-  { at: 0.5, p: { bg: "#e4c7a0", card: "#d9b68a", card2: "#cda679", ...DAY, muted: "#5f5246" } },
-  { at: 0.56, p: { bg: "#6a4430", card: "#7a5038", card2: "#835a40", ...NIGHT, muted: "#d2c0ad" } }, // dusk
-  { at: 0.72, p: { bg: "#3d3f27", card: "#484a30", card2: "#525438", ...NIGHT } }, // evening, deep olive
-  { at: 0.88, p: { bg: "#241a14", card: "#2f231b", card2: "#382a20", ...NIGHT } }, // night
-  { at: 1.0, p: { bg: "#1d1613", card: "#281e18", card2: "#30241c", ...NIGHT } }, // late
+  { at: 0.0, p: { bg: "#edebe0", card: "#f6f4ec", card2: "#e3e1d3", ...DAY } }, // morning ivory
+  { at: 0.25, p: { bg: "#ece6d8", card: "#f4efe4", card2: "#e2dac8", ...DAY } },
+  { at: 0.45, p: { bg: "#eadcc4", card: "#f2e7d4", card2: "#dfceb2", ...DAY } }, // golden hour
+  { at: 0.58, p: { bg: "#dfc5b4", card: "#eadacd", card2: "#d4b6a4", ...DAY } }, // rose dusk
+  { at: 0.66, p: { bg: "#633f27", card: "#6e4830", card2: "#77503a", ...NIGHT } }, // amber glass
+  { at: 0.8, p: { bg: "#2f2219", card: "#3a2a1e", card2: "#43311f", ...NIGHT } }, // candlelight
+  { at: 1.0, p: { bg: "#241912", card: "#2f2219", card2: "#3a2a1e", ...NIGHT } }, // ember, late
 ];
 
 const hex = (h: string) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));

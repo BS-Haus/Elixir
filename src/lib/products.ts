@@ -27,12 +27,12 @@ export const products: Product[] = [
   {
     id: "bottle",
     index: "01",
-    name: "elixir bitters",
+    name: "The Elixir",
     format: "the bottle",
     variantId: "50378677584136",
     price: 24.99,
     size: "30 serves",
-    image: "/img/shelf.jpg",
+    image: "/img/v9/product-bottle.jpg",
     notes: ["gentian root", "red mandarin", "cardamom", "juniper"],
     details: ["non-alcoholic", "30 serves", "all natural", "hand-crafted"],
     blurb:
@@ -43,14 +43,14 @@ export const products: Product[] = [
   {
     id: "can",
     index: "02",
-    name: "herbal bitters & tonic",
+    name: "E&T",
     format: "the can",
     variantId: process.env.NEXT_PUBLIC_CAN_VARIANT_ID ?? null,
     price: process.env.NEXT_PUBLIC_CAN_PRICE
       ? Number(process.env.NEXT_PUBLIC_CAN_PRICE)
       : null,
     size: "200ml",
-    image: "/img/can-bowl.jpg",
+    image: "/img/v9/product-can.png",
     notes: ["cardamom", "bitter orange", "gentian root"],
     details: ["0.0% abv", "33 kcal", "low sugar", "vegan & gluten free"],
     blurb:
