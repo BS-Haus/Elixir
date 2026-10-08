@@ -82,8 +82,8 @@ const tiles: Tile[] = [
     cutH: 908,
     scale: "h-[64%]",
     aura: "aura-rose",
-    life: "/img/ritual-steps.jpg",
-    lifeAlt: "the ritual in four steps: ice, three pipettes, tonic, a slice of orange",
+    life: "/img/ritual-2-drops.jpg",
+    lifeAlt: "elixir dropped from a pipette into a glass of ice",
     soon: true,
   },
 ];

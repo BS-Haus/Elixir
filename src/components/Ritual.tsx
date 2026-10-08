@@ -1,8 +1,15 @@
 import Image from "next/image";
 import { formatPrice, products } from "@/lib/products";
 import { Orb } from "./Orb";
-import { Parallax, Words } from "./Motion";
+import { Words } from "./Motion";
 import { Reveal } from "./Reveal";
+
+const steps = [
+  { n: "i", t: "ice.", img: "/img/ritual-1-ice.jpg", alt: "a hand dropping ice into an amber glass" },
+  { n: "ii", t: "three pipettes.", img: "/img/ritual-2-drops.jpg", alt: "elixir dropped from a pipette into the glass" },
+  { n: "iii", t: "a light tonic.", img: "/img/ritual-3-tonic.jpg", alt: "tonic poured slowly over the ice" },
+  { n: "iv", t: "a slice of orange.", img: "/img/ritual-4-orange.jpg", alt: "a slice of orange placed into the drink" },
+];
 
 const drops = [
   { tone: "gold" as const, n: "I", t: "One for gratitude.", a: "for what you already have." },
@@ -15,18 +22,29 @@ export default function Ritual() {
   return (
     <section id="ritual" className="scroll-mt-24 px-5 py-24 md:px-10 md:py-32">
       <div className="mx-auto grid max-w-[1440px] items-center gap-12 md:grid-cols-2 md:gap-16">
-        <Reveal className="relative">
+        <div className="relative">
           <div aria-hidden className="aura-gold pointer-events-none absolute -right-[14%] -bottom-[12%] aspect-square w-[70%] opacity-40 blur-3xl" />
-          <Parallax className="aspect-[3/4] rounded-[20px]" amount={5}>
-            <Image
-              src="/img/ritual-steps.jpg"
-              alt="the ritual in four steps: ice into a glass, three pipettes of elixir, tonic poured slowly, a slice of orange"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
-            />
-          </Parallax>
-        </Reveal>
+          {/* the four steps, one tile each; the right column sits a little lower, like a contact sheet */}
+          <ol className="relative grid grid-cols-2 gap-3 md:gap-4">
+            {steps.map((st, i) => (
+              <Reveal as="li" key={st.n} delay={i * 0.15} className={i % 2 ? "translate-y-[8%]" : ""}>
+                <figure className="group relative aspect-[3/4] overflow-hidden rounded-[16px]">
+                  <Image
+                    src={st.img}
+                    alt={st.alt}
+                    fill
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-[1.6s] ease-out group-hover:scale-[1.05]"
+                  />
+                  <figcaption className="absolute inset-x-0 bottom-0 flex items-baseline gap-3 bg-gradient-to-t from-night/70 to-transparent px-4 pt-10 pb-3 text-cream">
+                    <span className="caps text-[15px]">{st.n}</span>
+                    <span className="voice text-[13px]">{st.t}</span>
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
 
         <Reveal delay={0.1}>
           <p className="note text-muted">the signature serve</p>
