@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { Orb } from "./Orb";
+import { Nerve } from "./Nerve";
+import { Words } from "./Motion";
 import { Reveal } from "./Reveal";
 
 const steps = [
@@ -34,7 +36,9 @@ export default function Nervous() {
               <p className="note flex flex-wrap gap-3 text-cream/60">
                 the bitter response <span aria-hidden>·</span> what the wise women knew
               </p>
-              <h2 className="caps mt-6 text-[36px] leading-[1.08] md:text-[46px]">from the tongue to the nervous system.</h2>
+              <h2 className="caps mt-6 text-[36px] leading-[1.08] md:text-[46px]">
+                <Words text="from the tongue to the nervous system." stagger={0.05} />
+              </h2>
               <p className="mt-8 text-[26px] leading-[1.3]">
                 We have bitter receptors far beyond the tongue, and they speak to the vagus nerve: the long line
                 between body and brain.
@@ -49,19 +53,15 @@ export default function Nervous() {
             <div className="md:pt-4">
               <ol className="relative border-t border-cream/15">
                 {/* the nerve: a fine line of the can's liquid joining the three orbs */}
-                <span
-                  aria-hidden
-                  className="absolute top-12 bottom-12 left-[27px] w-px opacity-60"
-                  style={{ background: "linear-gradient(180deg,#f3c160,#e7a6c4,#5d60ce)" }}
-                />
-                {steps.map((s) => (
-                  <li key={s.n} className="relative flex items-center gap-6 border-b border-cream/15 py-6">
-                    <Orb tone={s.tone} label={s.n} />
-                    <div>
-                      <p className="text-[15px] font-medium text-cream/60">{s.k}</p>
-                      <p className="mt-1 text-[22px] leading-[1.25]">{s.t}</p>
-                    </div>
-                  </li>
+                <Nerve />
+                {steps.map((s, i) => (
+                  <Reveal as="li" key={s.n} delay={0.35 + i * 0.35} className="relative flex items-center gap-6 border-b border-cream/15 py-6">
+                      <Orb tone={s.tone} label={s.n} />
+                      <div>
+                        <p className="text-[15px] font-medium text-cream/60">{s.k}</p>
+                        <p className="mt-1 text-[22px] leading-[1.25]">{s.t}</p>
+                      </div>
+                  </Reveal>
                 ))}
               </ol>
               <p className="voice mt-6 text-cream/50">one. two. three.</p>

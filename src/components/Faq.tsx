@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
+import { Words } from "./Motion";
 import { Reveal, ease } from "./Reveal";
 
 const faqs = [
@@ -34,7 +35,9 @@ export default function Faq() {
     <section className="px-5 py-24 md:px-10 md:py-32">
       <div className="mx-auto max-w-3xl">
         <Reveal className="text-center">
-          <h2 className="caps text-[40px] leading-none md:text-[56px]">good questions.</h2>
+          <h2 className="caps text-[40px] leading-none md:text-[56px]">
+            <Words text="good questions." />
+          </h2>
         </Reveal>
         <div className="mt-14 border-t border-ink/25">
           {faqs.map((f, i) => (

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Parallax, Words } from "./Motion";
 import { Reveal } from "./Reveal";
 
 const cards = [
@@ -28,19 +29,23 @@ export default function Manifest() {
       <div className="mx-auto max-w-[1440px]">
         <Reveal className="text-center">
           <p className="note text-muted">for the ambitious and the seekers</p>
-          <h2 className="caps mt-4 text-[40px] leading-none md:text-[56px]">manifest responsibly.</h2>
+          <h2 className="caps mt-4 text-[40px] leading-none md:text-[56px]">
+            <Words text="manifest responsibly." />
+          </h2>
         </Reveal>
         <div className="mt-14 grid gap-5 md:grid-cols-2">
           {cards.map((c, i) => (
             <Reveal key={c.k} delay={i * 0.1}>
               <article className="group relative aspect-[4/5] overflow-hidden rounded-[20px] text-cream md:aspect-[5/6]">
-                <Image
-                  src={c.img}
-                  alt={c.alt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className={`object-cover transition-transform duration-[2s] ease-out group-hover:scale-[1.03] ${c.pos}`}
-                />
+                <Parallax className="absolute inset-0" amount={7}>
+                  <Image
+                    src={c.img}
+                    alt={c.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className={`object-cover transition-transform duration-[2s] ease-out group-hover:scale-[1.04] ${c.pos}`}
+                  />
+                </Parallax>
                 {/* candlelit fade, warm rather than black */}
                 <div className="absolute inset-0 bg-gradient-to-t from-ember via-ember/45 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-7 md:p-10">

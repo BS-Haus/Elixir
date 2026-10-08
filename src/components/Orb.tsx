@@ -21,7 +21,7 @@ export function Orb({
   const c = tones[tone];
   return (
     <span
-      className="relative grid shrink-0 place-items-center rounded-full"
+      className="relative isolate grid shrink-0 place-items-center rounded-full"
       style={{
         width: size,
         height: size,
@@ -29,6 +29,12 @@ export function Orb({
         boxShadow: `0 0 ${size * 0.6}px ${size * 0.12}px ${c.glow}, inset 0 -${size * 0.1}px ${size * 0.25}px rgba(0,0,0,.18), inset 0 ${size * 0.06}px ${size * 0.12}px rgba(255,255,255,.45)`,
       }}
     >
+      {/* a soft breath of light around the glass */}
+      <span
+        aria-hidden
+        className="absolute -inset-[35%] -z-10 rounded-full blur-md"
+        style={{ background: `radial-gradient(closest-side, ${c.glow}, transparent)`, animation: "breathe 5s ease-in-out infinite" }}
+      />
       {/* a slow sheen turning across the glass */}
       <span
         aria-hidden

@@ -5,6 +5,7 @@ import { useCart } from "@/lib/cart";
 import { scrollProgress, timeAt } from "@/lib/daylight";
 import { SHOP_DOMAIN } from "@/lib/products";
 import { Logo } from "./Logo";
+import { Star } from "./Star";
 
 const NIGHT_FROM = 0.62; // where the palette turns from rose dusk to amber glass
 
@@ -33,7 +34,39 @@ function DayClock({ p }: { p: number }) {
   );
 }
 
-const ticker = ["30 serves in every bottle.", "all natural. no sugar.", "free uk delivery over £40."];
+const ticker = [
+  "30 serves in every bottle.",
+  "all natural. no sugar.",
+  "free uk delivery over £40.",
+  "handmade in london.",
+  "0% abv. 100% ritual.",
+  "gentian root. the original bitter.",
+  "three drops. then everything.",
+];
+
+/** The live ticker: one long line of the brand's asides, turning round and round. */
+function Ticker() {
+  const line = (
+    <span className="flex shrink-0 items-center">
+      {ticker.map((t) => (
+        <span key={t} className="flex items-center">
+          <span className={t.includes("£40") ? "text-gold" : ""}>{t}</span>
+          <Star className="mx-6 h-2.5 w-2.5 text-gold md:mx-10" />
+        </span>
+      ))}
+    </span>
+  );
+  return (
+    <div className="group bg-night text-cream" aria-label={ticker.join(" ")}>
+      <div aria-hidden className="voice flex h-9 items-center overflow-hidden text-[13px] whitespace-nowrap">
+        <div className="marquee flex group-hover:[animation-play-state:paused]">
+          {line}
+          {line}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Nav() {
   const { count, setOpen } = useCart();
@@ -60,15 +93,7 @@ export default function Nav() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-[45]">
-      <div className="bg-night text-cream">
-        <div className="voice mx-auto flex h-9 max-w-[1440px] items-center justify-center gap-6 overflow-hidden px-5 text-[13px] md:gap-12">
-          {ticker.map((t, i) => (
-            <span key={t} className={`whitespace-nowrap ${i === 2 ? "text-gold" : ""} ${i === 0 ? "hidden sm:inline" : ""} ${i === 1 ? "hidden md:inline" : ""}`}>
-              {t}
-            </span>
-          ))}
-        </div>
-      </div>
+      <Ticker />
       <div className="border-b border-ink/10 bg-paper/90 text-ink backdrop-blur-md">
         <nav className="mx-auto grid h-16 max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center px-5 md:h-[72px] md:px-10">
           <div className="label hidden gap-8 md:flex">

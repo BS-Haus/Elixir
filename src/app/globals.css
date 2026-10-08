@@ -246,6 +246,42 @@ body {
     transform: rotate(360deg);
   }
 }
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@utility marquee {
+  animation: marquee 45s linear infinite;
+}
+/* the star catches the light now and then */
+@keyframes twinkle {
+  0%,
+  82%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  88% {
+    transform: scale(1.35) rotate(12deg);
+    opacity: 0.75;
+  }
+}
+@utility twinkle {
+  animation: twinkle 5s ease-in-out infinite;
+}
+/* a soft breath of light for the orbs */
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.9;
+  }
+}
 @utility drift {
   animation: drift 14s ease-in-out infinite;
 }

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Parallax, Words } from "./Motion";
 import { Reveal } from "./Reveal";
 
 const pillars = [
@@ -20,7 +21,7 @@ export default function WhyBitters() {
             </p>
             <h2 className="caps mt-6 flex flex-col leading-none">
               <span className="text-[20px] tracking-[0.04em]">bitter is</span>
-              <span className="mt-2 text-[clamp(3.4rem,7vw,6rem)] leading-[0.95]">better.</span>
+              <Words text="better." className="mt-2 text-[clamp(3.4rem,7vw,6rem)] leading-[0.95]" delay={0.15} />
             </h2>
             <p className="mt-8 max-w-lg text-[28px] leading-[1.25]">
               Bitter is the grown-up taste. The taste modern food forgot.
@@ -36,6 +37,7 @@ export default function WhyBitters() {
 
           <Reveal delay={0.1}>
             <figure className="relative aspect-[4/5] overflow-hidden rounded-[20px] bg-tint">
+              <Parallax className="absolute inset-0">
               <Image
                 src="/img/apothecary.jpg"
                 alt="the elixir bottle among dried gentian root, cardamom pods and dried orange on an apothecary table"
@@ -43,6 +45,7 @@ export default function WhyBitters() {
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
+              </Parallax>
               <figcaption className="absolute bottom-5 left-6 font-serif text-[18px] text-cream italic">
                 Gentiana lutea
               </figcaption>

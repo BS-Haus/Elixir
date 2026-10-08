@@ -1,4 +1,5 @@
 import { testimonials } from "@/lib/content";
+import { Words } from "./Motion";
 import { Reveal } from "./Reveal";
 
 /** Real customer words, from the Senja widget on drink-elixir.co. */
@@ -7,7 +8,9 @@ export default function Reviews() {
     <section className="py-24 md:py-32">
       <Reveal className="px-5 text-center">
         <p className="note text-muted">what our customers say</p>
-        <h2 className="caps mt-4 text-[40px] leading-none md:text-[56px]">poured. tasted. told.</h2>
+        <h2 className="caps mt-4 text-[40px] leading-none md:text-[56px]">
+          <Words text="poured. tasted. told." />
+        </h2>
         <p className="voice mt-5 text-muted">
           <span className="tracking-[0.2em] text-gold">★★★★★</span> from the people who drink it.
         </p>

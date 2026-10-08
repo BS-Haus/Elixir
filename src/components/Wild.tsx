@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { INSTAGRAM } from "@/lib/products";
+import { Parallax, Words } from "./Motion";
 import { Reveal } from "./Reveal";
 
 const moments = [
@@ -16,7 +17,9 @@ export default function Wild() {
         <Reveal className="flex items-end justify-between gap-6">
           <div>
             <p className="note text-muted">in the wild</p>
-            <h2 className="caps mt-4 text-[40px] leading-none md:text-[56px]">this moment.</h2>
+            <h2 className="caps mt-4 text-[40px] leading-none md:text-[56px]">
+              <Words text="this moment." />
+            </h2>
           </div>
           <a
             href={INSTAGRAM}
@@ -31,10 +34,16 @@ export default function Wild() {
       <div className="rail mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 md:grid md:grid-cols-4 md:overflow-visible md:px-10 md:mx-auto md:max-w-[1440px]">
         {moments.map((m, i) => (
           <Reveal key={m.where} delay={i * 0.08} className="w-[72vw] shrink-0 snap-start md:w-auto">
-            <figure>
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[16px] bg-tint">
-                <Image src={m.img} alt={m.alt} fill sizes="(max-width: 768px) 72vw, 25vw" className="object-cover" />
-              </div>
+            <figure className="group">
+              <Parallax className="aspect-[4/5] rounded-[16px] bg-tint" amount={5}>
+                <Image
+                  src={m.img}
+                  alt={m.alt}
+                  fill
+                  sizes="(max-width: 768px) 72vw, 25vw"
+                  className="object-cover transition-transform duration-[1.6s] ease-out group-hover:scale-[1.05]"
+                />
+              </Parallax>
               <figcaption className="voice mt-3 flex justify-between text-muted">
                 <span>{m.where}</span>
                 <span className="text-ink">{m.what}</span>
