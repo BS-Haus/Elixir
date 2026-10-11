@@ -39,11 +39,11 @@ export default function Nervous() {
               <h2 className="caps mt-6 text-[36px] leading-[1.08] md:text-[46px]">
                 <Words text="from the tongue to the nervous system." stagger={0.05} />
               </h2>
-              <p className="mt-8 text-[26px] leading-[1.3]">
+              <p className="lede mt-8 text-[26px]">
                 We have bitter receptors far beyond the tongue, and they speak to the vagus nerve: the long line
                 between body and brain.
               </p>
-              <p className="mt-6 text-[18px] leading-[1.6] text-cream/65">
+              <p className="mt-6 max-w-md text-[16px] leading-[1.7] text-cream/65">
                 The wise women knew it before science had a name for it. Herbalists now call it the bitter reflex:
                 for centuries, bitterness has been used to call the body out of fight or flight and back into rest
                 and digest. Three drops. Drop in.
@@ -58,8 +58,8 @@ export default function Nervous() {
                   <Reveal as="li" key={s.n} delay={0.35 + i * 0.35} className="relative flex items-center gap-6 border-b border-cream/15 py-6">
                       <Orb tone={s.tone} label={s.n} />
                       <div>
-                        <p className="text-[15px] font-medium text-cream/60">{s.k}</p>
-                        <p className="mt-1 text-[22px] leading-[1.25]">{s.t}</p>
+                        <p className="label text-[11px] text-cream/55">{s.k}</p>
+                        <p className="lede mt-1.5 text-[22px]">{s.t}</p>
                       </div>
                   </Reveal>
                 ))}

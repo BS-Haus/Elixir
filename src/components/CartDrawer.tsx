@@ -69,7 +69,7 @@ export default function CartDrawer() {
 
             <div className="flex-1 overflow-y-auto px-6 py-8">
               {items.length === 0 && (
-                <p className="font-serif text-2xl text-muted">your bag is empty.</p>
+                <p className="lede text-2xl text-muted">your bag is empty.</p>
               )}
               <ul className="space-y-8">
                 {items.map((p) => (
@@ -78,7 +78,7 @@ export default function CartDrawer() {
                       <Image src={p.image} alt="" fill sizes="88px" className="object-contain p-2" />
                     </div>
                     <div className="flex flex-1 flex-col">
-                      <p className="font-serif text-2xl leading-tight">{p.name}</p>
+                      <p className="lede text-2xl">{p.name}</p>
                       <p className="label mt-1 text-muted">{p.size}</p>
                       <div className="mt-auto flex items-center justify-between">
                         <Qty value={lines[p.id] ?? 0} onChange={(n) => set(p.id, n)} />

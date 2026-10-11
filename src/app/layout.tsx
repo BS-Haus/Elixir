@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cinzel, Cormorant_Garamond, Courier_Prime } from "next/font/google";
+import { Cinzel, Cormorant_Garamond, Courier_Prime, Jost } from "next/font/google";
 import { CartProvider } from "@/lib/cart";
 import ScrollTheme from "@/components/ScrollTheme";
 import "./globals.css";
@@ -11,7 +11,14 @@ const caps = Cinzel({
   weight: ["400", "500", "600"],
 });
 
-// the reading serif
+// body copy: a clean geometric sans, so paragraphs sit apart from the carved capitals
+const body = Jost({
+  variable: "--font-jost",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+});
+
+// the lede serif: larger lines, quotes and product names
 const serif = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
@@ -39,7 +46,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${caps.variable} ${serif.variable} ${mono.variable} antialiased`}>
+    <html lang="en" className={`${caps.variable} ${serif.variable} ${body.variable} ${mono.variable} antialiased`}>
       <body className="min-h-full">
         <ScrollTheme />
         <CartProvider>{children}</CartProvider>

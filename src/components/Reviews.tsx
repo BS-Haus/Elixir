@@ -24,7 +24,7 @@ export default function Reviews() {
                 <p aria-label="five stars" className="tracking-[0.2em] text-gold">
                   ★★★★★
                 </p>
-                <blockquote className="mt-5 text-[22px] leading-[1.3]">&ldquo;{t.quote}&rdquo;</blockquote>
+                <blockquote className="lede mt-5 text-[22px]">&ldquo;{t.quote}&rdquo;</blockquote>
               </div>
               <figcaption className="label mt-8 text-[11px] text-muted">{t.name}.</figcaption>
             </figure>

@@ -17,16 +17,16 @@ export default function WhyBitters() {
           <Reveal>
             <p className="note flex flex-wrap items-center gap-3 text-muted">
               why bitters <span aria-hidden>·</span> i <span aria-hidden>·</span> gentian root
-              <span className="font-serif text-[16px] font-normal tracking-normal normal-case italic">Gentiana lutea</span>
+              <span className="lede text-[16px] tracking-normal normal-case italic">Gentiana lutea</span>
             </p>
             <h2 className="caps mt-6 flex flex-col leading-none">
               <span className="text-[20px] tracking-[0.04em]">bitter is</span>
               <Words text="better." className="mt-2 text-[clamp(3.4rem,7vw,6rem)] leading-[0.95]" delay={0.15} />
             </h2>
-            <p className="mt-8 max-w-lg text-[28px] leading-[1.25]">
+            <p className="lede mt-8 max-w-lg text-[28px]">
               Bitter is the grown-up taste. The taste modern food forgot.
             </p>
-            <p className="mt-6 max-w-lg text-[19px] leading-[1.6] text-muted">
+            <p className="mt-6 max-w-md text-[16px] leading-[1.7] text-muted">
               Long before the apothecary, there were the wise women: healers, herb-wives, the ones they called
               witches. They knew the hedgerow by heart, and they reached for bitter first. Gentian, a mountain root
               that takes years to mature, was always in the basket. The bitterest of them all, and the backbone of
@@ -46,7 +46,7 @@ export default function WhyBitters() {
                 className="object-cover"
               />
               </Parallax>
-              <figcaption className="absolute bottom-5 left-6 font-serif text-[18px] text-cream italic">
+              <figcaption className="lede absolute bottom-5 left-6 text-[18px] text-cream italic">
                 Gentiana lutea
               </figcaption>
             </figure>
@@ -58,8 +58,8 @@ export default function WhyBitters() {
             <Reveal key={p.n} delay={i * 0.08}>
               <li>
                 <p className="caps text-[22px]">{p.n}</p>
-                <p className="mt-3 text-[16px] font-medium first-letter:uppercase">{p.k}</p>
-                <p className="mt-3 text-[24px] leading-[1.2]">{p.t}</p>
+                <p className="label mt-3 text-[11px]">{p.k}</p>
+                <p className="lede mt-3 text-[24px]">{p.t}</p>
                 <p className="voice mt-3 text-muted">{p.a}</p>
               </li>
             </Reveal>

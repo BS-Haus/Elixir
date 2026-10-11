@@ -113,7 +113,7 @@ export default function FirstOrderPopup() {
                   <br />
                   first order.
                 </h2>
-                <p className="mt-4 text-[20px] leading-[1.35] text-cream/80">
+                <p className="mt-4 max-w-xs text-[16px] leading-[1.7] text-cream/75">
                   Join Drop In for rituals, recipes and first word on what’s next.
                 </p>
                 <form

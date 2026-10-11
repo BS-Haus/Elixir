@@ -51,7 +51,7 @@ export default function Manifest() {
                 <div className="absolute inset-x-0 bottom-0 p-7 md:p-10">
                   <p className="note text-cream/70">{c.k}</p>
                   <h3 className="caps mt-3 text-[32px] leading-[1.05] md:text-[40px]">{c.t}</h3>
-                  <p className="mt-4 max-w-md text-[20px] leading-[1.35] text-cream/85">{c.d}</p>
+                  <p className="mt-4 max-w-sm text-[16px] leading-[1.7] text-cream/80">{c.d}</p>
                   <p className="voice mt-4 text-cream/55">{c.a}</p>
                 </div>
               </article>

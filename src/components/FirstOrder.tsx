@@ -25,7 +25,7 @@ export default function FirstOrder() {
             <span className="mt-1 text-[44px] md:text-[56px]">your first</span>
             <span className="mt-3 text-[18px] tracking-[0.04em]">order.</span>
           </h2>
-          <p className="mt-6 text-[22px] leading-[1.35] text-cream/85">
+          <p className="mt-6 max-w-xs text-[16px] leading-[1.7] text-cream/75">
             Rituals, recipes and first word on what’s next. Once a month.
           </p>
           <form

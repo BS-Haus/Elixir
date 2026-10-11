@@ -84,7 +84,7 @@ export default function Hero() {
             </motion.span>
             <Words immediate delay={1.1} text="and play." className="mt-3 text-[18px] tracking-[0.04em] md:text-[22px]" />
           </h1>
-          <p className="mt-8 text-[26px] leading-[1.25] md:text-[30px]">
+          <p className="lede mt-8 text-[26px] md:text-[30px]">
             <Words immediate delay={1.3} stagger={0.035} text="Gentian root, with hints of red mandarin, cardamom and juniper." />
           </p>
 
@@ -98,7 +98,7 @@ export default function Hero() {
                 className={`py-4 ${i ? "border-l border-ink/15" : ""}`}
               >
                 <dt className="label text-[11px] text-muted">{k}</dt>
-                <dd className="mt-1 text-[18px] leading-tight first-letter:uppercase">{v}</dd>
+                <dd className="mt-1 text-[14px] leading-tight first-letter:uppercase">{v}</dd>
               </motion.div>
             ))}
           </dl>

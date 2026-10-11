@@ -35,7 +35,7 @@ export default function Footer() {
       <div className="mx-auto max-w-[1440px]">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-4">
-            <p className="text-[26px] leading-tight">
+            <p className="lede text-[26px]">
               Made for presence and play.
               <br />
               <em className="text-muted">Handmade 0% bitters, London.</em>
@@ -46,7 +46,7 @@ export default function Footer() {
           {columns.map((c) => (
             <div key={c.title} className="md:col-span-2 md:col-start-auto">
               <p className="label text-muted">{c.title}</p>
-              <ul className="mt-5 space-y-3 text-[18px]">
+              <ul className="mt-5 space-y-2.5 text-[15px]">
                 {c.links.map(([label, href]) => (
                   <li key={label}>
                     <a

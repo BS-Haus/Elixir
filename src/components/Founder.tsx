@@ -29,7 +29,7 @@ export default function Founder() {
             <h2 className="caps mt-6 text-[36px] leading-[1.08] md:text-[48px]">
               made by charlotte &amp; seb. for the seekers.
             </h2>
-            <div className="mt-8 space-y-5 text-[19px] leading-[1.6] text-cream/75">
+            <div className="mt-8 max-w-lg space-y-4 text-[16px] leading-[1.7] text-cream/70">
               <p>
                 Elixir started at home. Seb stopped drinking for his health, and Charlotte, already deep into
                 wellness, soon followed him to almost zero. One of the best decisions they’ve ever made.
@@ -40,7 +40,7 @@ export default function Founder() {
                 could add to tonic or soda. Complex flavour, with benefits.
               </p>
             </div>
-            <blockquote className="mt-10 flex gap-4 text-[26px] leading-[1.3] italic md:text-[30px]">
+            <blockquote className="lede mt-10 flex gap-4 text-[26px] italic md:text-[30px]">
               <Star className="mt-2 h-5 w-5 shrink-0 text-gold" />
               <span>
                 From ‘why aren’t you drinking?’ to ‘what’s that you’re drinking?’

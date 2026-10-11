@@ -45,7 +45,7 @@ export default function Faq() {
               <button
                 onClick={() => setOpen(open === i ? -1 : i)}
                 aria-expanded={open === i}
-                className="flex w-full items-center justify-between gap-6 py-6 text-left text-[24px] leading-tight"
+                className="lede flex w-full items-center justify-between gap-6 py-6 text-left text-[24px]"
               >
                 {f.q}
                 <span aria-hidden className="text-[26px] text-muted">
@@ -61,7 +61,7 @@ export default function Faq() {
                     transition={{ duration: 0.5, ease }}
                     className="overflow-hidden"
                   >
-                    <p className="max-w-2xl pb-7 text-[19px] leading-[1.6] text-muted">{f.a}</p>
+                    <p className="max-w-xl pb-7 text-[16px] leading-[1.7] text-muted">{f.a}</p>
                   </motion.div>
                 )}
               </AnimatePresence>
