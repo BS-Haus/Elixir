@@ -1,5 +1,39 @@
 @import "tailwindcss";
 
+/* Moneta Sans (Santi Rey): display. Served from /public/fonts/moneta when present (local only). */
+@font-face {
+  font-family: "Moneta Sans";
+  src: url("/fonts/moneta/MonetaSans-Light.otf") format("opentype");
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Moneta Sans";
+  src: url("/fonts/moneta/MonetaSans-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Moneta Sans";
+  src: url("/fonts/moneta/MonetaSans-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Moneta Sans";
+  src: url("/fonts/moneta/MonetaSansOblique-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Moneta Sans";
+  src: url("/fonts/moneta/MonetaSansOblique-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 /*
  * elixir — ivory by day, candlelight by evening, auras from the can's liquid.
  * ScrollTheme rewrites the first block of variables as you scroll, so the page
@@ -43,10 +77,11 @@
   --color-amber-glass: #633f27;
   --color-brand: #8b3f24; /* the wordmark's rust */
 
-  --font-caps: var(--font-cinzel), "Trajan Pro", Georgia, serif;
-  --font-serif: var(--font-cormorant), Garamond, Georgia, serif;
+  --font-display: "Moneta Sans", var(--font-tenor), "Optima", sans-serif;
+  --font-body: var(--font-fahkwang), "Optima", sans-serif;
   --font-mono: var(--font-courier), "Courier New", monospace;
-  --font-sans: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-body);
 }
 
 html {
@@ -56,8 +91,9 @@ html {
 body {
   background: var(--bg);
   color: var(--fg);
-  font-family: var(--font-serif);
-  font-size: 19px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip; /* auras may bleed past the edge; never scroll sideways */
 }
@@ -69,21 +105,33 @@ body {
 
 /* ---------- type roles (from the brand system) ---------- */
 
-/* carved capitals: display lines and headlines */
+/*
+ * Three voices, so every block has contrast with its neighbour:
+ *   display — Moneta Sans Bold, set tight; the line you remember
+ *   lede    — Moneta Sans Light, larger and airy; the line that explains
+ *   body    — Fahkwang, small and even; the detail (set on <body>)
+ * plus the typewriter note, carried over from the can.
+ */
 @utility caps {
-  font-family: var(--font-caps);
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+}
+@utility lede {
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: -0.015em;
+  line-height: 1.16;
 }
 
-/* small carved capitals for labels, nav and buttons */
+/* small tracked capitals in the body face: labels, nav and buttons */
 @utility label {
-  font-family: var(--font-caps);
-  font-size: 12px;
+  font-family: var(--font-body);
+  font-size: 11px;
   line-height: 16px;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
@@ -116,7 +164,7 @@ body {
   padding: 16px 30px;
   background: var(--fg);
   color: var(--bg);
-  font-family: var(--font-caps);
+  font-family: var(--font-body);
   font-size: 12px;
   line-height: 16px;
   font-weight: 600;

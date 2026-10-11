@@ -42,3 +42,6 @@ next-env.d.ts
 !.env.example
 
 # PP Editorial New is a commercial font — kept out of the public repo until licensing is confirmed
+
+# Moneta Sans: commercial font (Santi Rey). Local preview only until a web licence is bought.
+/public/fonts/moneta/

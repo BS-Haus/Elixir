@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
-import { Cinzel, Cormorant_Garamond, Courier_Prime } from "next/font/google";
+import { Courier_Prime, Fahkwang, Tenor_Sans } from "next/font/google";
 import { CartProvider } from "@/lib/cart";
 import ScrollTheme from "@/components/ScrollTheme";
 import "./globals.css";
 
-// carved capitals for display lines and labels
-const caps = Cinzel({
-  variable: "--font-cinzel",
+// Display: Moneta Sans, self-hosted from /public/fonts/moneta (local preview only until it is
+// licensed for the web). Tenor Sans is the free stand-in that ships until then.
+const displayFallback = Tenor_Sans({
+  variable: "--font-tenor",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: "400",
 });
 
-// the reading serif
-const serif = Cormorant_Garamond({
-  variable: "--font-cormorant",
+// Body and interface: a flared Thai-Latin face with a little ceremony in its terminals
+const body = Fahkwang({
+  variable: "--font-fahkwang",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["300", "400", "500", "600", "700"],
   style: ["normal", "italic"],
 });
 
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${caps.variable} ${serif.variable} ${mono.variable} antialiased`}>
+    <html lang="en" className={`${displayFallback.variable} ${body.variable} ${mono.variable} antialiased`}>
       <body className="min-h-full">
         <ScrollTheme />
         <CartProvider>{children}</CartProvider>

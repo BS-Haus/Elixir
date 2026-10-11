@@ -108,12 +108,11 @@ export default function FirstOrderPopup() {
               </button>
               <div className="relative z-[2] flex flex-col items-center">
                 <Star className="twinkle h-5 w-5" />
-                <h2 id="first-order-title" className="caps mt-5 text-[34px] leading-[1.05] md:text-[40px]">
-                  10% off your
-                  <br />
-                  first order.
+                <h2 id="first-order-title" className="mt-5 flex flex-col items-center">
+                  <span className="caps text-[56px] md:text-[72px]">10% off</span>
+                  <span className="lede mt-2 text-[26px] md:text-[30px]">your first order.</span>
                 </h2>
-                <p className="mt-4 text-[20px] leading-[1.35] text-cream/80">
+                <p className="mt-4 max-w-xs text-[16px] leading-[1.65] text-cream/75">
                   Join Drop In for rituals, recipes and first word on what’s next.
                 </p>
                 <form

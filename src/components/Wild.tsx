@@ -17,7 +17,7 @@ export default function Wild() {
         <Reveal className="flex items-end justify-between gap-6">
           <div>
             <p className="note text-muted">in the wild</p>
-            <h2 className="caps mt-4 text-[40px] leading-none md:text-[56px]">
+            <h2 className="caps mt-4 text-[44px] md:text-[72px]">
               <Words text="this moment." />
             </h2>
           </div>

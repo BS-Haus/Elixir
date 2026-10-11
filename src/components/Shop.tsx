@@ -156,8 +156,8 @@ function Card({ t }: { t: Tile }) {
 
       <div className="flex flex-1 flex-col p-6 md:p-7">
         <div className="flex items-baseline justify-between gap-4">
-          <h3 className="text-[28px] leading-tight font-medium">{t.name}</h3>
-          <p className="text-[24px]">
+          <h3 className="caps text-[30px]">{t.name}</h3>
+          <p className="lede text-[24px]">
             {t.was && <s className="mr-2 text-[18px] text-muted">{t.was}</s>}
             {t.price}
           </p>
@@ -168,7 +168,7 @@ function Card({ t }: { t: Tile }) {
           {t.facts.map(([k, v]) => (
             <div key={k}>
               <dt className="label text-[10px] text-muted">{k}</dt>
-              <dd className="mt-1 text-[16px] leading-tight">{v}</dd>
+              <dd className="mt-1 text-[14px] leading-tight font-medium">{v}</dd>
             </div>
           ))}
         </dl>
@@ -195,7 +195,7 @@ function Card({ t }: { t: Tile }) {
                 transition={{ duration: 0.5, ease }}
                 className="overflow-hidden"
               >
-                <div className="space-y-3 pt-6 text-[16px] leading-[1.5] text-muted">
+                <div className="space-y-3 pt-6 text-[14px] leading-[1.65] text-muted">
                   <p>{bottle.blurb}</p>
                   <p>
                     <span className="label text-[10px] text-ink">ingredients </span>
@@ -217,7 +217,7 @@ export default function Shop() {
       <div className="mx-auto max-w-[1440px]">
         <Reveal className="text-center">
           <p className="note text-muted">one flavour. two ways.</p>
-          <h2 className="caps mt-4 text-[44px] leading-none md:text-[56px]">
+          <h2 className="caps mt-4 text-[48px] md:text-[72px]">
             <Words text="shop elixir." />
           </h2>
         </Reveal>

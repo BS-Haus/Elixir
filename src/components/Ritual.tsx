@@ -48,11 +48,11 @@ export default function Ritual() {
 
         <Reveal delay={0.1}>
           <p className="note text-muted">the signature serve</p>
-          <h2 className="caps mt-6 flex flex-col text-[44px] leading-[1.02] md:text-[64px]">
+          <h2 className="caps mt-6 flex flex-col text-[52px] md:text-[84px]">
             <Words text="the ritual." />
             <Words text="drop in." delay={0.25} />
           </h2>
-          <p className="mt-8 max-w-md text-[26px] leading-[1.3]">
+          <p className="lede text-[24px] md:text-[30px] mt-8 max-w-md">
             Three pipettes, a light tonic, ice and a slice of orange. Then experiment as you wish.
           </p>
           <ol className="mt-10 border-t border-ink/15">
@@ -60,7 +60,7 @@ export default function Ritual() {
               <Reveal as="li" key={d.n} delay={0.2 + i * 0.15} className="flex items-center gap-6 border-b border-ink/15 py-5">
                   <Orb tone={d.tone} label={d.n} size={48} />
                   <div>
-                    <p className="text-[24px] leading-tight">{d.t}</p>
+                    <p className="lede text-[24px]">{d.t}</p>
                     <p className="voice mt-1 text-muted">{d.a}</p>
                   </div>
               </Reveal>

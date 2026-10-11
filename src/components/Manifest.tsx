@@ -29,7 +29,7 @@ export default function Manifest() {
       <div className="mx-auto max-w-[1440px]">
         <Reveal className="text-center">
           <p className="note text-muted">for the ambitious and the seekers</p>
-          <h2 className="caps mt-4 text-[40px] leading-none md:text-[56px]">
+          <h2 className="caps mt-4 text-[44px] md:text-[72px]">
             <Words text="manifest responsibly." />
           </h2>
         </Reveal>
@@ -50,8 +50,8 @@ export default function Manifest() {
                 <div className="absolute inset-0 bg-gradient-to-t from-ember via-ember/45 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-7 md:p-10">
                   <p className="note text-cream/70">{c.k}</p>
-                  <h3 className="caps mt-3 text-[32px] leading-[1.05] md:text-[40px]">{c.t}</h3>
-                  <p className="mt-4 max-w-md text-[20px] leading-[1.35] text-cream/85">{c.d}</p>
+                  <h3 className="caps mt-3 text-[38px] md:text-[52px]">{c.t}</h3>
+                  <p className="mt-4 max-w-sm text-[16px] leading-[1.65] text-cream/80">{c.d}</p>
                   <p className="voice mt-4 text-cream/55">{c.a}</p>
                 </div>
               </article>

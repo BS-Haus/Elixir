@@ -21,11 +21,10 @@ export default function FirstOrder() {
         <Reveal className="relative z-[2] flex max-w-md flex-col items-center text-center">
           <Star className="h-5 w-5 text-cream" />
           <h2 className="caps mt-6 flex flex-col items-center leading-none">
-            <span className="text-[44px] md:text-[56px]">10% off</span>
-            <span className="mt-1 text-[44px] md:text-[56px]">your first</span>
-            <span className="mt-3 text-[18px] tracking-[0.04em]">order.</span>
-          </h2>
-          <p className="mt-6 text-[22px] leading-[1.35] text-cream/85">
+            <span className="text-[56px] md:text-[80px]">10% off</span>
+            <span className="lede mt-2 text-[28px] md:text-[36px]">your first order.</span>
+                      </h2>
+          <p className="mt-6 max-w-xs text-[16px] leading-[1.65] text-cream/75">
             Rituals, recipes and first word on what’s next. Once a month.
           </p>
           <form
