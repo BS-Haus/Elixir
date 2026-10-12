@@ -1,0 +1,260 @@
+<!doctype html><html><head><meta charset="utf-8"><title>E&amp;T carton artwork</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+@page { size: 461mm 379mm; margin: 0 }
+html,body { margin:0; background:#241912 }
+.sheet { width:461mm; height:379mm; position:relative; overflow:hidden }
+.sheet .carton { position:absolute; left:3mm; top:3mm }
+.sheet .flood { inset:-3mm }
+/* E&T carton. Flat ember ground; the can's liquid glows up from the base of each panel and fades.
+   Primary = Cinzel capitals. Secondary = Cormorant italic. Detail = Jost. Notes = Courier Prime. */
+.carton {
+  --ember: #241912;
+  --cream: #f3ebdf;
+  --cream-2: rgba(243, 235, 223, 0.72);
+  --cream-3: rgba(243, 235, 223, 0.5);
+  --hair: rgba(243, 235, 223, 0.22);
+  --gold: #ee974f;
+  --ivory: #edebe0;
+  --night: #1d1712;
+  --caps: "Cinzel", "Trajan Pro", Georgia, serif;
+  --serif: "Cormorant Garamond", Garamond, Georgia, serif;
+  --sans: "Jost", "Futura", system-ui, sans-serif;
+  --mono: "Courier Prime", "Courier New", monospace;
+  position: relative;
+  color: var(--cream);
+  font-family: var(--sans);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.carton * { box-sizing: border-box; margin: 0 }
+.flood { position: absolute; inset: 0; background: var(--ember) }
+
+.panel { position: absolute; overflow: hidden; background: var(--ember) }
+.panel.body { width: 110mm; height: 138mm }
+.panel.lid, .panel.base { width: 110mm; height: 110mm }
+.panel.tuck { width: 110mm; height: 15mm; display: grid; place-items: center }
+.panel.dust { width: 110mm; height: 52mm; display: grid; place-items: center }
+.panel.dust.top { clip-path: polygon(0 100%, 8mm 0, 102mm 0, 100% 100%) }
+.panel.dust.bottom { clip-path: polygon(0 0, 100% 0, 102mm 100%, 8mm 100%) }
+.panel.glue { width: 15mm; height: 126mm; background: #3a2a1e; display: grid; place-items: center }
+.panel.glue .meta { transform: rotate(-90deg); color: var(--cream-3) }
+
+/* the glow: the can's liquid rising from the foot of the panel and fading into the dark */
+.glow {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(70% 38% at 50% 104%, rgba(251, 227, 166, 0.55) 0%, rgba(238, 151, 79, 0.42) 28%, rgba(193, 104, 120, 0.22) 55%, rgba(93, 96, 206, 0.08) 75%, rgba(36, 25, 18, 0) 100%),
+    radial-gradient(120% 55% at 50% 110%, rgba(233, 124, 62, 0.28) 0%, rgba(157, 103, 157, 0.12) 50%, rgba(36, 25, 18, 0) 85%);
+}
+.glow.strong {
+  background:
+    radial-gradient(62% 40% at 50% 106%, rgba(251, 227, 166, 0.8) 0%, rgba(238, 151, 79, 0.6) 26%, rgba(193, 104, 120, 0.32) 52%, rgba(93, 96, 206, 0.12) 74%, rgba(36, 25, 18, 0) 100%),
+    radial-gradient(130% 62% at 50% 112%, rgba(233, 124, 62, 0.36) 0%, rgba(157, 103, 157, 0.16) 52%, rgba(36, 25, 18, 0) 88%);
+}
+.glow.soft {
+  background: radial-gradient(60% 36% at 50% 108%, rgba(238, 151, 79, 0.35) 0%, rgba(193, 104, 120, 0.14) 50%, rgba(36, 25, 18, 0) 100%);
+}
+
+.pad { position: relative; z-index: 1; padding: 9mm 8mm 0 }
+.center { display: flex; flex-direction: column; align-items: center; text-align: center }
+
+/* type roles */
+.primary { font-family: var(--caps); font-weight: 400; text-transform: uppercase; letter-spacing: 0.04em; line-height: 0.98 }
+.primary.sm { font-size: 11pt; letter-spacing: 0.08em }
+.primary.stack { display: flex; flex-direction: column; font-size: 26pt; letter-spacing: 0.01em }
+.primary.stack .small { font-size: 9pt; letter-spacing: 0.08em; margin-bottom: 1.2mm }
+.secondary { font-family: var(--serif); font-style: italic; font-size: 13pt; line-height: 1.15; color: var(--cream-2); margin-top: 2.6mm }
+.meta { font-family: var(--mono); font-size: 7pt; letter-spacing: 0.04em; color: var(--cream-3) }
+.meta i { font-family: var(--serif); font-size: 8.5pt; letter-spacing: 0 }
+.meta.bottom { position: absolute; z-index: 1; left: 0; right: 0; bottom: 6mm; text-align: center; color: var(--cream-2) }
+.bodytext { font-size: 7.5pt; line-height: 1.55; color: var(--cream-2); margin-top: 4mm; max-width: 80mm }
+
+.star { width: 4.2mm; height: auto }
+.star.tiny { width: 3mm }
+.logo { display: block; height: auto }
+
+/* front: the can is the hero, standing in the glow */
+.front .pad { padding-top: 9mm }
+.front-logo { width: 52mm; margin-top: 4mm }
+.front .secondary { font-size: 13pt; margin-top: 2.6mm }
+.hero-can { position: absolute; z-index: 1; left: 0; right: 0; top: 47mm; height: 68mm; display: flex; justify-content: center }
+.can { height: 100%; width: auto; position: relative; filter: drop-shadow(0 2mm 3mm rgba(0, 0, 0, 0.45)) }
+.can-shadow { position: absolute; bottom: -1.2mm; left: 50%; width: 34mm; height: 4mm; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(10, 6, 4, 0.7), rgba(10, 6, 4, 0)) }
+.front-foot { position: absolute; z-index: 1; left: 0; right: 0; bottom: 7mm; text-align: center }
+.front-foot .primary { font-size: 11pt; letter-spacing: 0.16em }
+.front-foot .meta { margin-top: 2mm; color: var(--cream-2) }
+
+/* lid */
+.lidpad { padding-top: 14mm; height: 100% }
+.lockup { display: flex; flex-direction: column; align-items: center; font-size: 24pt; margin-top: 7mm; letter-spacing: 0.01em }
+.lockup .small { font-size: 9pt; letter-spacing: 0.1em; margin: 1.6mm 0 }
+.lid-logo { width: 26mm; margin-top: auto; margin-bottom: 12mm }
+
+/* why bitters */
+.why .meta:first-child, .ritual .meta:first-child { margin-bottom: 5mm }
+.notes { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 6mm; margin-top: 6mm; padding-top: 4mm; border-top: 0.25mm solid var(--hair) }
+.notes dt { font-family: var(--caps); font-size: 7pt; letter-spacing: 0.12em; text-transform: uppercase }
+.notes dd { font-family: var(--serif); font-style: italic; font-size: 9.5pt; color: var(--cream-2); margin-top: 0.6mm }
+
+/* ritual */
+.steps { list-style: none; padding: 0; margin-top: 6mm; border-top: 0.25mm solid var(--hair) }
+.steps li { display: flex; align-items: center; gap: 4mm; padding: 2.6mm 0; border-bottom: 0.25mm solid var(--hair) }
+.steps b { display: block; font-family: var(--serif); font-weight: 500; font-size: 11.5pt; line-height: 1.1 }
+.steps div span { display: block; font-size: 7.5pt; color: var(--cream-3); margin-top: 0.5mm }
+.orb { flex: none; width: 7.5mm; height: 7.5mm; border-radius: 50%; display: grid; place-items: center; font-family: var(--caps); font-size: 6.5pt; color: var(--night) }
+.orb-gold { background: radial-gradient(circle at 35% 30%, #fbe3a6, #f3c160 45%, #ee974f) }
+.orb-orange { background: radial-gradient(circle at 35% 30%, #f6b179, #e97c3e 50%, #c16878) }
+.orb-rose { background: radial-gradient(circle at 35% 30%, #f1dbe8, #e7a6c4 45%, #c16878) }
+.orb-violet { background: radial-gradient(circle at 35% 30%, #d9b6f0, #9d679d 45%, #5d60ce); color: var(--cream) }
+
+/* legal: reversed text kept at 7.5pt+ (x-height over 1.2mm) */
+.legal .pad { padding: 8mm 8mm 0 }
+.nut { width: 100%; border-collapse: collapse; margin-top: 3mm; font-size: 7.5pt; font-variant-numeric: tabular-nums }
+.nut th { font-weight: 600; text-align: right; padding: 0 0 1.2mm; border-bottom: 0.35mm solid var(--cream-2) }
+.nut th:first-child, .nut td:first-child { text-align: left }
+.nut td { text-align: right; padding: 0.9mm 0; border-bottom: 0.2mm solid var(--hair) }
+.nut td.in { padding-left: 3mm }
+.legaltext { font-size: 7.5pt; line-height: 1.45; margin-top: 3mm }
+.legaltext b { font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em }
+.legalfoot { display: flex; justify-content: space-between; gap: 4mm }
+.legaltext.right { text-align: right }
+.qty { font-weight: 600 }
+
+/* base: light boxes so the inkjet date and barcode read */
+.base .pad { padding: 8mm }
+.keepclear { background: var(--ivory); color: var(--night); border-radius: 1.5mm; padding: 4mm; font-size: 7.5pt; line-height: 1.5; text-align: center; margin-top: 4mm }
+.keepclear span { display: block; font-family: var(--mono); font-size: 6.5pt; color: #6a5f55; margin-top: 1mm }
+.keepclear b { font-weight: 600 }
+.baserow { display: grid; grid-template-columns: 2fr 1fr; gap: 4mm }
+.base .meta:last-child { margin-top: 5mm; text-align: center }
+
+.tuck .meta, .dust .meta { color: var(--cream-2) }
+.dustpad { display: flex; flex-direction: column; align-items: center; gap: 2mm }
+
+/* dieline: reference only; the printer's own dieline replaces it */
+.dieline { position: absolute; inset: 0; z-index: 5; pointer-events: none; overflow: visible; display: none }
+.show-die .dieline { display: block }
+.dieline .cut { fill: none; stroke: #ff2bd6; stroke-width: 0.3 }
+.dieline .fold { fill: none; stroke: #2bd6ff; stroke-width: 0.3; stroke-dasharray: 2 1.4 }
+
+/* the estimated-quantity mark, drawn: no brand face has the glyph */
+.emark { display: inline-block; width: 3.2mm; height: 3.2mm; vertical-align: -0.7mm; margin-left: 0.4mm } /* the ℮ mark: 3mm minimum height for 200ml–1L */
+
+</style></head><body><div class="sheet">
+<div class="carton" style="width:455mm;height:373mm">
+  <div class="flood"></div>
+  <section class="panel glue" style="left:0mm;top:131mm"><p class="meta">glue</p></section>
+<section class="panel tuck" style="left:125mm;top:0mm">
+  <p class="meta">open here</p>
+</section>
+<section class="panel lid" style="left:125mm;top:15mm">
+  <div class="glow soft"></div>
+  <div class="pad center lidpad">
+    <img class="star" src="star.svg" alt="">
+    <h2 class="primary lockup"><span class="small">made for</span><span>presence</span><span class="small">and play.</span></h2>
+    <img class="logo lid-logo" src="logo.svg" alt="elixir">
+  </div>
+</section>
+<section class="panel dust top" style="left:15mm;top:73mm">
+  <div class="dustpad"><img class="star tiny" src="star.svg" alt=""><p class="meta">a pause in a can.</p></div>
+</section>
+<section class="panel dust top" style="left:235mm;top:73mm">
+  <div class="dustpad"><img class="star tiny" src="star.svg" alt=""><p class="meta">drop in.</p></div>
+</section>
+<section class="panel dust top" style="left:345mm;top:73mm">
+  <div class="dustpad"><img class="star tiny" src="star.svg" alt=""><p class="meta">manifest responsibly.</p></div>
+</section>
+<section class="panel dust bottom" style="left:15mm;top:263mm">
+  <div class="dustpad"><img class="star tiny" src="star.svg" alt=""><p class="meta">handmade in london.</p></div>
+</section>
+<section class="panel dust bottom" style="left:235mm;top:263mm">
+  <div class="dustpad"><img class="star tiny" src="star.svg" alt=""><p class="meta">three drops. then everything.</p></div>
+</section>
+<section class="panel dust bottom" style="left:345mm;top:263mm">
+  <div class="dustpad"><img class="star tiny" src="star.svg" alt=""><p class="meta">a pause in a can.</p></div>
+</section>
+<section class="panel body legal" style="left:15mm;top:125mm">
+  <div class="pad">
+    <h3 class="primary sm">Nutrition</h3>
+    <table class="nut">
+      <thead><tr><th>Typical values</th><th>per 100ml</th><th>per 200ml can</th></tr></thead>
+      <tbody>
+        <tr><td>Energy</td><td>68kJ / 16kcal</td><td>136kJ / 33kcal</td></tr>
+        <tr><td>Fat</td><td>0g</td><td>0g</td></tr>
+        <tr><td class="in">of which saturates</td><td>0g</td><td>0g</td></tr>
+        <tr><td>Carbohydrate</td><td>4.1g</td><td>8.1g</td></tr>
+        <tr><td class="in">of which sugars</td><td>2.4g</td><td>4.8g</td></tr>
+        <tr><td>Fibre</td><td>0g</td><td>0g</td></tr>
+        <tr><td>Protein</td><td>0g</td><td>0g</td></tr>
+        <tr><td>Salt</td><td>0g</td><td>0g</td></tr>
+      </tbody>
+    </table>
+    <p class="legaltext"><b>Ingredients:</b> Filtered Water, Fructose, Glycerin, Natural Flavourings (Gentian, Cardamom, Coriander, Bitter Orange), Malic Acid, Citric Acid, Sodium Citrate, Vitamin C (Antioxidant), Magnesium Sulphate, Pink Himalayan Rock Salt.</p>
+    <p class="legaltext">Herbal bitters &amp; tonic. Alcohol free, 0.0% ABV. Vegan &amp; gluten free. Store in a cool, dry place away from direct sunlight. Once opened, consume immediately. Best served chilled.</p>
+    <div class="legalfoot">
+      <p class="legaltext">Elixir Drinks Ltd<br>124 City Road<br>London EC1V 2NX</p>
+      <p class="legaltext right">Best before &amp; lot: see base<br><span class="qty">4 × 200ml <svg class="emark" viewBox="0 0 100 100" aria-label="e"><path d="M14 52 H86 C86 28 70 12 50 12 C28 12 12 30 12 52 C12 74 28 90 50 90 C62 90 72 85 79 77" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round"/></svg></span></p>
+    </div>
+  </div>
+  <div class="glow"></div>
+</section>
+<section class="panel body front" style="left:125mm;top:125mm">
+  <div class="glow strong"></div>
+  <div class="pad center">
+    <img class="star" src="star.svg" alt="">
+    <img class="logo front-logo" src="logo.svg" alt="elixir">
+    <p class="secondary">a pause in a can.</p>
+  </div>
+  <div class="hero-can">
+    <div class="can-shadow"></div>
+    <img class="can" src="can.png" alt="a can of elixir herbal bitters &amp; tonic">
+  </div>
+  <div class="front-foot">
+    <h2 class="primary">Herbal bitters &amp; tonic</h2>
+    <p class="meta">4 × 200ml <svg class="emark" viewBox="0 0 100 100" aria-label="e"><path d="M14 52 H86 C86 28 70 12 50 12 C28 12 12 30 12 52 C12 74 28 90 50 90 C62 90 72 85 79 77" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round"/></svg> · 0.0% abv</p>
+  </div>
+</section>
+<section class="panel body why" style="left:235mm;top:125mm">
+  <div class="glow"></div>
+  <div class="pad">
+    <p class="meta">why bitters · <i>gentiana lutea</i></p>
+    <h3 class="primary stack"><span class="small">bitter is</span><span>better.</span></h3>
+    <p class="secondary">Gentian, the original bitter.</p>
+    <p class="bodytext">Long before the apothecary, the wise women reached for bitter first. Gentian, a mountain root years in the making, is the backbone of the great aperitifs. We pour it with a light, bright tonic, at 0.0%.</p>
+    <dl class="notes">
+      <div><dt>Bitter orange</dt><dd>bright zest</dd></div>
+      <div><dt>Cardamom</dt><dd>warm spice</dd></div>
+      <div><dt>Coriander</dt><dd>soft citrus</dd></div>
+      <div><dt>Gentian</dt><dd>a clean, dry finish</dd></div>
+    </dl>
+  </div>
+</section>
+<section class="panel body ritual" style="left:345mm;top:125mm">
+  <div class="glow"></div>
+  <div class="pad">
+    <p class="meta">the signature serve</p>
+    <h3 class="primary stack"><span>the ritual.</span></h3>
+    <p class="secondary">Drop in.</p>
+    <ol class="steps">
+      <li><span class="orb orb-gold">I</span><div><b>Chill.</b><span>straight from the fridge.</span></div></li>
+      <li><span class="orb orb-orange">II</span><div><b>Ice.</b><span>a heavy glass, filled generously.</span></div></li>
+      <li><span class="orb orb-rose">III</span><div><b>Pour.</b><span>slowly, to keep it bright.</span></div></li>
+      <li><span class="orb orb-violet">IV</span><div><b>Orange. Pause.</b><span>a moment that is yours.</span></div></li>
+    </ol>
+  </div>
+  <p class="meta bottom">drink-elixir.co · @drink__elixir</p>
+</section>
+<section class="panel base" style="left:125mm;top:263mm">
+  <div class="pad">
+    <p class="meta">base · crash-lock folds per printer dieline</p>
+    <div class="keepclear inkjet"><b>Best before</b> DD/MM/YYYY<br><b>Lot</b> XXXXXX<span>inkjet area · keep clear</span></div>
+    <div class="baserow">
+      <div class="keepclear ean">Outer EAN-13<span>new code, not the can’s</span></div>
+      <div class="keepclear oprl">OPRL<span>recycling marks</span></div>
+    </div>
+    <p class="meta">recycle the carton. rinse &amp; recycle the cans.</p>
+  </div>
+</section>
+  <svg class="dieline" viewBox="0 0 455 373" width="455mm" height="373mm" aria-hidden="true"><g class="cut"><path d="M125 125 V15 H129 Q129 0 139 0 H221 Q231 0 231 15 H235 V125"/><path d="M125 263 V373 H235 V263"/><line x1="455" y1="125" x2="455" y2="263"/><path d="M15 125 L0 131 V257 L15 263"/><path d="M15 125 L23 73 H117 L125 125"/><path d="M15 263 L23 315 H117 L125 263"/><path d="M235 125 L243 73 H337 L345 125"/><path d="M235 263 L243 315 H337 L345 263"/><path d="M345 125 L353 73 H447 L455 125"/><path d="M345 263 L353 315 H447 L455 263"/></g><g class="fold"><line x1="15" y1="125" x2="15" y2="263"/><line x1="125" y1="125" x2="125" y2="263"/><line x1="235" y1="125" x2="235" y2="263"/><line x1="345" y1="125" x2="345" y2="263"/><line x1="15" y1="125" x2="455" y2="125"/><line x1="15" y1="263" x2="455" y2="263"/><line x1="125" y1="15" x2="235" y2="15"/></g></svg>
+</div></div></body></html>
