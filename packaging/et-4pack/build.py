@@ -34,7 +34,8 @@ def orb(tone, n):
 # ---------------- panels ----------------
 P1_LEGAL = f"""
 <section class="panel body legal" style="left:{X[0]}mm;top:{Y_BODY}mm">
-  <div class="pad">
+  <div class="glow"></div>
+  <div class="label-card">
     <h3 class="primary sm">Nutrition</h3>
     <table class="nut">
       <thead><tr><th>Typical values</th><th>per 100ml</th><th>per 200ml can</th></tr></thead>
@@ -56,7 +57,6 @@ P1_LEGAL = f"""
       <p class="legaltext right">Best before &amp; lot: see base<br><span class="qty">4 × 200ml <svg class="emark" viewBox="0 0 100 100" aria-label="e"><path d="M14 52 H86 C86 28 70 12 50 12 C28 12 12 30 12 52 C12 74 28 90 50 90 C62 90 72 85 79 77" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round"/></svg></span></p>
     </div>
   </div>
-  <div class="glow"></div>
 </section>"""
 
 P2_FRONT = f"""
@@ -95,20 +95,21 @@ P3_WHY = f"""
 </section>"""
 
 P4_RITUAL = f"""
-<section class="panel body ritual" style="left:{X[3]}mm;top:{Y_BODY}mm">
+<section class="panel body presence" style="left:{X[3]}mm;top:{Y_BODY}mm">
   <div class="glow"></div>
-  <div class="pad">
-    <p class="meta">the signature serve</p>
-    <h3 class="primary stack"><span>the ritual.</span></h3>
-    <p class="secondary">Drop in.</p>
-    <ol class="steps">
-      <li>{orb("gold","I")}<div><b>Chill.</b><span>straight from the fridge.</span></div></li>
-      <li>{orb("orange","II")}<div><b>Ice.</b><span>a heavy glass, filled generously.</span></div></li>
-      <li>{orb("rose","III")}<div><b>Pour.</b><span>slowly, to keep it bright.</span></div></li>
-      <li>{orb("violet","IV")}<div><b>Orange. Pause.</b><span>a moment that is yours.</span></div></li>
+  <div class="label-card center">
+    <h3 class="primary lockup dark"><span class="small">made for</span><span>presence</span><span class="small">and play.</span></h3>
+    <p class="cardcopy">Our herbal bitters, ready-poured with a light tonic. Born in London, for the moments you want to be fully present.</p>
+    <p class="cardlabel">the ritual</p>
+    <ol class="ritual-row">
+      <li><span class="num">I</span><span>Chill</span></li>
+      <li><span class="num">II</span><span>Ice</span></li>
+      <li><span class="num">III</span><span>Pour</span></li>
+      <li><span class="num">IV</span><span>Orange.<br>Pause.</span></li>
     </ol>
+    <p class="botanicals">gentian · cardamom · bitter orange · coriander</p>
+    <p class="site">drink-elixir.co · @drink__elixir</p>
   </div>
-  <p class="meta bottom">drink-elixir.co · @drink__elixir</p>
 </section>"""
 
 LID = f"""
@@ -116,8 +117,9 @@ LID = f"""
   <div class="glow soft"></div>
   <div class="pad center lidpad">
     {star()}
-    <h2 class="primary lockup"><span class="small">made for</span><span>presence</span><span class="small">and play.</span></h2>
     {logo("logo lid-logo")}
+    <p class="secondary">a pause in a can.</p>
+    <p class="meta lidmeta">herbal bitters &amp; tonic · 0.0%</p>
   </div>
 </section>"""
 

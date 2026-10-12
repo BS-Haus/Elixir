@@ -89,7 +89,9 @@ html,body { margin:0; background:#241912 }
 .lidpad { padding-top: 14mm; height: 100% }
 .lockup { display: flex; flex-direction: column; align-items: center; font-size: 24pt; margin-top: 7mm; letter-spacing: 0.01em }
 .lockup .small { font-size: 9pt; letter-spacing: 0.1em; margin: 1.6mm 0 }
-.lid-logo { width: 26mm; margin-top: auto; margin-bottom: 12mm }
+.lidpad { justify-content: center; padding-top: 0 }
+.lid-logo { width: 58mm; margin-top: 6mm }
+.lidmeta { margin-top: 8mm }
 
 /* why bitters */
 .why .meta:first-child, .ritual .meta:first-child { margin-bottom: 5mm }
@@ -141,6 +143,33 @@ html,body { margin:0; background:#241912 }
 /* the estimated-quantity mark, drawn: no brand face has the glyph */
 .emark { display: inline-block; width: 3.2mm; height: 3.2mm; vertical-align: -0.7mm; margin-left: 0.4mm } /* the ℮ mark: 3mm minimum height for 200ml–1L */
 
+/* ivory label cards (her layout), inset so the candlelight frames them, with a fine double rule */
+.label-card {
+  position: absolute; z-index: 1; inset: 4.5mm; border-radius: 2.5mm;
+  background: var(--ivory); color: var(--night); padding: 7mm 6.5mm 6mm;
+  box-shadow: 0 0 0 0.35mm rgba(238, 151, 79, 0.55), 0 3mm 8mm -2mm rgba(0, 0, 0, 0.5);
+}
+.label-card::before {
+  content: ""; position: absolute; inset: 1.6mm; border-radius: 1.6mm; pointer-events: none;
+  border: 0.25mm solid rgba(29, 23, 18, 0.28);
+}
+.label-card .primary.sm { color: var(--night) }
+.legal .label-card { display: flex; flex-direction: column }
+.legal .nut th { border-bottom-color: rgba(29, 23, 18, 0.7) }
+.legal .nut td { border-bottom-color: rgba(29, 23, 18, 0.14) }
+.legal .legalfoot { margin-top: auto }
+.legal .legaltext { color: var(--night) }
+
+.presence .label-card { display: flex; flex-direction: column; align-items: center; text-align: center; padding-top: 9mm }
+.lockup.dark { color: var(--night); margin-top: 0; font-size: 22pt }
+.cardcopy { font-family: var(--serif); font-size: 11pt; line-height: 1.35; color: #3a2e25; margin-top: 5mm; max-width: 72mm }
+.cardlabel { font-family: var(--caps); font-size: 6.5pt; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 6mm; padding-top: 4mm; border-top: 0.25mm solid rgba(29, 23, 18, 0.25); width: 100% }
+.ritual-row { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2mm; width: 100%; margin-top: 3mm }
+.ritual-row li { display: flex; flex-direction: column; align-items: center; gap: 1mm; font-family: var(--serif); font-size: 9pt; line-height: 1.15; color: #3a2e25 }
+.ritual-row .num { font-family: var(--caps); font-size: 15pt; color: var(--night) }
+.botanicals { font-family: var(--caps); font-size: 6.5pt; letter-spacing: 0.14em; text-transform: uppercase; margin-top: auto; padding-top: 4mm; border-top: 0.25mm solid rgba(29, 23, 18, 0.25); width: 100% }
+.site { font-family: var(--mono); font-size: 7pt; color: #6a5f55; margin-top: 2.5mm }
+
 </style></head><body><div class="sheet">
 <div class="carton" style="width:455mm;height:373mm">
   <div class="flood"></div>
@@ -152,8 +181,9 @@ html,body { margin:0; background:#241912 }
   <div class="glow soft"></div>
   <div class="pad center lidpad">
     <img class="star" src="star.svg" alt="">
-    <h2 class="primary lockup"><span class="small">made for</span><span>presence</span><span class="small">and play.</span></h2>
     <img class="logo lid-logo" src="logo.svg" alt="elixir">
+    <p class="secondary">a pause in a can.</p>
+    <p class="meta lidmeta">herbal bitters &amp; tonic · 0.0%</p>
   </div>
 </section>
 <section class="panel dust top" style="left:15mm;top:73mm">
@@ -175,7 +205,8 @@ html,body { margin:0; background:#241912 }
   <div class="dustpad"><img class="star tiny" src="star.svg" alt=""><p class="meta">a pause in a can.</p></div>
 </section>
 <section class="panel body legal" style="left:15mm;top:125mm">
-  <div class="pad">
+  <div class="glow"></div>
+  <div class="label-card">
     <h3 class="primary sm">Nutrition</h3>
     <table class="nut">
       <thead><tr><th>Typical values</th><th>per 100ml</th><th>per 200ml can</th></tr></thead>
@@ -197,7 +228,6 @@ html,body { margin:0; background:#241912 }
       <p class="legaltext right">Best before &amp; lot: see base<br><span class="qty">4 × 200ml <svg class="emark" viewBox="0 0 100 100" aria-label="e"><path d="M14 52 H86 C86 28 70 12 50 12 C28 12 12 30 12 52 C12 74 28 90 50 90 C62 90 72 85 79 77" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round"/></svg></span></p>
     </div>
   </div>
-  <div class="glow"></div>
 </section>
 <section class="panel body front" style="left:125mm;top:125mm">
   <div class="glow strong"></div>
@@ -230,20 +260,21 @@ html,body { margin:0; background:#241912 }
     </dl>
   </div>
 </section>
-<section class="panel body ritual" style="left:345mm;top:125mm">
+<section class="panel body presence" style="left:345mm;top:125mm">
   <div class="glow"></div>
-  <div class="pad">
-    <p class="meta">the signature serve</p>
-    <h3 class="primary stack"><span>the ritual.</span></h3>
-    <p class="secondary">Drop in.</p>
-    <ol class="steps">
-      <li><span class="orb orb-gold">I</span><div><b>Chill.</b><span>straight from the fridge.</span></div></li>
-      <li><span class="orb orb-orange">II</span><div><b>Ice.</b><span>a heavy glass, filled generously.</span></div></li>
-      <li><span class="orb orb-rose">III</span><div><b>Pour.</b><span>slowly, to keep it bright.</span></div></li>
-      <li><span class="orb orb-violet">IV</span><div><b>Orange. Pause.</b><span>a moment that is yours.</span></div></li>
+  <div class="label-card center">
+    <h3 class="primary lockup dark"><span class="small">made for</span><span>presence</span><span class="small">and play.</span></h3>
+    <p class="cardcopy">Our herbal bitters, ready-poured with a light tonic. Born in London, for the moments you want to be fully present.</p>
+    <p class="cardlabel">the ritual</p>
+    <ol class="ritual-row">
+      <li><span class="num">I</span><span>Chill</span></li>
+      <li><span class="num">II</span><span>Ice</span></li>
+      <li><span class="num">III</span><span>Pour</span></li>
+      <li><span class="num">IV</span><span>Orange.<br>Pause.</span></li>
     </ol>
+    <p class="botanicals">gentian · cardamom · bitter orange · coriander</p>
+    <p class="site">drink-elixir.co · @drink__elixir</p>
   </div>
-  <p class="meta bottom">drink-elixir.co · @drink__elixir</p>
 </section>
 <section class="panel base" style="left:125mm;top:263mm">
   <div class="pad">
