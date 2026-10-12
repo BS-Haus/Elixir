@@ -135,29 +135,29 @@
 /* the estimated-quantity mark, drawn: no brand face has the glyph */
 .emark { display: inline-block; width: 3.2mm; height: 3.2mm; vertical-align: -0.7mm; margin-left: 0.4mm } /* the ℮ mark: 3mm minimum height for 200ml–1L */
 
-/* ivory label cards (her layout), inset so the candlelight frames them, with a fine double rule */
+/* label cards (her layout): a lifted candlelit brown, inset so the glow frames them, with a fine double rule */
 .label-card {
   position: absolute; z-index: 1; inset: 4.5mm; border-radius: 2.5mm;
-  background: var(--ivory); color: var(--night); padding: 7mm 6.5mm 6mm;
-  box-shadow: 0 0 0 0.35mm rgba(238, 151, 79, 0.55), 0 3mm 8mm -2mm rgba(0, 0, 0, 0.5);
+  background: linear-gradient(180deg, #33251b 0%, #2b1f17 100%); color: var(--cream); padding: 7mm 6.5mm 6mm;
+  box-shadow: 0 0 0 0.35mm rgba(238, 151, 79, 0.5), 0 3mm 8mm -2mm rgba(0, 0, 0, 0.55);
 }
 .label-card::before {
   content: ""; position: absolute; inset: 1.6mm; border-radius: 1.6mm; pointer-events: none;
-  border: 0.25mm solid rgba(29, 23, 18, 0.28);
+  border: 0.25mm solid rgba(238, 151, 79, 0.28);
 }
-.label-card .primary.sm { color: var(--night) }
+.label-card .primary.sm { color: var(--cream) }
 .legal .label-card { display: flex; flex-direction: column }
-.legal .nut th { border-bottom-color: rgba(29, 23, 18, 0.7) }
-.legal .nut td { border-bottom-color: rgba(29, 23, 18, 0.14) }
+.legal .nut th { border-bottom-color: rgba(243, 235, 223, 0.6) }
+.legal .nut td { border-bottom-color: rgba(243, 235, 223, 0.14) }
 .legal .legalfoot { margin-top: auto }
-.legal .legaltext { color: var(--night) }
+.legal .legaltext { color: var(--cream) }
 
 .presence .label-card { display: flex; flex-direction: column; align-items: center; text-align: center; padding-top: 9mm }
-.lockup.dark { color: var(--night); margin-top: 0; font-size: 22pt }
-.cardcopy { font-family: var(--serif); font-size: 11pt; line-height: 1.35; color: #3a2e25; margin-top: 5mm; max-width: 72mm }
-.cardlabel { font-family: var(--caps); font-size: 6.5pt; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 6mm; padding-top: 4mm; border-top: 0.25mm solid rgba(29, 23, 18, 0.25); width: 100% }
+.lockup.dark { color: var(--cream); margin-top: 0; font-size: 22pt }
+.cardcopy { font-family: var(--serif); font-size: 11pt; line-height: 1.35; color: var(--cream-2); margin-top: 5mm; max-width: 72mm }
+.cardlabel { font-family: var(--caps); font-size: 6.5pt; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-top: 6mm; padding-top: 4mm; border-top: 0.25mm solid var(--hair); width: 100% }
 .ritual-row { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2mm; width: 100%; margin-top: 3mm }
-.ritual-row li { display: flex; flex-direction: column; align-items: center; gap: 1mm; font-family: var(--serif); font-size: 9pt; line-height: 1.15; color: #3a2e25 }
-.ritual-row .num { font-family: var(--caps); font-size: 15pt; color: var(--night) }
-.botanicals { font-family: var(--caps); font-size: 6.5pt; letter-spacing: 0.14em; text-transform: uppercase; margin-top: auto; padding-top: 4mm; border-top: 0.25mm solid rgba(29, 23, 18, 0.25); width: 100% }
-.site { font-family: var(--mono); font-size: 7pt; color: #6a5f55; margin-top: 2.5mm }
+.ritual-row li { display: flex; flex-direction: column; align-items: center; gap: 1mm; font-family: var(--serif); font-size: 9pt; line-height: 1.15; color: var(--cream-2) }
+.ritual-row .num { font-family: var(--caps); font-size: 15pt; color: var(--cream) }
+.botanicals { font-family: var(--caps); font-size: 6.5pt; letter-spacing: 0.14em; text-transform: uppercase; margin-top: auto; padding-top: 4mm; border-top: 0.25mm solid var(--hair); width: 100% }
+.site { font-family: var(--mono); font-size: 7pt; color: var(--cream-3); margin-top: 2.5mm }
